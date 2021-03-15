@@ -7,6 +7,22 @@ app.component('first', {
   <span>{{head + ' ' + act(head)}}</span>
   <hr>
   <span>{{firstname}}</span>
+
+  <div class="q-pa-md bg-grey-10 text-white">
+  <div class="q-gutter-sm">
+    <q-option-group
+      v-model="square.value"
+      :options="options"
+      color="primary"
+      inline
+      dark
+      @update:modelValue="val => { $emit('fill-filter-square', sq) }"
+    />
+  </div>
+  <hr>
+</div>
+
+
   `
   ,
   props:

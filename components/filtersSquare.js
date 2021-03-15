@@ -6,13 +6,13 @@ app.component('filters-square', {
   `
   <div class="q-pa-md bg-grey-10 text-white">
     <div class="q-gutter-sm">
+      {{square}}
       <q-option-group
-        v-model="sq"
+        v-model="square.value"
         :options="options"
         color="primary"
         inline
         dark
-        @update:modelValue="val => { $emit('fill-filter-square', sq) }"
       />
     </div>
     <hr>
@@ -29,8 +29,11 @@ app.component('filters-square', {
     console.log(`${this.$options.name} component is mounted`);
   },
   setup() {
+    var square = ref(squareG);
     return {
       sq: ref(filtersArrSquare[0].value),
+      // square: ref(square),
+      square,
       options: filtersArrSquare,
       filterChecked(val){
         console.log(val);

@@ -15,39 +15,39 @@
 
 <body>
   <div id="q-app">
+    <!-- <input type="text" v-model='person.name'> -->
+    <!-- <input type="text" v-bind:value='person.name'> -->
+    <!-- <button @click='megaclick'>click</button> -->
 
-    <!-- <input v-model='myArr'>
-    <p>{{myArr}}</p>
-    <button @click='megaclick'>click here</button> -->
-    
     <!-- <p>square: {{square}}</p> -->
-    <p>filters: {{filters}}</p>
+    <!-- <p>filters: {{filters}}</p> -->
 
-    <!-- <filters-square @fill-filter-square='keepsquare($event)'>
-      <p>sq: {{sq}}</p>
-    </filters-square> -->
+    <!-- <filters-square @fill-filter-square='keepsquare($event)'> -->
+    <filters-square>
+      <!-- <p>sq: {{sq}}</p> -->
+    </filters-square>
 
     <!-- <filters @fill-filter='keepfilter($event)'></filters> -->
     <filters></filters>
     <!-- <filterscopy v-model:filtersc='filtersG'></filterscopy> -->
+    <services></services>
 
   </div>
   
   <!-- Import Vue -->
-  <script src="https://unpkg.com/vue@next"></script>
+  <!-- <script src="https://unpkg.com/vue@next"></script> -->
   <!-- <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js"></script> -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
   
   <!-- Import Quasar -->
-  <script src="https://cdn.jsdelivr.net/npm/quasar@2.0.0-beta.7/dist/quasar.umd.prod.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/quasar@2.0.0-beta.9/dist/quasar.umd.prod.js"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/quasar@2.0.0-beta.7/dist/quasar.umd.prod.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/quasar@2.0.0-beta.9/dist/quasar.umd.prod.js"></script>
 
   <!-- Import components -->
   <script src="./components/global.js"></script>
   <script src="./components/filtersSquare.js"></script>
   <script src="./components/filters.js"></script>
-
-  <!-- <script src="./components/first.js"></script> -->
+  <script src="./components/services.js"></script>
 
   <!-- Mount app -->
   <script>const mountedapp = app.mount('#q-app')</script>

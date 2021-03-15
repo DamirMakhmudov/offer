@@ -4,11 +4,22 @@ app.component('filters', {
   template:
   /*html*/
   `
+  <!--
+  <template v-for='filter in farr'>
+    <input v-model='filtersc.content' type='checkbox' :value='filter.value'>
+    {{filter.value}}
+  </template>
+  -->
 
   <div class="q-pa-md bg-grey-10 text-white">
     <div class="q-gutter-sm">
+      <template v-for='filter in filtersc' :key='filter.label'>
+        <q-checkbox dark v-model='filter.value' :label='filter.label' color="green"/>
+      </template>
+
+      <!--
       <q-option-group
-        v-model="filtersc"
+        v-model="filtersc.content"
         :options="optionsfilter"
         color="primary"
         type="checkbox"
@@ -16,13 +27,17 @@ app.component('filters', {
         dark
         @update:modelValue="val => { $emit('fill-filter', filtersc) }"
       />
+      -->
+
       <!--
       <template v-for='(filter, index) in filters' :key='filter.id'>
         <label>
           <q-checkbox dark v-model='filter.check' color="green" />
           {{filter.name}}
         </label>
-      </template >
+      </template>
+      -->
+      <!--
       <template v-for='(filter, index) in farr'>
         <q-checkbox dark v-model='filter.check' :label='filter.label' color="green"/>
       </template>
@@ -33,11 +48,9 @@ app.component('filters', {
   ,
   data(){
     return {
-      // filters: filtersArr
-      filtersc: filtersG,
-      // filtersF: filtersG,
-      farr: filtersArrCheck,
-      optionsfilter: filtersArr
+      // filtersc: filtersG,
+      filtersc: filtersArrCheck,
+      // optionsfilter: filtersArr
     }
   },
   methods: {
@@ -47,9 +60,9 @@ app.component('filters', {
     }
   },
   watch:{
-    filtersc(){
-      filtersG = [...this.filtersc]
-    }
+    // filtersc(){
+    //   filtersG = [...this.filtersc]
+    // }
   },
   mounted: function(){
     console.log(`${this.$options.name} component is mounted`);
