@@ -24,20 +24,20 @@
 
     <!-- <filters-square @fill-filter-square='keepsquare($event)'> -->
     <filters-square>
-      <!-- <p>sq: {{sq}}</p> -->
+    <!-- <p>sq: {{sq}}</p> -->
     </filters-square>
 
     <!-- <filters @fill-filter='keepfilter($event)'></filters> -->
     <filters></filters>
-    <!-- <filterscopy v-model:filtersc='filtersG'></filterscopy> -->
+    <example></example>
+    <hr>
     <services></services>
-
   </div>
   
   <!-- Import Vue -->
-  <!-- <script src="https://unpkg.com/vue@next"></script> -->
+  <script src="https://unpkg.com/vue@next"></script>
   <!-- <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js"></script> -->
-  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script> -->
   
   <!-- Import Quasar -->
   <!-- <script src="https://cdn.jsdelivr.net/npm/quasar@2.0.0-beta.7/dist/quasar.umd.prod.js"></script> -->
@@ -47,7 +47,12 @@
   <script src="./components/global.js"></script>
   <script src="./components/filtersSquare.js"></script>
   <script src="./components/filters.js"></script>
+
+  <script src="./components/data.js"></script>
   <script src="./components/services.js"></script>
+  <script src="./components/example.js"></script>
+  <script src="./components/tdd.js"></script>
+
 
   <!-- Mount app -->
   <script>const mountedapp = app.mount('#q-app')</script>

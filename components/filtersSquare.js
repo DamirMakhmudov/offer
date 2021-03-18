@@ -31,7 +31,7 @@ app.component('filters-square', {
   setup() {
     var square = ref(squareG);
     return {
-      sq: ref(filtersArrSquare[0].value),
+      // sq: ref(filtersArrSquare[0].value),
       // square: ref(square),
       square,
       options: filtersArrSquare,
