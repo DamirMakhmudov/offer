@@ -37,8 +37,6 @@ var filtersArrCheck = [
   { label: 'Рабочка', value: false },
 ];
 
-
-
 var servicesname = [
   { "id": 1, "filter": "Согласование , Узаконивание, ПТЗ, ТЗБ", "shortname": "Наш предварительный выезд", "name": "Обмер Помещения с целью определения возможности переустройства и/или перепланировки и подготовки документации", "price1": 5000, "price2": 100, "price3": 100, "price4": 100, "time": 1, "document": "Заключение о возможности согласования перепланировки в ввиде текстового электронного письма без предоставления распечатанного экземпляра", "count": "1 (один)" },
   { "id": 2, "filter": "ГБУ ЭЦ", "shortname": "Предварительный выезд с ГБУ", "name": "Обмер Помещения с целью определения возможности переустройства и/или перепланировки и подготовки документации c представителем из ГБУ «Экспертный центр»", "price1": 15000, "price2": 100, "price3": 100, "price4": 100, "time": 10, "document": "Заключение о возможности согласования перепланировки с учетом консультации специалиста из ГБУ «Экспертный центр» в ввиде текстового электронного письма без предоставления распечатанного экземпляра", "count": "1 (один)" },
@@ -48,7 +46,6 @@ var servicesname = [
 ];
 
 var filtersG = { content: ['Газ'] };
-var testObject = { name: 'Damir' };
 
 const { createApp, ref, computed, watch, onMounted } = Vue;
 const { useQuasar } = Quasar;
@@ -60,6 +57,8 @@ var AppObject = {
     return {
       square: squareG,
       filters: filtersG,
+      columnsg: columns,
+      rowsg: rows
     }
   },
   methods: {
@@ -93,7 +92,7 @@ var AppObject = {
     // console.log(myArr);
     // }
     return {
-      optionsfilter: filtersArr
+      optionsfilter: filtersArr,
       // megaclick, rr
     }
     // filtermain: []

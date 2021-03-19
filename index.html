@@ -29,9 +29,9 @@
 
     <!-- <filters @fill-filter='keepfilter($event)'></filters> -->
     <filters></filters>
-    <example></example>
+    <!-- <example></example> -->
     <hr>
-    <services></services>
+    <services :columnss='columnsg' :rowss='rowsg'></services>
   </div>
   
   <!-- Import Vue -->
@@ -43,16 +43,14 @@
   <!-- <script src="https://cdn.jsdelivr.net/npm/quasar@2.0.0-beta.7/dist/quasar.umd.prod.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/quasar@2.0.0-beta.9/dist/quasar.umd.prod.js"></script>
 
+  <script src="./components/data.js"></script>
+
   <!-- Import components -->
   <script src="./components/global.js"></script>
   <script src="./components/filtersSquare.js"></script>
   <script src="./components/filters.js"></script>
-
-  <script src="./components/data.js"></script>
   <script src="./components/services.js"></script>
   <script src="./components/example.js"></script>
-  <script src="./components/tdd.js"></script>
-
 
   <!-- Mount app -->
   <script>const mountedapp = app.mount('#q-app')</script>

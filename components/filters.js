@@ -42,6 +42,7 @@ app.component('filters', {
         <q-checkbox dark v-model='filter.check' :label='filter.label' color="green"/>
       </template>
       -->
+      
     </div>
   </div>
   `

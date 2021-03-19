@@ -3,26 +3,28 @@ app.component('services',{
   template:
   /* html */
   `
+  <div>{{rowss[0]}}</div>
+  <hr>
   <div class="q-pa-md">
     <q-table 
-      :rows="rows"
-      :columns="columns"
+      :rows="rowss"
+      :columns="columnss"
       title="Услуги"
-      :rows-per-page-options="[]"
+      :rows-per-page-options="[10]"
       row-key="name"
-      :filter = "filter"
-      :filter-method="myfilterMethod"
+      wrap-cells
       >
 
       <template v-slot:body="props">
       
         <q-tr :props="props">
 
-          <q-td v-for='col in columns' :key="col.name" :props="props">
+          <q-td v-for='col in columnss' :key="col.name" :props="props">
 
               {{ props.row[col.name] }}
-              <q-popup-edit v-model="props.row[col.name]" title="Edit the Name" auto-save v-slot="scope">
-                <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" />
+
+              <q-popup-edit v-model="props.row[col.name]" :title="col.label" auto-save v-slot="scope">
+                <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" type="textarea"/>
               </q-popup-edit>
   
           </q-td>
@@ -37,28 +39,51 @@ app.component('services',{
   ,
   data(){
     return{
-      rows: rows,
-      columns: columns,
-      filter: {value: 'none'}
+      // rows: rowss,
+      // columns: columnss,
+      filter: {value: 'none'},
+      // visibleColumns: columns.map(row => row.name)
+      // visibleColumns: setvisiblecolumns
+
+      // :visible-columns="setvisiblecolumns"
+      // :filter = "filter"
+      // :filter-method="myfilterMethod"
+
     }
   },
   methods:{
     myfilterMethod () {
-      // if(this.data.length > 2) {
-        // if(this.filter.value === 'active') {
-          return this.rows.filter(row => (
-            row.iron == '1%' || row.iron == '7%'
-          ))
-        // }
-        // if(this.filter.value === 'inactive') {
-        //   return this.data.filter(row => !row.active)
-        // }
-        // return this.rows
-      // }  
+      return this.rows.filter(row => (
+        // row.iron == '1%' || row.iron == '7%'
+        row.name != 'd'
+      ))
     }
   },
-  setup () {
+  computed: {
+    // setvisiblecolumns(){
+    //   return this.columns.map(row => row.name)
+    // }
+  },
+  props: {
+    columnss: {
+      type: Array
+    },
+    rowss: {
+      type: Array
+    }
+  },
+  setup (props) {
+    // var columns = columns,
+    // var visibleColumns = ref(this.columns.map(row => row.name));
+    // var setvisiblecolumns = function(){
+    //   return props.columns.map(row => row.name)
+    // }
     return {
+      // columnsd,
+      // rowsd
+      // setvisiblecolumns
+      // pagination
+      // visibleColumns: ref(setvisiblecolumns)
       // rows: ref(rows),
       // columns
     }
