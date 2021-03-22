@@ -3,7 +3,8 @@ app.component('services',{
   template:
   /* html */
   `
-  <div>{{rowss[0]}}</div>
+  <div>{{rowss}}</div>
+  <input v-model='sq'>
   <hr>
   <div class="q-pa-md">
     <q-table 
@@ -51,6 +52,11 @@ app.component('services',{
 
     }
   },
+  watch:{
+    sq(val){
+      console.log(val)
+    }
+  },
   methods:{
     myfilterMethod () {
       return this.rows.filter(row => (
@@ -70,6 +76,9 @@ app.component('services',{
     },
     rowss: {
       type: Array
+    },
+    sq:{
+      type: String
     }
   },
   setup (props) {

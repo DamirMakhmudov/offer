@@ -1,43 +1,59 @@
 app.component('filters-square', {
   name: 'filters-square',
-  emits:['fill-filter-square'],
+  emits:['myevent'],
   template:
   /*html*/
   `
+  <p>filterSquare: {{squaref}}</p>
+  <input v-model='squaref'>
+
+  <button @click='myevento'>change</button>
   <div class="q-pa-md bg-grey-10 text-white">
     <div class="q-gutter-sm">
-      {{square}}
       <q-option-group
-        v-model="square.value"
+        v-model="squaref"
         :options="options"
         color="primary"
         inline
         dark
+        @update:modelValue="val => { $emit('myevent', squaref) }"
       />
     </div>
-    <hr>
   </div>
   `
   ,
   data(){
-    return {
+    return{
+      some: 'Hello'
     }
   },
-  methods: {
+  methods:{
+    myevento(){
+      this.$emit('myeventos', this.some)
+    }
   },
-  mounted: function(){
-    console.log(`${this.$options.name} component is mounted`);
+  props:{
+    square: {
+      type: String
+    }
   },
-  setup() {
-    var square = ref(squareG);
+  setup(props) {
+    // var some = ref('200');
+    // function myevento(){
+      // console.log(some);
+      // this.$emit('myevent', some)
+    // }
     return {
-      // sq: ref(filtersArrSquare[0].value),
-      // square: ref(square),
-      square,
+      // some,
+      // myevento,
+      squaref: ref(props.square),
       options: filtersArrSquare,
       filterChecked(val){
         console.log(val);
       }
     }  
-  }
+  },
+  mounted: function(){
+    console.log(`${this.$options.name} component is mounted`);
+  },
 })

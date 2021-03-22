@@ -21,17 +21,18 @@
 
     <!-- <p>square: {{square}}</p> -->
     <!-- <p>filters: {{filters}}</p> -->
-
-    <!-- <filters-square @fill-filter-square='keepsquare($event)'> -->
-    <filters-square>
+    <p>global: {{square}}</p>
+    <hr>
+    <filters-square :square='square' @myevent='keepsquare($event)'></filters-square> 
+    <!-- <filters-square> -->
     <!-- <p>sq: {{sq}}</p> -->
-    </filters-square>
+    <!-- </filters-square> -->
 
     <!-- <filters @fill-filter='keepfilter($event)'></filters> -->
-    <filters></filters>
+    <!-- <filters></filters> -->
     <!-- <example></example> -->
     <hr>
-    <services :columnss='columnsg' :rowss='rowsg'></services>
+    <services :square='square'></services>
   </div>
   
   <!-- Import Vue -->

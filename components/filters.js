@@ -4,17 +4,21 @@ app.component('filters', {
   template:
   /*html*/
   `
-  <!--
-  <template v-for='filter in farr'>
-    <input v-model='filtersc.content' type='checkbox' :value='filter.value'>
-    {{filter.value}}
-  </template>
-  -->
-
+    <!--
+    <template v-for='filter in farr'>
+      <input v-model='filtersc.content' type='checkbox' :value='filter.value'>
+      {{filter.value}}
+    </template>
+    -->
   <div class="q-pa-md bg-grey-10 text-white">
     <div class="q-gutter-sm">
       <template v-for='filter in filtersc' :key='filter.label'>
-        <q-checkbox dark v-model='filter.value' :label='filter.label' color="green"/>
+        <q-checkbox
+          dark
+          v-model='filter.value'
+          :label='filter.label'
+          color="green"
+        />
       </template>
 
       <!--
@@ -59,11 +63,6 @@ app.component('filters', {
       this.filters.push('Ростех');
       console.log(filtersG);
     }
-  },
-  watch:{
-    // filtersc(){
-    //   filtersG = [...this.filtersc]
-    // }
   },
   mounted: function(){
     console.log(`${this.$options.name} component is mounted`);

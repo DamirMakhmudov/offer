@@ -1,11 +1,11 @@
 var filtersArrSquare = [
-  { value: '0-70', label: '0-70' },
-  { value: '71-100', label: '71-100' },
-  { value: '101-150', label: '101-150' },
-  { value: '151-200', label: '151-200' },
+  { value: 'price1', label: '0-70'},
+  { value: 'price2', label: '71-100'},
+  { value: 'price3', label: '101-150'},
+  { value: 'price4', label: '151-200'},
 ];
 
-var squareG = { value: filtersArrSquare[0].value };
+var squareG = { value: filtersArrSquare[1].value };
 
 var filtersArr = [
   { value: 'ТЗБ', label: 'ТЗБ' },
@@ -46,19 +46,17 @@ var servicesname = [
 ];
 
 var filtersG = { content: ['Газ'] };
+var testObject = {name: 'Damir'};
 
-const { createApp, ref, computed, watch, onMounted } = Vue;
+const { createApp, ref, reactive, computed, watch, onMounted } = Vue;
 const { useQuasar } = Quasar;
 
 var AppObject = {
   name: 'global',
-  components: ['filters', 'filtersSquare'],
+  components: ['filters', 'filtersSquare', 'services'],
   data() {
     return {
-      square: squareG,
-      filters: filtersG,
-      columnsg: columns,
-      rowsg: rows
+      square: '0-70'
     }
   },
   methods: {
@@ -72,12 +70,8 @@ var AppObject = {
       console.log('',)
     },
     megaclick() {
-      testObject.name = "Vasya";
-      console.log(testObject.name);
-      console.log(person);
-
-      // filtersArrCheck.push({value: 'test', check: true})
-      // console.log(filtersArrCheck);
+      this.rowsg[0].name = '123abx';
+      console.log('here');
     }
   },
   mounted: function () {
@@ -93,7 +87,7 @@ var AppObject = {
     // }
     return {
       optionsfilter: filtersArr,
-      // megaclick, rr
+      filters: filtersG,
     }
     // filtermain: []
     // onMounted(() => {
