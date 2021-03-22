@@ -15,24 +15,11 @@
 
 <body>
   <div id="q-app">
-    <!-- <input type="text" v-model='person.name'> -->
-    <!-- <input type="text" v-bind:value='person.name'> -->
-    <!-- <button @click='megaclick'>click</button> -->
-
-    <!-- <p>square: {{square}}</p> -->
-    <!-- <p>filters: {{filters}}</p> -->
-    <p>global: {{square}}</p>
-    <hr>
-    <filters-square :square='square' @myevent='keepsquare($event)'></filters-square> 
-    <!-- <filters-square> -->
-    <!-- <p>sq: {{sq}}</p> -->
-    <!-- </filters-square> -->
-
-    <!-- <filters @fill-filter='keepfilter($event)'></filters> -->
-    <!-- <filters></filters> -->
+    <!-- <p>global: {{square}}<hr></p> -->
+    <filters-square :square='square' @backsquare='keepsquare($event)'><hr></filters-square> 
+    <filters></filters>
     <!-- <example></example> -->
-    <hr>
-    <services :square='square'></services>
+    <services :square='square' :columnss='columns' :rowss='rows'><hr></services>
   </div>
   
   <!-- Import Vue -->

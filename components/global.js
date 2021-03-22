@@ -47,6 +47,8 @@ var servicesname = [
 
 var filtersG = { content: ['Газ'] };
 var testObject = {name: 'Damir'};
+// var preview = true;
+var preview = false;
 
 const { createApp, ref, reactive, computed, watch, onMounted } = Vue;
 const { useQuasar } = Quasar;
@@ -56,7 +58,9 @@ var AppObject = {
   components: ['filters', 'filtersSquare', 'services'],
   data() {
     return {
-      square: '0-70'
+      square: 'price1',
+      columns: columns,
+      rows: rows
     }
   },
   methods: {
@@ -67,7 +71,6 @@ var AppObject = {
     keepfilter(val) {
       console.log('keepfilter was run')
       this.filters = val
-      console.log('',)
     },
     megaclick() {
       this.rowsg[0].name = '123abx';
@@ -88,6 +91,7 @@ var AppObject = {
     return {
       optionsfilter: filtersArr,
       filters: filtersG,
+      preview: preview
     }
     // filtermain: []
     // onMounted(() => {

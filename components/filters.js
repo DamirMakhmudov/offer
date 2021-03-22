@@ -10,6 +10,10 @@ app.component('filters', {
       {{filter.value}}
     </template>
     -->
+  <template v-if='preview'>
+
+  </template>
+
   <div class="q-pa-md bg-grey-10 text-white">
     <div class="q-gutter-sm">
       <template v-for='filter in filtersc' :key='filter.label'>
@@ -69,6 +73,7 @@ app.component('filters', {
   },
   setup() {
      return {
+      preview: preview
       //  farr: ref(filtersG),
       //  farr: ref(['ПТЗ']),
       //  optionsfilter: filtersArr

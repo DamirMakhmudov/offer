@@ -3,42 +3,32 @@ app.component('services',{
   template:
   /* html */
   `
-  <p>services: {{square}}</p>
-  <p>services: {{sqr}}</p>
-  <input v-model='sqr'>
+  <template v-if='preview'>
+
+  </template>
   
-  <button @click='setvisiblecolumns'>click</button>
   <div class="q-pa-md">
     <q-table 
-      :rows="rows"
+      :rows="rowss"
       :columns="columnss"
       title="Услуги"
-      :rows-per-page-options="[5]"
+      :rows-per-page-options="[10]"
       row-key="name"
       wrap-cells
+      :visible-columns="visibleColumns"
       :filter = "filter"
       :filter-method="myfilterMethod"
-      :visible-columns="visibleColumns"
     >
-
       <template v-slot:body="props">
-      
         <q-tr :props="props">
-
           <q-td v-for='col in columnss' :key="col.name" :props="props">
-
               {{ props.row[col.name] }}
-
               <q-popup-edit v-model="props.row[col.name]" :title="col.label" auto-save v-slot="scope">
                 <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" type="textarea"/>
               </q-popup-edit>
-  
           </q-td>
-
         </q-tr>
-        
       </template>
-
     </q-table>
   </div>
   `
@@ -46,72 +36,64 @@ app.component('services',{
   data(){
     return{
       // columnss: columns,
-      rows: rows,
-      filter: {value: 'none'},
+      // rows: rows,
+      // filter: {value: 'none'},
       // sq: squareG
-      // visibleColumns: 
       // setvisiblecolumns: columns.map(row => row.name)
-      // visibleColumns: setvisiblecolumns
+
       // :visible-columns="visibleColumns"
+      // :filter = "filter"
+      // :filter-method="myfilterMethod"
     }
   },
   methods:{
-    myfilterMethod () {
-      return this.rows.filter(row => (
-        // row.iron == '1%' || row.iron == '7%'
-        row.name != 'd'
-      ))
-    },
+   
   },
   props:{
     square: {
       type: String
+    },
+    columnss: {
+      type: Array
+    },
+    rowss: {
+      type: Array
     }
   },
   setup(props) {
-    var tst = reactive(testObject);
-    // var sq = ref(squareG);
-    // var columnss = columns;
-    const capacity = ref(4);
-    // var columns = columns,
-    // var visibleColumns = ref(this.columns.map(row => row.name));
-    function setvisiblecolumns(){
-      // visibleColumns.value = ['name', 'price1']
-      // capacity.value++
-      // console.log(sq.value.value);
-      console.log(visibleColumns.value);
-      // console.log(visibleColumns.indexOf(sq.value.value));
-      // console.log(visibleColumns.splice(visibleColumns.indexOf(sq.value.value),1));
-      visibleColumns.value.splice(visibleColumns.value.indexOf(sq.value.value),1);
+    function setvisiblecolumns(sq){
+      var cols = columnss.value.map(row => row.name).filter(row => row.indexOf('price'));
+      cols.push(sq)
+      return cols
     };
-    var columnss = ref(columns);
-    var visibleColumns = ref(columnss.value.map(row => row.name));
-    function cloco(){
-      tst.value = 'Marat';
-    };
-    // var sqr = ref(props.sq);
-    // watch(() => {
-    //   console.log(`name is: ` + props.sq)
-    // })
+    var columnss = ref(props.columnss);
+    var rowss = ref(props.rowss);
+    function myfilterMethod () {
+      // return props.rowss
+      return props.rowss.filter(row => (
+        // row.iron == '1%' || row.iron == '7%'
+        row.time == '20'
+      ))
+    }
+
     return {
-      // visibleColumns: ref(columnss.value.map(row => row.name)),
-      sqr: ref(props.square),
-      // sqr,
-      cloco,
-      tst,
+      filter: ref({value: 'none'}),
+      visibleColumns: computed(() => { return setvisiblecolumns(props.square)}),
+      // sqr: ref(props.square),
       setvisiblecolumns,
-      capacity,
       columnss,
-      visibleColumns
-      // visibleColumns: ref(setvisiblecolumns)
+      rowss,
+      myfilterMethod,
+      preview: preview
       // pagination,
     }
   },
-  // watch:{
-  //   square(val){
-  //     console.log(val)
-  //   }
-  // },
+  watch:{
+    square(val){
+      console.log(`square was changed to ${val}`)
+      // visibleColumns = setvisiblecolumns()
+    }
+  },
   mounted: function(){
     console.log(`${this.$options.name} component is mounted`);
   }
@@ -121,7 +103,4 @@ app.component('services',{
   //     <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" />
   //   </q-popup-edit>
   // </q-td>
-
-  // <tdd :descc='desc' :propss='props'></tdd>
-
 });

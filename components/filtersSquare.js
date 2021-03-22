@@ -1,13 +1,13 @@
 app.component('filters-square', {
   name: 'filters-square',
-  emits:['myevent'],
+  emits:['backsquare'],
   template:
   /*html*/
   `
-  <p>filterSquare: {{squaref}}</p>
-  <input v-model='squaref'>
+  <template v-if='preview'>
+    <p>filterSquare: {{squaref}}</p>
+  </template>
 
-  <button @click='myevento'>change</button>
   <div class="q-pa-md bg-grey-10 text-white">
     <div class="q-gutter-sm">
       <q-option-group
@@ -16,7 +16,7 @@ app.component('filters-square', {
         color="primary"
         inline
         dark
-        @update:modelValue="val => { $emit('myevent', squaref) }"
+        @update:modelValue="val => { $emit('backsquare', squaref) }"
       />
     </div>
   </div>
@@ -24,12 +24,6 @@ app.component('filters-square', {
   ,
   data(){
     return{
-      some: 'Hello'
-    }
-  },
-  methods:{
-    myevento(){
-      this.$emit('myeventos', this.some)
     }
   },
   props:{
@@ -38,14 +32,8 @@ app.component('filters-square', {
     }
   },
   setup(props) {
-    // var some = ref('200');
-    // function myevento(){
-      // console.log(some);
-      // this.$emit('myevent', some)
-    // }
     return {
-      // some,
-      // myevento,
+      preview: preview,
       squaref: ref(props.square),
       options: filtersArrSquare,
       filterChecked(val){
