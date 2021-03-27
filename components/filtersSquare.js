@@ -12,7 +12,7 @@ app.component('filters-square', {
     <div class="q-gutter-sm">
       <q-option-group
         v-model="squaref"
-        :options="options"
+        :options="optionss"
         color="primary"
         inline
         dark
@@ -29,13 +29,17 @@ app.component('filters-square', {
   props:{
     square: {
       type: String
+    },
+    options: {
+      type: Array
     }
   },
   setup(props) {
     return {
       preview: preview,
       squaref: ref(props.square),
-      options: filtersArrSquare,
+      optionss: ref(props.options),
+      // options: filtersArrSquare,
       filterChecked(val){
         console.log(val);
       }

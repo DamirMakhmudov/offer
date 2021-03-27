@@ -16,7 +16,7 @@
 <body>
   <div id="q-app">
     <!-- <p>global: {{square}}<hr></p> -->
-    <filters-square :square='square' @backsquare='keepsquare($event)'><hr></filters-square> 
+    <filters-square :square='square' :options='optionsfilterSquare' @backsquare='keepsquare($event)'><hr></filters-square> 
     <filters></filters>
     <!-- <example></example> -->
     <services :square='square' :columnss='columns' :rowss='rows'><hr></services>
@@ -38,7 +38,7 @@
   <script src="./components/filtersSquare.js"></script>
   <script src="./components/filters.js"></script>
   <script src="./components/services.js"></script>
-  <script src="./components/example.js"></script>
+  <!-- <script src="./components/example.js"></script> -->
 
   <!-- Mount app -->
   <script>const mountedapp = app.mount('#q-app')</script>
