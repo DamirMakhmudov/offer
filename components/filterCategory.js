@@ -1,5 +1,5 @@
-app.component('filters', {
-  name: 'filters',
+app.component('filter-category', {
+  name: 'filter-category',
   emits:['fill-filter'],
   template:
   /*html*/
@@ -11,7 +11,7 @@ app.component('filters', {
     </template>
     -->
   <template v-if='preview'>
-
+    {{filtersc}}
   </template>
 
   <div class="q-pa-md bg-grey-10 text-white">
@@ -45,11 +45,6 @@ app.component('filters', {
         </label>
       </template>
       -->
-      <!--
-      <template v-for='(filter, index) in farr'>
-        <q-checkbox dark v-model='filter.check' :label='filter.label' color="green"/>
-      </template>
-      -->
       
     </div>
   </div>
@@ -58,8 +53,8 @@ app.component('filters', {
   data(){
     return {
       // filtersc: filtersG,
-      filtersc: filtersArrCheck,
-      // optionsfilter: filtersArr
+      // filtersc: filterArrCategory,
+      // optionsfilter: filterArr
     }
   },
   methods: {
@@ -71,12 +66,19 @@ app.component('filters', {
   mounted: function(){
     console.log(`${this.$options.name} component is mounted`);
   },
-  setup() {
+  props:{
+    filterarrcategory: {
+      type: Array
+    }
+  },
+  setup(props) {
      return {
-      preview: preview
+      preview: preview,
+      filtersc: ref(props.filterarrcategory)
+
       //  farr: ref(filtersG),
       //  farr: ref(['ПТЗ']),
-      //  optionsfilter: filtersArr
+      //  optionsfilter: filterArr
      } 
   }
 })

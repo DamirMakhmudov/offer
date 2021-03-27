@@ -15,11 +15,15 @@
 
 <body>
   <div id="q-app">
-    <!-- <p>global: {{square}}<hr></p> -->
-    <filters-square :square='square' :options='optionsfilterSquare' @backsquare='keepsquare($event)'><hr></filters-square> 
-    <filters></filters>
-    <!-- <example></example> -->
-    <services :square='square' :columnss='columns' :rowss='rows'><hr></services>
+    <p v-if='preview'>global: {{square}}</p>
+    <p v-if='preview'>global: {{optionsFilterCategory}}</p>
+    <hr v-if='preview'>
+    <filter-square :square='square' :options='optionsFilterSquare' @backsquare='keepsquare($event)'></filter-square> 
+    <!-- <filter-square :square='square' :options='optionsFilterSquare' @backsquare='keepsquare($event)'></filter-square>-->
+    <hr v-if='preview'>
+    <filter-category :filterarrcategory='optionsFilterCategory'></filter-category>
+    <hr v-if='preview'>
+    <services :square='square.value' :columnss='columns' :rowss='rows'></services>
   </div>
   
   <!-- Import Vue -->
@@ -35,8 +39,8 @@
 
   <!-- Import components -->
   <script src="./components/global.js"></script>
-  <script src="./components/filtersSquare.js"></script>
-  <script src="./components/filters.js"></script>
+  <script src="./components/filterSquare.js"></script>
+  <script src="./components/filterCategory.js"></script>
   <script src="./components/services.js"></script>
   <!-- <script src="./components/example.js"></script> -->
 

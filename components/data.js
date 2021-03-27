@@ -1,29 +1,35 @@
-var filtersArrSquare = [
+// var preview = true;
+var preview = false;
+
+var squarel = {value: 'price2'};
+// var squarel = 'price2';
+
+var filterArrSquare = [
   { value: 'price1', label: '0-70'},
   { value: 'price2', label: '71-100'},
   { value: 'price3', label: '101-150'},
   { value: 'price4', label: '151-200'},
 ];
 
-// var squareG = { value: filtersArrSquare[1].value };
+// var squareG = { value: filterArrSquare[1].value };
 
-var filtersArr = [
-  { value: 'ТЗБ', label: 'ТЗБ' },
-  { value: 'ПТЗ', label: 'ПТЗ' },
-  { value: 'Газ', label: 'Газ' },
-  { value: 'Ростех', label: 'Ростех' },
-  { value: 'МосгорБТИ', label: 'МосгорБТИ' },
-  { value: 'Согласование', label: 'Согласование' },
-  { value: 'Узаконивание', label: 'Узаконивание' },
-  { value: 'ГБУ ЭЦ', label: 'ГБУ ЭЦ' },
-  { value: 'МНИИТЭП', label: 'МНИИТЭП' },
-  { value: 'Разделение', label: 'Разделение' },
-  { value: 'Объединение', label: 'Объединение' },
-  { value: 'Рабочка', label: 'Рабочка' },
-];
+// var filterArr = [
+//   { value: 'ТЗБ', label: 'ТЗБ' },
+//   { value: 'ПТЗ', label: 'ПТЗ' },
+//   { value: 'Газ', label: 'Газ' },
+//   { value: 'Ростех', label: 'Ростех' },
+//   { value: 'МосгорБТИ', label: 'МосгорБТИ' },
+//   { value: 'Согласование', label: 'Согласование' },
+//   { value: 'Узаконивание', label: 'Узаконивание' },
+//   { value: 'ГБУ ЭЦ', label: 'ГБУ ЭЦ' },
+//   { value: 'МНИИТЭП', label: 'МНИИТЭП' },
+//   { value: 'Разделение', label: 'Разделение' },
+//   { value: 'Объединение', label: 'Объединение' },
+//   { value: 'Рабочка', label: 'Рабочка' },
+// ];
 
-var filtersArrCheck = [
-  { label: 'ТЗБ', value: true },
+var filterArrCategory = [
+  { label: 'ТЗБ', value: false },
   { label: 'ПТЗ', value: false },
   { label: 'Газ', value: false },
   { label: 'Ростех', value: false },

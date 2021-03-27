@@ -15,11 +15,16 @@ app.component('services',{
       :rows-per-page-options="[10]"
       row-key="name"
       wrap-cells
+      no-data-label="Нет данных"
       :visible-columns="visibleColumns"
       :filter = "filter"
       :filter-method="myfilterMethod"
     >
-      <template v-slot:body="props">
+    <template v-slot:top>
+      <q-btn color="primary" label="Add row" @click="addRow"/>
+    </template>
+
+    <template v-slot:body="props">
         <q-tr :props="props">
           <q-td v-for='col in columnss' :key="col.name" :props="props">
               {{ props.row[col.name] }}
@@ -46,9 +51,6 @@ app.component('services',{
       // :filter-method="myfilterMethod"
     }
   },
-  methods:{
-   
-  },
   props:{
     square: {
       type: String
@@ -69,13 +71,16 @@ app.component('services',{
     var columnss = ref(props.columnss);
     var rowss = ref(props.rowss);
     function myfilterMethod () {
-      // return props.rowss
       return props.rowss.filter(row => (
         // row.iron == '1%' || row.iron == '7%'
-        row.time == '20'
+        row.time >= '0'
       ))
     }
-
+    var sqr = ref(props.square);
+    function addRow(){
+      var rr = {id:1,name:'',price1:0,price2:0,price3:0,price4:0,time:0,filter:'',document:'',count:''};
+      rowss.value.push(rr);
+    }
     return {
       filter: ref({value: 'none'}),
       visibleColumns: computed(() => { return setvisiblecolumns(props.square)}),
@@ -84,16 +89,18 @@ app.component('services',{
       columnss,
       rowss,
       myfilterMethod,
-      preview: preview
+      preview: preview,
+      sqr,
+      addRow
       // pagination,
     }
   },
-  watch:{
-    square(val){
-      console.log(`square was changed to ${val}`)
-      // visibleColumns = setvisiblecolumns()
-    }
-  },
+  // watch:{
+  //   square(val){
+  //     console.log(`square was changed to ${val}`)
+  //     // visibleColumns = setvisiblecolumns()
+  //   }
+  // },
   mounted: function(){
     console.log(`${this.$options.name} component is mounted`);
   }

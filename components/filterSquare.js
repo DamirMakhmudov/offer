@@ -1,5 +1,5 @@
-app.component('filters-square', {
-  name: 'filters-square',
+app.component('filter-square', {
+  name: 'filter-square',
   emits:['backsquare'],
   template:
   /*html*/
@@ -11,24 +11,20 @@ app.component('filters-square', {
   <div class="q-pa-md bg-grey-10 text-white">
     <div class="q-gutter-sm">
       <q-option-group
-        v-model="squaref"
+        v-model="squaref.value"
         :options="optionss"
         color="primary"
         inline
         dark
-        @update:modelValue="val => { $emit('backsquare', squaref) }"
+        
       />
     </div>
   </div>
   `
   ,
-  data(){
-    return{
-    }
-  },
   props:{
     square: {
-      type: String
+      type: Object
     },
     options: {
       type: Array
@@ -39,13 +35,14 @@ app.component('filters-square', {
       preview: preview,
       squaref: ref(props.square),
       optionss: ref(props.options),
-      // options: filtersArrSquare,
+      // options: filterArrSquare,
       filterChecked(val){
         console.log(val);
       }
     }  
   },
   mounted: function(){
+    // @update:modelValue="val => { $emit('backsquare', squaref) }"
     console.log(`${this.$options.name} component is mounted`);
-  },
+  }
 })

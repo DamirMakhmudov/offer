@@ -1,26 +1,23 @@
 var filtersG = { content: ['Газ'] };
 var testObject = {name: 'Damir'};
-// var preview = true;
-var preview = false;
 
 const { createApp, ref, reactive, computed, watch, onMounted } = Vue;
 const { useQuasar } = Quasar;
 
 var AppObject = {
   name: 'global',
-  components: ['filters', 'filtersSquare', 'services'],
+  components: ['filter-category', 'filter-square', 'services'],
   data() {
     return {
-      square: 'price2',
       columns: columns,
-      rows: rows
+      rows: rows,
     }
   },
   methods: {
-    keepsquare(val) {
-      console.log('keepsquare was run')
-      this.square = val
-    },
+    // keepsquare(val) {
+    //   console.log(`keepsquare was run with "${val}"`)
+    //   this.square = val
+    // },
     keepfilter(val) {
       console.log('keepfilter was run')
       this.filters = val
@@ -30,9 +27,6 @@ var AppObject = {
       console.log('here');
     }
   },
-  mounted: function () {
-    console.log(`${this.$options.name} component is mounted`);
-  },
   setup() {
     // const myArr = testArr
     // var rr = this.myArr
@@ -41,16 +35,26 @@ var AppObject = {
     // myArr.push('d');
     // console.log(myArr);
     // }
+    function keepsquare(val) {
+      console.log(`keepsquare was run with "${val}"`)
+      square = val
+    }
     return {
-      optionsfilterSquare: ref(filtersArrSquare),
-      optionsfilter: filtersArr,
+      preview: preview,
+      square: ref(squarel),
+      optionsFilterSquare: ref(filterArrSquare),
+      // optionsfilter: filterArr,
+      optionsFilterCategory: ref(filterArrCategory),
       filters: filtersG,
-      preview: preview
+      keepsquare
     }
     // filtermain: []
     // onMounted(() => {
     //   console.log('Component is mounted!');
     // })
+  },
+  mounted: function () {
+    console.log(`${this.$options.name} component is mounted`);
   }
 }
 
