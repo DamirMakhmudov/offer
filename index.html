@@ -15,10 +15,10 @@
 
 <body>
   <div id="q-app">
-    <p v-if='preview'>global: {{square}}</p>
+    <p v-if='preview'>global: {{square}}<br></p>
     <p v-if='preview'>global: {{optionsFilterCategory}}</p>
     <hr v-if='preview'>
-    <filter-square :square='square' :options='optionsFilterSquare' @backsquare='keepsquare($event)'></filter-square> 
+    <filter-square :square='square' :options='optionsFilterSquare'></filter-square> 
     <!-- <filter-square :square='square' :options='optionsFilterSquare' @backsquare='keepsquare($event)'></filter-square>-->
     <hr v-if='preview'>
     <filter-category :filterarrcategory='optionsFilterCategory'></filter-category>

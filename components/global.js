@@ -45,7 +45,7 @@ var AppObject = {
       optionsFilterSquare: ref(filterArrSquare),
       // optionsfilter: filterArr,
       optionsFilterCategory: ref(filterArrCategory),
-      filters: filtersG,
+      // filters: filtersG,
       keepsquare
     }
     // filtermain: []

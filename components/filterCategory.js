@@ -4,12 +4,13 @@ app.component('filter-category', {
   template:
   /*html*/
   `
-    <!--
-    <template v-for='filter in farr'>
-      <input v-model='filtersc.content' type='checkbox' :value='filter.value'>
-      {{filter.value}}
-    </template>
-    -->
+  <!--
+  <template v-for='filter in farr'>
+    <input v-model='filtersc.content' type='checkbox' :value='filter.value'>
+    {{filter.value}}
+  </template>
+  -->
+
   <template v-if='preview'>
     {{filtersc}}
   </template>
