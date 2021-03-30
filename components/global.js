@@ -5,12 +5,6 @@ const { useQuasar } = Quasar;
 var AppObject = {
   name: 'global',
   components: ['filter-category', 'filter-square', 'services'],
-  data() {
-    return {
-      // columns: columns,
-      // rows: rows,
-    }
-  },
   methods: {
     // keepsquare(val) {
     //   console.log(`keepsquare was run with "${val}"`)
@@ -26,16 +20,11 @@ var AppObject = {
     }
   },
   setup() {
-    // const myArr = testArr
-    // var rr = this.myArr
-    // function megaclick(){
-    // rr.push('d')
-    // myArr.push('d');
-    // console.log(myArr);
-    // }
     function keepsquare(val) {
       console.log(`keepsquare was run with "${val}"`)
-      square = val
+      console.log(val);
+      // selectedg = val
+      // square = val
     }
     return {
       preview: preview,
@@ -45,12 +34,11 @@ var AppObject = {
       optionsFilterSquare: ref(mmm.filterArrSquare),
       optionsFilterCategory: ref(mmm.filterArrCategory),
       selectedg: ref(mmm.selectedo),
-      // optionsfilter: filterArr,
       keepsquare
     }
   },
   mounted: function () {
-    console.log(`${this.$options.name} component is mounted`);
+    // console.log(`${this.$options.name} component is mounted`);
   }
 }
 

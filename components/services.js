@@ -1,17 +1,15 @@
 app.component('services', {
   name: 'services',
+  emits:['backsquared'],
   template:
-  /* html */
+  /*html*/
   `
   <template v-if='preview'>
     <p>category: {{filterarrcategoryc}}</p>
     <p>props category: {{filterarrcategory}}</p>
-  </template>
     <p>{{selectedp}}</p>
     <p>{{selectedc}}</p>
-    <hr>
-    <p>{{rrr}}</p>
-
+  </template>
   
   <div class="q-pa-md">
     <q-table 
@@ -19,7 +17,7 @@ app.component('services', {
       :columns="columnsc"
       title="Услуги"
       :rows-per-page-options="[20]"
-      row-key="id"
+      row-key="name"
       wrap-cells
       no-data-label="Нет данных"
       no-results-label = "Нет данных"
@@ -29,18 +27,21 @@ app.component('services', {
       :visible-columns="visibleColumns"
 
       selection="multiple"
-      v-model:selected="selectedc"
-      @selection = "val => onSelect(val)"
+      v-model:selected="selectedc.value"
+      :selected-rows-label="getSelectedString"
     >
-    <template v-slot:top>
-      <q-btn color="primary" label="Add row" @click="addRow"/>
-    </template>
 
-    <template v-slot:body="props">
+      <template v-slot:top>
+        <q-btn color="primary" label="Добавить строку" @click="addRow"/>
+      </template>
+
+      <template v-slot:body="props">
         <q-tr :props="props">
+
           <q-td>
             <q-checkbox v-model="props.selected" />
           </q-td>
+
           <q-td v-for='col in columnsc' :key="col.name" :props="props">
             {{ props.row[col.name] }}
             <q-popup-edit v-model="props.row[col.name]" :title="col.label" auto-save v-slot="scope">
@@ -48,27 +49,13 @@ app.component('services', {
             </q-popup-edit>
           </q-td>
         </q-tr>
+
       </template>
+
     </q-table>
   </div>
   `
   ,
-  data() {
-    return {
-      // :filter = "filter"
-      // :filter-method="myfilterMethod"
-      // :visible-columns="visibleColumns"
-
-      // selection="multiple"
-      // v-model:selected="selectedc"
-      // :selected.sync="selected"
-
-
-      // <q-td>
-      //   <q-checkbox v-model="props.selected" />
-      // </q-td>
-    }
-  },
   props: {
     square: {
       type: String
@@ -89,9 +76,12 @@ app.component('services', {
   setup(props) {
     var columnsc = ref(props.columns);
     var rowsc = ref(props.rows);
+    var squarec = ref(props.square);
+    var selectedc = ref(props.selectedp);
+    var filterarrcategoryc = ref(props.filterarrcategory);
 
     function setvisiblecolumns(sq) {
-      console.log('setvisiblecolumns')
+      console.log('setvisiblecolumns was run')
       var cols = columnsc.value.map(row => row.name).filter(row => row.indexOf('price'));
       cols.push(sq)
       return cols
@@ -99,45 +89,42 @@ app.component('services', {
 
     function myfilterMethod() {
       console.log('filterarrcategoryc', props.filterarrcategory);
-      let rrr =  rowsc.value.filter(row => (
-        // row.iron == '1%' || row.iron == '7%'
-        // row.time >= '0'
+      let filtered = rowsc.value.filter(row => (
         props.filterarrcategory.filter(function(i) {return (row.filter.split(', ').indexOf(i) > -1);}).length > 0
       ))
-      console.log('rrr', rrr);
-      return rrr
+      console.log('filtered', filtered);
+      return filtered
     }
 
     function addRow() {
-      var rr = { id: 1, name: '', price1: 0, price2: 0, price3: 0, price4: 0, time: 0, filter: '', document: '', count: '' };
-      selectedc.value.push(rr);
+      let arr = {};
+      columnsc.value.forEach(col  =>(
+        arr[col.name] = ''
+      ));
+      arr['filter'] = props.filterarrcategory.join(', ');
+      arr['id'] = rowsc.value.length + 1
+      // var rr = { id: rowsc.value.length + 1, name: '', price1: 0, price2: 0, price3: 0, price4: 0, time: 0, filter: props.filterarrcategory.join(', '), document: '', count: '' };
+      // selectedc.val.push(rr);
+      rowsc.value.push(arr);
     }
 
     function getSelectedString(){
-      return 'many'
+      // return `Выбрано строк: ${selectedc.value.val.length}`
+      return 'd'
     }
 
-    var rrr = ref([]);
     function onSelect(evt) {
       console.log(evt.rows);
-      rrr.value.push(evt.rows[0])
-      // this.updateSelectedTableData(this.selected);
       // console.log(this.selected);
     }
 
-    const squarec = ref(props.square);
-    var selectedc = ref(mmm.selectedo);
-
-    var filterarrcategoryc = ref(props.filterarrcategory);
-
-    watchEffect(() => {
+    // watchEffect(() => {
       //  console.log('props', props.filterarrcategory)
       //  myfilterMethod()
       // selectedc = props.selected
-    })
+    // })
 
     return {
-      rrr,
       preview: preview,
       filter: ref({ value: 'none' }),
       filterarrcategoryc,
@@ -149,8 +136,8 @@ app.component('services', {
       addRow,
       squarec,
       selectedc,
-      getSelectedString,
-      onSelect
+      onSelect,
+      getSelectedString
       // pagination,
     }
   },
@@ -166,14 +153,30 @@ app.component('services', {
   //   }
   // },
   mounted: function () {
-    console.log(`${this.$options.name} component is mounted`);
+    // console.log(`${this.$options.name} component is mounted`);
   }
-  // <q-td key="desc" :props="props">
-  //   {{ props.row.name }}
-  //   <q-popup-edit v-model="props.row.name" title="Edit the Name" auto-save v-slot="scope">
-  //     <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" />
-  //   </q-popup-edit>
-  // </q-td>
-
-  // <template v-slot:body-selection="scope"> <q-toggle v-model="scope.selected" /> </template>
 });
+
+//  <q-td key="desc" :props="props">
+//     {{ props.row.name }}
+//     <q-popup-edit v-model="props.row.name" title="Edit the Name" auto-save v-slot="scope">
+//       <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" />
+//     </q-popup-edit>
+//   </q-td>
+
+// <template v-slot:body-selection="scope"> <q-toggle v-model="scope.selected" /> </template>
+
+// @selection="val => { $emit('backsquared', selectedc) }"
+
+// :filter = "filter"
+// :filter-method="myfilterMethod"
+// :visible-columns="visibleColumns"
+
+// selection="multiple"
+// v-model:selected="selectedc"
+// :selected.sync="selected"
+
+
+// <q-td>
+//   <q-checkbox v-model="props.selected" />
+// </q-td>

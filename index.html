@@ -18,13 +18,13 @@
     <template v-if='preview'>
       <p>global: {{square}}<br></p>
       <p>global: {{optionsFilterCategory}}</p>
-      <hr>
+      <p>{{selectedg}}</p>
     </template>
-    
+
     <filter-square :square='square' :options='optionsFilterSquare'></filter-square> 
     <!-- <filter-square :square='square' :options='optionsFilterSquare' @backsquare='keepsquare($event)'></filter-square>-->
     <filter-category :filterarrcategory='optionsFilterCategory'></filter-category>
-    <services :square='square.value' :columns='columns' :rows='rows' :filterarrcategory='optionsFilterCategory.value' :selectedp='selectedg'></services>
+    <services :selectedp='selectedg' :square='square.val' :columns='columns' :rows='rows' :filterarrcategory='optionsFilterCategory.val' ></services>
   </div>
   
   <!-- Import Vue -->
@@ -33,9 +33,9 @@
   <!-- <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script> -->
   
   <!-- Import Quasar -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/quasar@2.0.0-beta.7/dist/quasar.umd.prod.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/quasar@2.0.0-beta.9/dist/quasar.umd.prod.js"></script>
 
+  <!-- Import JS -->
   <script src="./components/data.js"></script>
 
   <!-- Import components -->

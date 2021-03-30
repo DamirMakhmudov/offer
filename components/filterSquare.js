@@ -6,13 +6,13 @@ app.component('filter-square', {
   `
   <template v-if='preview'>
     <p>filterSquare: {{squarec}}</p>
-    <input v-model='squarec.value'>
+    <input v-model='squarec.val'>
   </template>
 
   <div class="q-pa-md bg-grey-10 text-white">
     <div class="q-gutter-sm">
       <q-option-group
-        v-model="squarec.value"
+        v-model="squarec.val"
         :options="optionsc"
         color="primary"
         inline
@@ -43,6 +43,6 @@ app.component('filter-square', {
   },
   mounted: function(){
     // @update:modelValue="val => { $emit('backsquare', squarec) }"
-    console.log(`${this.$options.name} component is mounted`);
+    // console.log(`${this.$options.name} component is mounted`);
   }
 })
