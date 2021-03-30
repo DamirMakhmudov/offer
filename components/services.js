@@ -1,24 +1,36 @@
-app.component('services',{
+app.component('services', {
   name: 'services',
   template:
   /* html */
   `
   <template v-if='preview'>
-
+    <p>category: {{filterarrcategoryc}}</p>
+    <p>props category: {{filterarrcategory}}</p>
   </template>
+    <p>{{selectedp}}</p>
+    <p>{{selectedc}}</p>
+    <hr>
+    <p>{{rrr}}</p>
+
   
   <div class="q-pa-md">
     <q-table 
-      :rows="rowss"
-      :columns="columnss"
+      :rows="rowsc"
+      :columns="columnsc"
       title="Услуги"
-      :rows-per-page-options="[10]"
-      row-key="name"
+      :rows-per-page-options="[20]"
+      row-key="id"
       wrap-cells
       no-data-label="Нет данных"
-      :visible-columns="visibleColumns"
+      no-results-label = "Нет данных"
+     
       :filter = "filter"
       :filter-method="myfilterMethod"
+      :visible-columns="visibleColumns"
+
+      selection="multiple"
+      v-model:selected="selectedc"
+      @selection = "val => onSelect(val)"
     >
     <template v-slot:top>
       <q-btn color="primary" label="Add row" @click="addRow"/>
@@ -26,11 +38,14 @@ app.component('services',{
 
     <template v-slot:body="props">
         <q-tr :props="props">
-          <q-td v-for='col in columnss' :key="col.name" :props="props">
-              {{ props.row[col.name] }}
-              <q-popup-edit v-model="props.row[col.name]" :title="col.label" auto-save v-slot="scope">
-                <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" type="textarea"/>
-              </q-popup-edit>
+          <q-td>
+            <q-checkbox v-model="props.selected" />
+          </q-td>
+          <q-td v-for='col in columnsc' :key="col.name" :props="props">
+            {{ props.row[col.name] }}
+            <q-popup-edit v-model="props.row[col.name]" :title="col.label" auto-save v-slot="scope">
+              <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" type="textarea"/>
+            </q-popup-edit>
           </q-td>
         </q-tr>
       </template>
@@ -38,70 +53,119 @@ app.component('services',{
   </div>
   `
   ,
-  data(){
-    return{
-      // columnss: columns,
-      // rows: rows,
-      // filter: {value: 'none'},
-      // sq: squareG
-      // setvisiblecolumns: columns.map(row => row.name)
-
-      // :visible-columns="visibleColumns"
+  data() {
+    return {
       // :filter = "filter"
       // :filter-method="myfilterMethod"
+      // :visible-columns="visibleColumns"
+
+      // selection="multiple"
+      // v-model:selected="selectedc"
+      // :selected.sync="selected"
+
+
+      // <q-td>
+      //   <q-checkbox v-model="props.selected" />
+      // </q-td>
     }
   },
-  props:{
+  props: {
     square: {
       type: String
     },
-    columnss: {
+    columns: {
       type: Array
     },
-    rowss: {
+    rows: {
+      type: Array
+    },
+    filterarrcategory: {
+      type: Array
+    },
+    selectedp: {
       type: Array
     }
   },
   setup(props) {
-    function setvisiblecolumns(sq){
-      var cols = columnss.value.map(row => row.name).filter(row => row.indexOf('price'));
+    var columnsc = ref(props.columns);
+    var rowsc = ref(props.rows);
+
+    function setvisiblecolumns(sq) {
+      console.log('setvisiblecolumns')
+      var cols = columnsc.value.map(row => row.name).filter(row => row.indexOf('price'));
       cols.push(sq)
       return cols
     };
-    var columnss = ref(props.columnss);
-    var rowss = ref(props.rowss);
-    function myfilterMethod () {
-      return props.rowss.filter(row => (
+
+    function myfilterMethod() {
+      console.log('filterarrcategoryc', props.filterarrcategory);
+      let rrr =  rowsc.value.filter(row => (
         // row.iron == '1%' || row.iron == '7%'
-        row.time >= '0'
+        // row.time >= '0'
+        props.filterarrcategory.filter(function(i) {return (row.filter.split(', ').indexOf(i) > -1);}).length > 0
       ))
+      console.log('rrr', rrr);
+      return rrr
     }
-    var sqr = ref(props.square);
-    function addRow(){
-      var rr = {id:1,name:'',price1:0,price2:0,price3:0,price4:0,time:0,filter:'',document:'',count:''};
-      rowss.value.push(rr);
+
+    function addRow() {
+      var rr = { id: 1, name: '', price1: 0, price2: 0, price3: 0, price4: 0, time: 0, filter: '', document: '', count: '' };
+      selectedc.value.push(rr);
     }
+
+    function getSelectedString(){
+      return 'many'
+    }
+
+    var rrr = ref([]);
+    function onSelect(evt) {
+      console.log(evt.rows);
+      rrr.value.push(evt.rows[0])
+      // this.updateSelectedTableData(this.selected);
+      // console.log(this.selected);
+    }
+
+    const squarec = ref(props.square);
+    var selectedc = ref(mmm.selectedo);
+
+    var filterarrcategoryc = ref(props.filterarrcategory);
+
+    watchEffect(() => {
+      //  console.log('props', props.filterarrcategory)
+      //  myfilterMethod()
+      // selectedc = props.selected
+    })
+
     return {
-      filter: ref({value: 'none'}),
-      visibleColumns: computed(() => { return setvisiblecolumns(props.square)}),
-      // sqr: ref(props.square),
-      setvisiblecolumns,
-      columnss,
-      rowss,
-      myfilterMethod,
+      rrr,
       preview: preview,
-      sqr,
-      addRow
+      filter: ref({ value: 'none' }),
+      filterarrcategoryc,
+      visibleColumns: computed(() => { return setvisiblecolumns(props.square) }),
+      setvisiblecolumns,
+      columnsc,
+      rowsc,
+      myfilterMethod,
+      addRow,
+      squarec,
+      selectedc,
+      getSelectedString,
+      onSelect
       // pagination,
     }
   },
   // watch:{
-  //   square(val){
-  //     console.log(`square was changed to ${val}`)
-  //     // visibleColumns = setvisiblecolumns()
+  //   // square(val){
+  //   //   console.log(`square was changed to ${val}`)
+  //   //   sqr = val
+  //   //   console.log(sqr)
+  //   //   // visibleColumns = setvisiblecolumns()
+  //   // },
+  //   filterarrcategory(val){
+  //     console.log(val);
   //   }
   // },
-  mounted: function(){
+  mounted: function () {
     console.log(`${this.$options.name} component is mounted`);
   }
   // <q-td key="desc" :props="props">
@@ -110,4 +174,6 @@ app.component('services',{
   //     <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" />
   //   </q-popup-edit>
   // </q-td>
+
+  // <template v-slot:body-selection="scope"> <q-toggle v-model="scope.selected" /> </template>
 });

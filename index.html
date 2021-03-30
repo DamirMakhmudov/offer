@@ -15,15 +15,16 @@
 
 <body>
   <div id="q-app">
-    <p v-if='preview'>global: {{square}}<br></p>
-    <p v-if='preview'>global: {{optionsFilterCategory}}</p>
-    <hr v-if='preview'>
+    <template v-if='preview'>
+      <p>global: {{square}}<br></p>
+      <p>global: {{optionsFilterCategory}}</p>
+      <hr>
+    </template>
+    
     <filter-square :square='square' :options='optionsFilterSquare'></filter-square> 
     <!-- <filter-square :square='square' :options='optionsFilterSquare' @backsquare='keepsquare($event)'></filter-square>-->
-    <hr v-if='preview'>
     <filter-category :filterarrcategory='optionsFilterCategory'></filter-category>
-    <hr v-if='preview'>
-    <services :square='square.value' :columnss='columns' :rowss='rows'></services>
+    <services :square='square.value' :columns='columns' :rows='rows' :filterarrcategory='optionsFilterCategory.value' :selectedp='selectedg'></services>
   </div>
   
   <!-- Import Vue -->

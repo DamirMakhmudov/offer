@@ -5,18 +5,19 @@ app.component('filter-square', {
   /*html*/
   `
   <template v-if='preview'>
-    <p>filterSquare: {{squaref}}</p>
+    <p>filterSquare: {{squarec}}</p>
+    <input v-model='squarec.value'>
   </template>
 
   <div class="q-pa-md bg-grey-10 text-white">
     <div class="q-gutter-sm">
       <q-option-group
-        v-model="squaref.value"
-        :options="optionss"
+        v-model="squarec.value"
+        :options="optionsc"
         color="primary"
         inline
         dark
-        
+
       />
     </div>
   </div>
@@ -33,16 +34,15 @@ app.component('filter-square', {
   setup(props) {
     return {
       preview: preview,
-      squaref: ref(props.square),
-      optionss: ref(props.options),
-      // options: filterArrSquare,
+      squarec: ref(props.square),
+      optionsc: ref(props.options),
       filterChecked(val){
         console.log(val);
       }
     }  
   },
   mounted: function(){
-    // @update:modelValue="val => { $emit('backsquare', squaref) }"
+    // @update:modelValue="val => { $emit('backsquare', squarec) }"
     console.log(`${this.$options.name} component is mounted`);
   }
 })

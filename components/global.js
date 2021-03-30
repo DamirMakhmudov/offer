@@ -1,7 +1,5 @@
-var filtersG = { content: ['Газ'] };
-var testObject = {name: 'Damir'};
 
-const { createApp, ref, reactive, computed, watch, onMounted } = Vue;
+const { createApp, ref, reactive, computed, watch, onMounted, watchEffect } = Vue;
 const { useQuasar } = Quasar;
 
 var AppObject = {
@@ -9,8 +7,8 @@ var AppObject = {
   components: ['filter-category', 'filter-square', 'services'],
   data() {
     return {
-      columns: columns,
-      rows: rows,
+      // columns: columns,
+      // rows: rows,
     }
   },
   methods: {
@@ -41,17 +39,15 @@ var AppObject = {
     }
     return {
       preview: preview,
-      square: ref(squarel),
-      optionsFilterSquare: ref(filterArrSquare),
+      square: ref(mmm.square),
+      columns: ref(mmm.columns),
+      rows: ref(mmm.rows),
+      optionsFilterSquare: ref(mmm.filterArrSquare),
+      optionsFilterCategory: ref(mmm.filterArrCategory),
+      selectedg: ref(mmm.selectedo),
       // optionsfilter: filterArr,
-      optionsFilterCategory: ref(filterArrCategory),
-      // filters: filtersG,
       keepsquare
     }
-    // filtermain: []
-    // onMounted(() => {
-    //   console.log('Component is mounted!');
-    // })
   },
   mounted: function () {
     console.log(`${this.$options.name} component is mounted`);

@@ -12,12 +12,12 @@ app.component('filter-category', {
   -->
 
   <template v-if='preview'>
-    {{filtersc}}
+    <p>filterarrcategoryc: {{filterarrcategoryc}}</p>
   </template>
 
   <div class="q-pa-md bg-grey-10 text-white">
     <div class="q-gutter-sm">
-      <template v-for='filter in filtersc' :key='filter.label'>
+      <!--<template v-for='filter in filterarrcategoryc.value' :key='filter.label'>
         <q-checkbox
           dark
           v-model='filter.value'
@@ -25,18 +25,15 @@ app.component('filter-category', {
           color="green"
         />
       </template>
-
-      <!--
+-->
       <q-option-group
-        v-model="filtersc.content"
+        v-model="filterarrcategoryc.value"
         :options="optionsfilter"
         color="primary"
         type="checkbox"
         inline
         dark
-        @update:modelValue="val => { $emit('fill-filter', filtersc) }"
       />
-      -->
 
       <!--
       <template v-for='(filter, index) in filters' :key='filter.id'>
@@ -51,13 +48,6 @@ app.component('filter-category', {
   </div>
   `
   ,
-  data(){
-    return {
-      // filtersc: filtersG,
-      // filtersc: filterArrCategory,
-      // optionsfilter: filterArr
-    }
-  },
   methods: {
     megaclickc(){
       this.filters.push('Ростех');
@@ -69,17 +59,18 @@ app.component('filter-category', {
   },
   props:{
     filterarrcategory: {
-      type: Array
+      type: Object
     }
   },
   setup(props) {
      return {
       preview: preview,
-      filtersc: ref(props.filterarrcategory)
-
+      filterarrcategoryc: ref(props.filterarrcategory),
       //  farr: ref(filtersG),
       //  farr: ref(['ПТЗ']),
-      //  optionsfilter: filterArr
+       optionsfilter: mmm.filterArr
      } 
   }
 })
+
+// @update:modelValue="val => { $emit('fill-filter', filtersc) }"
