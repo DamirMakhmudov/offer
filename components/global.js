@@ -4,7 +4,7 @@ const { useQuasar } = Quasar;
 
 var AppObject = {
   name: 'global',
-  components: ['filter-category', 'filter-square', 'services'],
+  components: ['categories', 'square', 'services'],
   methods: {
     // keepsquare(val) {
     //   console.log(`keepsquare was run with "${val}"`)
@@ -28,12 +28,12 @@ var AppObject = {
     }
     return {
       preview: preview,
-      square: ref(mmm.square),
-      columns: ref(mmm.columns),
-      rows: ref(mmm.rows),
-      optionsFilterSquare: ref(mmm.filterArrSquare),
-      optionsFilterCategory: ref(mmm.filterArrCategory),
-      selectedg: ref(mmm.selectedo),
+      square: ref(model.square),
+      columns: ref(view.columns),
+      rows: ref(model.rows),
+      optionsFilterSquare: ref(view.filterSquare),
+      optionsFilterCategory: ref(model.categories),
+      selectedg: ref(model.selectedo),
       keepsquare
     }
   },

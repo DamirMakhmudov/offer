@@ -27,7 +27,7 @@ app.component('services', {
       :visible-columns="visibleColumns"
 
       selection="multiple"
-      v-model:selected="selectedc.value"
+      v-model:selected="selectedc.val"
       :selected-rows-label="getSelectedString"
     >
 
@@ -70,7 +70,7 @@ app.component('services', {
       type: Array
     },
     selectedp: {
-      type: Array
+      type: Object
     }
   },
   setup(props) {
@@ -109,8 +109,7 @@ app.component('services', {
     }
 
     function getSelectedString(){
-      // return `Выбрано строк: ${selectedc.value.val.length}`
-      return 'd'
+      return `Выбрано строк: ${selectedc.value.val.length}`
     }
 
     function onSelect(evt) {

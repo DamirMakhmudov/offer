@@ -1,5 +1,5 @@
-app.component('filter-category', {
-  name: 'filter-category',
+app.component('categories', {
+  name: 'categories',
   emits:['fill-filter'],
   template:
   /*html*/
@@ -49,7 +49,7 @@ app.component('filter-category', {
     return {
       preview: preview,
       filterarrcategoryc: ref(props.filterarrcategory),
-      optionsfilter: mmm.filterArr
+      optionsfilter: view.filterCategories
     } 
   },
   mounted: function(){

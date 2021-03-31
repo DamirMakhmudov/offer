@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
   <meta charset="UTF-8">
@@ -21,9 +21,9 @@
       <p>{{selectedg}}</p>
     </template>
 
-    <filter-square :square='square' :options='optionsFilterSquare'></filter-square> 
+    <square :square='square' :options='optionsFilterSquare'></square> 
     <!-- <filter-square :square='square' :options='optionsFilterSquare' @backsquare='keepsquare($event)'></filter-square>-->
-    <filter-category :filterarrcategory='optionsFilterCategory'></filter-category>
+    <categories :filterarrcategory='optionsFilterCategory'></categories>
     <services :selectedp='selectedg' :square='square.val' :columns='columns' :rows='rows' :filterarrcategory='optionsFilterCategory.val' ></services>
   </div>
   
@@ -40,8 +40,8 @@
 
   <!-- Import components -->
   <script src="./components/global.js"></script>
-  <script src="./components/filterSquare.js"></script>
-  <script src="./components/filterCategory.js"></script>
+  <script src="./components/square.js"></script>
+  <script src="./components/categories.js"></script>
   <script src="./components/services.js"></script>
   <!-- <script src="./components/example.js"></script> -->
 

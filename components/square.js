@@ -1,5 +1,5 @@
-app.component('filter-square', {
-  name: 'filter-square',
+app.component('square', {
+  name: 'square',
   emits:['backsquare'],
   template:
   /*html*/
