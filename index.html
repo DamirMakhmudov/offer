@@ -16,15 +16,14 @@
 <body>
   <div id="q-app">
     <template v-if='preview'>
-      <p>global: {{square}}<br></p>
-      <p>global: {{optionsFilterCategory}}</p>
-      <p>{{selectedg}}</p>
     </template>
 
-    <square :square='square' :options='optionsFilterSquare'></square> 
-    <!-- <filter-square :square='square' :options='optionsFilterSquare' @backsquare='keepsquare($event)'></filter-square>-->
-    <categories :filterarrcategory='optionsFilterCategory'></categories>
-    <services :selectedp='selectedg' :square='square.val' :columns='columns' :rows='rows' :filterarrcategory='optionsFilterCategory.val' ></services>
+    <!-- <square :square='square' :options='filterSquare'></square>  -->
+    <!-- <square :square='square' :options='filterSquare' @backsquare='keepsquare($event)'></square>-->
+    <!-- <categories :filtercategory='categories'></categories> -->
+    <!-- <services :selected='selected' :square='square.val' :columns='columns' :rows='rows' :filtercategory='categories.val'></services> -->
+    <payments :filterpayment='payments' :columnspayment='columnspayment' :rowspayment='rowspayment' :selectedpayment='selectedpayment'></payments>
+
   </div>
   
   <!-- Import Vue -->
@@ -43,7 +42,7 @@
   <script src="./components/square.js"></script>
   <script src="./components/categories.js"></script>
   <script src="./components/services.js"></script>
-  <!-- <script src="./components/example.js"></script> -->
+  <script src="./components/payments.js"></script>
 
   <!-- Mount app -->
   <script>const mountedapp = app.mount('#q-app')</script>

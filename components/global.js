@@ -6,10 +6,6 @@ var AppObject = {
   name: 'global',
   components: ['categories', 'square', 'services'],
   methods: {
-    // keepsquare(val) {
-    //   console.log(`keepsquare was run with "${val}"`)
-    //   this.square = val
-    // },
     keepfilter(val) {
       console.log('keepfilter was run')
       this.filters = val
@@ -31,9 +27,14 @@ var AppObject = {
       square: ref(model.square),
       columns: ref(view.columns),
       rows: ref(model.rows),
-      optionsFilterSquare: ref(view.filterSquare),
-      optionsFilterCategory: ref(model.categories),
-      selectedg: ref(model.selectedo),
+      filterSquare: ref(view.filterSquare),
+      categories: ref(model.categories),
+      selected: ref(model.selected),
+
+      columnspayment: ref(view.columnsPayment),
+      rowspayment: ref(model.rowsPayment),
+      payments: ref(model.payments),
+      selectedpayment: ref(model.selectedPayment),
       keepsquare
     }
   },

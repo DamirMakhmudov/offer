@@ -5,14 +5,14 @@ app.component('categories', {
   /*html*/
   `
   <template v-if='preview'>
-    <p>filterarrcategoryc: {{filterarrcategoryc}}</p>
+    <p>categories: {{categories}}</p>
   </template>
 
   <div class="q-pa-md bg-grey-10 text-white">
     <div class="q-gutter-sm">
       <q-option-group
-        v-model="filterarrcategoryc.val"
-        :options="optionsfilter"
+        v-model="categories.val"
+        :options="filterCategoriesc"
         color="primary"
         type="checkbox"
         inline
@@ -41,15 +41,15 @@ app.component('categories', {
   `
   ,
   props:{
-    filterarrcategory: {
+    filtercategory: {
       type: Object
     }
   },
   setup(props) {
     return {
       preview: preview,
-      filterarrcategoryc: ref(props.filterarrcategory),
-      optionsfilter: view.filterCategories
+      categories: ref(props.filtercategory),
+      filterCategoriesc: view.filterCategories
     } 
   },
   mounted: function(){

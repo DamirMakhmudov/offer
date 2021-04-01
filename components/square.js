@@ -17,7 +17,6 @@ app.component('square', {
         color="primary"
         inline
         dark
-
       />
     </div>
   </div>
@@ -36,9 +35,6 @@ app.component('square', {
       preview: preview,
       squarec: ref(props.square),
       optionsc: ref(props.options),
-      filterChecked(val){
-        console.log(val);
-      }
     }  
   },
   mounted: function(){

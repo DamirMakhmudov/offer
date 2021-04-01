@@ -5,10 +5,11 @@ app.component('services', {
   /*html*/
   `
   <template v-if='preview'>
-    <p>category: {{filterarrcategoryc}}</p>
-    <p>props category: {{filterarrcategory}}</p>
+    <p>category: {{filtercategoryc}}</p>
+    <p>props category: {{filtercategory}}</p>
     <p>{{selectedp}}</p>
     <p>{{selectedc}}</p>
+    <p>{{filter}}</p>
   </template>
   
   <div class="q-pa-md">
@@ -66,10 +67,10 @@ app.component('services', {
     rows: {
       type: Array
     },
-    filterarrcategory: {
+    filtercategory: {
       type: Array
     },
-    selectedp: {
+    selected: {
       type: Object
     }
   },
@@ -77,8 +78,7 @@ app.component('services', {
     var columnsc = ref(props.columns);
     var rowsc = ref(props.rows);
     var squarec = ref(props.square);
-    var selectedc = ref(props.selectedp);
-    var filterarrcategoryc = ref(props.filterarrcategory);
+    var selectedc = ref(props.selected);
 
     function setvisiblecolumns(sq) {
       console.log('setvisiblecolumns was run')
@@ -88,9 +88,9 @@ app.component('services', {
     };
 
     function myfilterMethod() {
-      console.log('filterarrcategoryc', props.filterarrcategory);
+      console.log('filtercategoryc', props.filtercategory);
       let filtered = rowsc.value.filter(row => (
-        props.filterarrcategory.filter(function(i) {return (row.filter.split(', ').indexOf(i) > -1);}).length > 0
+        props.filtercategory.filter(function(i) {return (row.filter.split(', ').indexOf(i) > -1);}).length > 0
       ))
       console.log('filtered', filtered);
       return filtered
@@ -101,9 +101,9 @@ app.component('services', {
       columnsc.value.forEach(col  =>(
         arr[col.name] = ''
       ));
-      arr['filter'] = props.filterarrcategory.join(', ');
+      arr['filter'] = props.filtercategory.join(', ');
       arr['id'] = rowsc.value.length + 1
-      // var rr = { id: rowsc.value.length + 1, name: '', price1: 0, price2: 0, price3: 0, price4: 0, time: 0, filter: props.filterarrcategory.join(', '), document: '', count: '' };
+      // var rr = { id: rowsc.value.length + 1, name: '', price1: 0, price2: 0, price3: 0, price4: 0, time: 0, filter: props.filtercategory.join(', '), document: '', count: '' };
       // selectedc.val.push(rr);
       rowsc.value.push(arr);
     }
@@ -112,13 +112,8 @@ app.component('services', {
       return `Выбрано строк: ${selectedc.value.val.length}`
     }
 
-    function onSelect(evt) {
-      console.log(evt.rows);
-      // console.log(this.selected);
-    }
-
     // watchEffect(() => {
-      //  console.log('props', props.filterarrcategory)
+      //  console.log('props', props.filtercategory)
       //  myfilterMethod()
       // selectedc = props.selected
     // })
@@ -126,18 +121,16 @@ app.component('services', {
     return {
       preview: preview,
       filter: ref({ value: 'none' }),
-      filterarrcategoryc,
+      filtercategoryc: ref(props.filtercategory),
       visibleColumns: computed(() => { return setvisiblecolumns(props.square) }),
-      setvisiblecolumns,
+      squarec,
       columnsc,
       rowsc,
+      selectedc,
       myfilterMethod,
       addRow,
-      squarec,
-      selectedc,
-      onSelect,
+      setvisiblecolumns,
       getSelectedString
-      // pagination,
     }
   },
   // watch:{
@@ -147,7 +140,7 @@ app.component('services', {
   //   //   console.log(sqr)
   //   //   // visibleColumns = setvisiblecolumns()
   //   // },
-  //   filterarrcategory(val){
+  //   filtercategory(val){
   //     console.log(val);
   //   }
   // },
@@ -174,7 +167,6 @@ app.component('services', {
 // selection="multiple"
 // v-model:selected="selectedc"
 // :selected.sync="selected"
-
 
 // <q-td>
 //   <q-checkbox v-model="props.selected" />
