@@ -4,7 +4,7 @@ app.component('payments', {
   /*html*/
   `
   <template v-if='preview'>
-    <p>paymentsc: {{paymentsc}}</p>
+    <p>paymentsc: {{paymentsc}}  tgtg</p>
     </template>
     <p>selectedpaymentc: {{selectedpaymentc}}</p>
 
