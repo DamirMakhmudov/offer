@@ -7,7 +7,6 @@ view
 |columns | header row from sheet 'Услуги'|
 |filterSquare|
 
-
 ---
 links
 -
