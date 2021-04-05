@@ -5,8 +5,8 @@ app.component('payments', {
   `
   <template v-if='preview'>
     <p>paymentsc: {{paymentsc}}  frfrfeferferf</p>
-    </template>
     <p>selectedpaymentc: {{selectedpaymentc}}</p>
+  </template>
 
   <div class="q-pa-md bg-grey-10 text-white">
     <div class="q-gutter-sm">

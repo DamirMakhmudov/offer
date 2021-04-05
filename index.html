@@ -18,10 +18,9 @@
     <template v-if='preview'>
     </template>
 
-    <!-- <square :square='square' :options='filterSquare'></square>  -->
-    <!-- <square :square='square' :options='filterSquare' @backsquare='keepsquare($event)'></square>-->
-    <!-- <categories :filtercategory='categories'></categories> -->
-    <!-- <services :selected='selected' :square='square.val' :columns='columns' :rows='rows' :filtercategory='categories.val'></services> -->
+    <square :square='square' :options='filterSquare'></square> 
+    <categories :filtercategory='categories'></categories>
+    <services :selected='selected' :square='square.val' :columns='columns' :rows='rows' :filtercategory='categories.val'></services>
     <payments :filterpayment='payments' :columnspayment='columnspayment' :rowspayment='rowspayment' :selectedpayment='selectedpayment'></payments>
 
   </div>
