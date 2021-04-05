@@ -1,14 +1,6 @@
-variables
+tasks
 =
-view
--
-| variable | source|
-|-|-|
-|columns | header row from sheet 'Услуги'|
-|filterSquare|
+1. Объединить парные компоненты
+2. Перенсти в google таблицу
 
----
-links
--
-|categories|payments|
-|-|-|
+
