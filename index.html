@@ -18,10 +18,12 @@
     <template v-if='preview'>
     </template>
 
-    <square :square='square' :options='filterSquare'></square> 
-    <categories :filtercategory='categories'></categories>
+    <!-- <square :square='square' :options='filterSquare'></square> -->
+    <!-- <categories :filtercategory='categories'></categories> -->
     <services :selected='selected' :square='square.val' :columns='columns' :rows='rows' :filtercategory='categories.val'></services>
-    <payments :filterpayment='payments' :columnspayment='columnspayment' :rowspayment='rowspayment' :selectedpayment='selectedpayment'></payments>
+    <!-- <payments :filterpayment='payments' :columnspayment='columnspayment' :rowspayment='rowspayment' :selectedpayment='selectedpayment'></payments> -->
+    <additional :columnspayment='columnsadditional' :rowspayment='rowsadditional' :selectedpayment='selectedadditional'></additional>
+
 
   </div>
   
@@ -42,6 +44,7 @@
   <script src="./components/categories.js"></script>
   <script src="./components/services.js"></script>
   <script src="./components/payments.js"></script>
+  <!-- <script src="./components/additional.js"></script> -->
 
   <!-- Mount app -->
   <script>const mountedapp = app.mount('#q-app')</script>

@@ -35,6 +35,11 @@ var AppObject = {
       rowspayment: ref(model.rowsPayment),
       payments: ref(model.payments),
       selectedpayment: ref(model.selectedPayment),
+
+      columnsadditional: ref(view.columnsAdditional),
+      rowsadditional: ref(model.rowsAdditional),
+      selectedadditional: ref(model.selectedAdditional),
+
       keepsquare
     }
   },

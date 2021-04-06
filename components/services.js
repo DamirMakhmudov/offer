@@ -4,17 +4,22 @@ app.component('services', {
   template:
   /*html*/
   `
-  <template v-if='preview'>
-    <p>category: {{filtercategoryc}}</p>
-    <p>props category: {{filtercategory}}</p>
-    <p>{{selectedp}}</p>
-    <p>{{selectedc}}</p>
-    <p>{{filter}}</p>
-    {{discounto}}
-    <input v-model='discounto.val'>
-  </template>
-  
   <div class="q-pa-md">
+    <div class='row wrap justify-between items-start content-start' style='width:100%'>
+      <div>
+        <q-btn color="primary" label="Добавить строку" @click="addRow"/>
+      </div>
+      <div>
+        <q-input
+          v-model.number="discounto.val"
+          type="number"
+          style="max-width: 200px"
+          dense
+          label = 'Скидка,%'
+        />
+      </div>
+    </div>
+
     <q-table 
       :rows="rowsc"
       :columns="columnsc"
@@ -34,31 +39,11 @@ app.component('services', {
       :selected-rows-label="getSelectedString"
     >
 
-      <template v-slot:top>
-        <div class='row wrap justify-between items-start content-start' style='width:100%'>
-          <div>
-            <q-btn color="primary" label="Добавить строку" @click="addRow"/>
-          </div>
-          <div>
-            <q-input
-              v-model.number="discounto.val"
-              type="number"
-              style="max-width: 200px"
-              dense
-              label = 'Скидка,%'
-            />
-          </div>
-        </div>
-      </template>
-      
-
       <template v-slot:body="props">
         <q-tr :props="props">
-
           <q-td>
             <q-checkbox v-model="props.selected" />
           </q-td>
-
           <q-td v-for='col in columnsc' :key="col.name" :props="props">
             {{ props.row[col.name] }}
             <q-popup-edit v-model="props.row[col.name]" :title="col.label" auto-save v-slot="scope">
@@ -66,10 +51,12 @@ app.component('services', {
             </q-popup-edit>
           </q-td>
         </q-tr>
-
       </template>
 
-    </q-table>
+      <template v-slot:bottom='props'>
+        <q-btn color="primary" label="Добавить строку" @click="addRow"/>
+      <template>
+      </q-table>
   </div>
   `
   ,
@@ -121,8 +108,6 @@ app.component('services', {
       ));
       arr['filter'] = props.filtercategory.join(', ');
       arr['id'] = rowsc.value.length + 1
-      // var rr = { id: rowsc.value.length + 1, name: '', price1: 0, price2: 0, price3: 0, price4: 0, time: 0, filter: props.filtercategory.join(', '), document: '', count: '' };
-      // selectedc.val.push(rr);
       rowsc.value.push(arr);
     }
 
