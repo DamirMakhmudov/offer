@@ -4,11 +4,6 @@ app.component('square', {
   template:
   /*html*/
   `
-  <template v-if='preview'>
-    <p>filterSquare: {{squarec}}</p>
-    <input v-model='squarec.val'>
-  </template>
-
   <div class="q-pa-md bg-grey-10 text-white">
     <div class="q-gutter-sm">
       <q-option-group

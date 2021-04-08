@@ -5,29 +5,14 @@ app.component('services', {
   /*html*/
   `
   <div class="q-pa-md">
-    <div class='row wrap justify-between items-start content-start' style='width:100%'>
-      <div>
-        <q-btn color="primary" label="Добавить строку" @click="addRow"/>
-      </div>
-      <div>
-        <q-input
-          v-model.number="discounto.val"
-          type="number"
-          style="max-width: 200px"
-          dense
-          label = 'Скидка,%'
-        />
-      </div>
-    </div>
-
-    <q-table 
-      :rows="rowsc"
-      :columns="columnsc"
-      title="Услуги"
-      :rows-per-page-options="[20]"
-      row-key="name"
+    <q-table
+      :rows = "rowsc"
+      :columns = "columnsc"
+      title = "Услуги"
+      :rows-per-page-options = "[20]"
+      row-key = "name"
       wrap-cells
-      no-data-label="Нет данных"
+      no-data-label = "Нет данных"
       no-results-label = "Нет данных"
      
       :filter = "filter"
@@ -38,6 +23,13 @@ app.component('services', {
       v-model:selected="selectedc.val"
       :selected-rows-label="getSelectedString"
     >
+
+      <template v-slot:top='props'>
+        <div style="width:100%;float:right" :props='props'>
+          <span style='font:14pt arial'>Услуги</span>
+          <q-input v-model.number="discounto.val" type="number" style="width:200px;float:right" dense label='Скидка,%'/>
+        </div>
+      </template>
 
       <template v-slot:body="props">
         <q-tr :props="props">
@@ -53,10 +45,10 @@ app.component('services', {
         </q-tr>
       </template>
 
-      <template v-slot:bottom='props'>
+      <template v-slot:bottom>
         <q-btn color="primary" label="Добавить строку" @click="addRow"/>
       <template>
-      </q-table>
+    </q-table>
   </div>
   `
   ,

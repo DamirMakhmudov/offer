@@ -2,7 +2,7 @@ tasks
 =
 - ~~add input for discount~~
 - ~~make component for additional spreadsheet with default checkboxes~~
-- make component for documents
+- ~~make component for documents~~
 
 architecture
 =
