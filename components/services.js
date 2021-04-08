@@ -34,7 +34,7 @@ app.component('services', {
       <template v-slot:body="props">
         <q-tr :props="props">
           <q-td>
-            <q-checkbox v-model="props.selected" />
+            <q-checkbox v-model="props.selected"/>
           </q-td>
           <q-td v-for='col in columnsc' :key="col.name" :props="props">
             {{ props.row[col.name] }}
@@ -45,10 +45,8 @@ app.component('services', {
         </q-tr>
       </template>
 
-      <template v-slot:bottom>
-        <q-btn color="primary" label="Добавить строку" @click="addRow"/>
-      <template>
     </q-table>
+    <q-btn color="primary" label="Добавить строку" @click="addRow"/>
   </div>
   `
   ,

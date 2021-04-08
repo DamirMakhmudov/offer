@@ -29,32 +29,32 @@ var view = {
   ],
 
   columns: [
-    { "name": "name", "label": "Наименование", align: 'left', style: 'max-width: 30%px; width: 500px'},
-    { "name": "price", "label": "Сумма", align: 'center'},
-    { "name": "time", "label": "Срок оказания услуги, раб. дни", align: 'center'},
-    { "name": "document", "label": "Документы", align: 'center', style: 'max-width: 30%px; width: 500px'},
-    { "name": "count", "label": "Количество", align: 'center'}
+    { "name": "name", "label": "Наименование", "align": 'left', "style": "max-width: 30%px; width: 500px"},
+    { "name": "price", "label": "Сумма", "align": 'center'},
+    { "name": "time", "label": "Срок оказания услуги, раб. дни", "align": 'center'},
+    { "name": "document", "label": "Документы", "align": 'center', "style": "max-width: 30%px; width: 500px"},
+    { "name": "count", "label": "Количество", "align": 'center'}
   ],
 
   columnsPayment: [
-    { "name": "name", "label": "Наименование", align: 'left', style: 'max-width: 30%px; width: 500px'},
-    { "name": "price", "label": "Стоимость", align: 'center'}
+    { "name": "name", "label": "Наименование", "align": "left", "style": "max-width: 30%px; width: 500px"},
+    { "name": "price", "label": "Стоимость", "align": "center"}
   ],
 
   columnsAdditional: [
-    { "name": "name", "label": "Наименование", align: 'left', style: 'max-width: 30%px; width: 500px'},
-    { "name": "price", "label": "Стоимость", align: 'center'}
+    { "name": "name", "label": "Наименование", "align": 'left', "style": 'max-width: 30%px; width: 500px'},
+    { "name": "price", "label": "Стоимость", "align": 'center'}
   ]
 }
 
 var model = {
   discount:{"val": 0},
 
-  square: {val:'price2'},
+  square: {val:""},
 
-  categories: {val: ['Ростех']},
+  categories: {val: []},
   
-  payments: {val: ['Согласование']},
+  payments: {val: []},
 
   rows: [
     {"filter":"Согласование , Узаконивание, ПТЗ, ТЗБ",name:"Обмер Помещения с целью определения возможности переустройства и/или перепланировки и подготовки документации",price:"",price1:98,price2:99,price3:100,price4:101,time:1,document:"Заключение о возможности согласования перепланировки в ввиде текстового электронного письма без предоставления распечатанного экземпляра",count:"1 (один)"},
@@ -104,7 +104,8 @@ var model = {
   ],
 
   selected: {
-    val: [{ "id": 1, "name": "Обмер Помещения с целью определения возможности переустройства и/или перепланировки и подготовки документации", "price1": 98, "price2": 99, "price3": 100, "price4": 101, "time": 1, "filter": "Согласование, Узаконивание, ПТЗ, ТЗБ", "document": "Заключение о возможности согласования перепланировки в ввиде текстового электронного письма без предоставления распечатанного экземпляра", "count": "1 (один)" }]
+    val: []
+    // val: [{ "id": 1, "name": "Обмер Помещения с целью определения возможности переустройства и/или перепланировки и подготовки документации", "price1": 98, "price2": 99, "price3": 100, "price4": 101, "time": 1, "filter": "Согласование, Узаконивание, ПТЗ, ТЗБ", "document": "Заключение о возможности согласования перепланировки в ввиде текстового электронного письма без предоставления распечатанного экземпляра", "count": "1 (один)" }]
   },
 
   selectedPayment: {
