@@ -47,7 +47,6 @@ app.component('categories', {
   },
   setup(props) {
     return {
-      preview: preview,
       categories: ref(props.filtercategory),
       filterCategoriesc: view.filterCategories
     } 

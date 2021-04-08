@@ -87,7 +87,6 @@ app.component('payments', {
     }
 
     return {
-      preview: preview,
       columnspaymentc,
       rowspaymentc,
       filter: ref({ value: 'none' }),

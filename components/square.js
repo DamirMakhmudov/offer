@@ -27,7 +27,6 @@ app.component('square', {
   },
   setup(props) {
     return {
-      preview: preview,
       squarec: ref(props.square),
       optionsc: ref(props.options),
     }  

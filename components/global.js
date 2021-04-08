@@ -23,7 +23,6 @@ var AppObject = {
       // square = val
     }
     return {
-      preview: preview,
       square: ref(model.square),
       columns: ref(view.columns),
       rows: ref(model.rows),

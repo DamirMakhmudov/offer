@@ -1,6 +1,3 @@
-// var preview = true;
-var preview = false;
-
 var view = {
   filterSquare: [
     { "value": "price1", "label": "0-70"},

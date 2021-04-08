@@ -147,7 +147,6 @@ app.component('services', {
     // })
 
     return {
-      preview: preview,
       filter: ref({ value: 'none' }),
       filtercategoryc: ref(props.filtercategory),
       visibleColumns,
