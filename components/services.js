@@ -10,7 +10,7 @@ app.component('services', {
       :columns = "columnsc"
       title = "Услуги"
       :rows-per-page-options = "[20]"
-      row-key = "name"
+      row-key = "id"
       wrap-cells
       no-data-label = "Нет данных"
       no-results-label = "Нет данных"

@@ -16,12 +16,6 @@ var AppObject = {
     }
   },
   setup() {
-    function keepsquare(val) {
-      console.log(`keepsquare was run with "${val}"`)
-      console.log(val);
-      // selectedg = val
-      // square = val
-    }
     return {
       square: ref(model.square),
       columns: ref(view.columns),
@@ -38,8 +32,6 @@ var AppObject = {
       columnsadditional: ref(view.columnsAdditional),
       rowsadditional: ref(model.rowsAdditional),
       selectedadditional: ref(model.selectedAdditional),
-
-      keepsquare
     }
   },
   mounted: function () {
