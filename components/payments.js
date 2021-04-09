@@ -18,8 +18,8 @@ app.component('payments', {
 
   <div class="q-pa-md">
   <q-table 
-    :rows="rowspaymentc"
-    :columns="columnspaymentc"
+    :rows="rowsc"
+    :columns="columnsc"
     title="Порядок оплаты"
     :rows-per-page-options="[20]"
     row-key="id"
@@ -31,7 +31,7 @@ app.component('payments', {
     :filter-method="myfilterMethod"
 
     selection="multiple"
-    v-model:selected="selectedpaymentc.val"
+    v-model:selected="selectedc.val"
     :selected-rows-label="getSelectedString"
   >
 
@@ -42,7 +42,7 @@ app.component('payments', {
           <q-checkbox v-model="props.selected" />
         </q-td>
 
-        <q-td v-for='col in columnspaymentc' :key="col.name" :props="props">
+        <q-td v-for='col in columnsc' :key="col.name" :props="props">
           {{ props.row[col.name] }}
           <q-popup-edit v-model="props.row[col.name]" :title="col.label" auto-save v-slot="scope">
             <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" type="textarea"/>
@@ -57,42 +57,42 @@ app.component('payments', {
   `
   ,
   props:{
-    filterpayment: {
+    filter: {
       type: Object
     },
-    columnspayment: {
+    columns: {
       type: Array
     },
-    rowspayment: {
+    rows: {
       type: Array
     },
-    selectedpayment:{
+    selected:{
       type: Object
     }
   },
   setup(props) {
-    var columnspaymentc = ref(props.columnspayment)
-    var rowspaymentc = ref(props.rowspayment)
-    var selectedpaymentc= ref(props.selectedpayment)
-    var paymentsc = ref(props.filterpayment)
+    var columnsc = ref(props.columns)
+    var rowsc = ref(props.rows)
+    var selectedc= ref(props.selected)
+    var paymentsc = ref(props.filter)
 
     function getSelectedString(){
-      return `Выбрано строк: ${selectedpaymentc.value.val.length}`
+      return `Выбрано строк: ${selectedc.value.val.length}`
     }
 
     function myfilterMethod() {
-      return rowspaymentc.value.filter(row => (
+      return rowsc.value.filter(row => (
         paymentsc.value.val.includes(row.filter)
       ))
     }
 
     return {
-      columnspaymentc,
-      rowspaymentc,
-      filter: ref({ value: 'none' }),
+      columnsc,
+      rowsc,
       filterPaymentsc: view.filterPayments,
       paymentsc,
-      selectedpaymentc,
+      selectedc,
+      filter: ref({ value: 'none' }),
       getSelectedString,
       myfilterMethod
 

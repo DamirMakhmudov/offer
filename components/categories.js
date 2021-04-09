@@ -37,13 +37,13 @@ app.component('categories', {
   `
   ,
   props:{
-    filtercategory: {
+    filter: {
       type: Object
     }
   },
   setup(props) {
     return {
-      categories: ref(props.filtercategory),
+      categories: ref(props.filter),
       filterCategoriesc: view.filterCategories
     } 
   },

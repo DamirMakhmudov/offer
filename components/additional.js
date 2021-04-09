@@ -6,8 +6,8 @@ app.component('additional', {
     <div class="q-pa-md">
 
       <q-table
-        :rows="rowspaymentc"
-        :columns="columnspaymentc"
+        :rows="rowsc"
+        :columns="columnsc"
         title="Дополнительные услуги"
         :rows-per-page-options="[20]"
         row-key="id"
@@ -15,7 +15,7 @@ app.component('additional', {
         no-data-label="Нет данных"
         no-results-label = "Нет данных"
         selection="multiple"
-        v-model:selected="selectedpaymentc.val"
+        v-model:selected="selectedc.val"
         :selected-rows-label="getSelectedString"
       >
 
@@ -24,7 +24,7 @@ app.component('additional', {
           <q-td>
             <q-checkbox v-model="props.selected" />
           </q-td>
-          <q-td v-for='col in columnspaymentc' :key="col.name" :props="props">
+          <q-td v-for='col in columnsc' :key="col.name" :props="props">
             {{ props.row[col.name] }}
             <q-popup-edit v-model="props.row[col.name]" :title="col.label" auto-save v-slot="scope">
               <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" type="textarea"/>
@@ -39,37 +39,37 @@ app.component('additional', {
   `
   ,
   props:{
-    columnspayment: {
+    columns: {
       type: Array
     },
-    rowspayment: {
+    rows: {
       type: Array
     },
-    selectedpayment:{
+    selected:{
       type: Object
     }
   },
   setup(props) {
-    var columnspaymentc = ref(props.columnspayment)
-    var rowspaymentc = ref(props.rowspayment)
-    var selectedpaymentc= ref(props.selectedpayment)
+    var columnsc = ref(props.columns)
+    var rowsc = ref(props.rows)
+    var selectedc= ref(props.selected)
 
     function addRow() {
       let arr = {};
-      columnspaymentc.value.forEach(col  =>(
+      columnsc.value.forEach(col  =>(
         arr[col.name] = ''
       ));
-      rowspaymentc.value.push(arr);
+      rowsc.value.push(arr);
     }
 
     function getSelectedString(){
-      return `Выбрано строк: ${selectedpaymentc.value.val.length}`
+      return `Выбрано строк: ${selectedc.value.val.length}`
     }
 
     return {
-      columnspaymentc,
-      rowspaymentc,
-      selectedpaymentc,
+      columnsc,
+      rowsc,
+      selectedc,
       getSelectedString,
       addRow
     } 

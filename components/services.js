@@ -4,6 +4,8 @@ app.component('services', {
   template:
   /*html*/
   `
+  <p>{{filtercategoryc}}</p>
+
   <div class="q-pa-md">
     <q-table
       :rows = "rowsc"
@@ -60,7 +62,7 @@ app.component('services', {
     rows: {
       type: Array
     },
-    filtercategory: {
+    filter: {
       type: Array
     },
     selected: {
@@ -72,6 +74,7 @@ app.component('services', {
     var rowsc = ref(props.rows);
     var squarec = ref(props.square);
     var selectedc = ref(props.selected);
+    var filtercategoryc = ref(props.filter)
 
     function setvisiblecolumns(sq) {
       // console.log('setvisiblecolumns was run');
@@ -86,7 +89,7 @@ app.component('services', {
 
     function myfilterMethod() {
       let filteredRows = rowsc.value.filter(row => (
-        props.filtercategory.filter(function(i) {return (row.filter.split(', ').indexOf(i) > -1);}).length > 0
+        props.filter.filter(function(i) {return (row.filter.split(', ').indexOf(i) > -1);}).length > 0
       ));
       return filteredRows
     }
@@ -96,7 +99,7 @@ app.component('services', {
       columnsc.value.forEach(col  =>(
         arr[col.name] = ''
       ));
-      arr['filter'] = props.filtercategory.join(', ');
+      arr['filter'] = props.filter.join(', ');
       arr['id'] = rowsc.value.length + 1
       rowsc.value.push(arr);
     }
@@ -109,7 +112,7 @@ app.component('services', {
     
     // watchEffect(() => {
     //   console.log('watchEffect', props.square)
-    //   //  console.log('props', props.filtercategory);
+    //   //  console.log('props', props.filter);
     //   //  myfilterMethod()
     //   // selectedc = props.selected
     //   // console.log('watchEffect', discounto.val);
@@ -132,7 +135,7 @@ app.component('services', {
     //   })
 
     //   // let filteredRows = rowsc.value.map(row => (
-    //     // props.filtercategory.filter(function(i) {return (row.filter.split(', ').indexOf(i) > -1);}).length > 0
+    //     // props.filter.filter(function(i) {return (row.filter.split(', ').indexOf(i) > -1);}).length > 0
     //   // ));
     //   // console.log('filteredRows', filteredRows);
     // })
@@ -146,13 +149,13 @@ app.component('services', {
 
     return {
       filter: ref({ value: 'none' }),
-      filtercategoryc: ref(props.filtercategory),
       visibleColumns,
       squarec,
       columnsc,
       rowsc,
       selectedc,
       discounto,
+      filtercategoryc,
       myfilterMethod,
       addRow,
       setvisiblecolumns,
@@ -172,7 +175,7 @@ app.component('services', {
     //   console.log(sqr)
     //   // visibleColumns = setvisiblecolumns()
     // },
-    // filtercategory(val){
+    // filter(val){
     //   console.log(val);
     // }
   // },

@@ -32,6 +32,10 @@ var AppObject = {
       columnsadditional: ref(view.columnsAdditional),
       rowsadditional: ref(model.rowsAdditional),
       selectedadditional: ref(model.selectedAdditional),
+
+      columnsdocuments: ref(view.columnsDocuments),
+      rowsdocuments: ref(model.rowsDocuments),
+      selecteddocuments: ref(model.selectedDocuments),
     }
   },
   mounted: function () {
