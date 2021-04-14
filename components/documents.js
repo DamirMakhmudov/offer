@@ -5,7 +5,6 @@ app.component('documents', {
   `
     <p>{{paymentsc}}</p>
     <div class="q-pa-md">
-
       <q-table
         :rows="rowsc"
         :columns="columnsc"
@@ -63,7 +62,6 @@ app.component('documents', {
 
     function myfilterMethod() {
       // return rowsc.value
-      console.log('props.filter', props.filter.val);
       let filteredRows = rowsc.value.filter(row => (
         props.filter.val.filter(function(i) {return (row.filter.split(', ').indexOf(i) > -1);}).length > 0
       ));

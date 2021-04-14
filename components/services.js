@@ -4,8 +4,6 @@ app.component('services', {
   template:
   /*html*/
   `
-  <p>{{filtercategoryc}}</p>
-
   <div class="q-pa-md">
     <q-table
       :rows = "rowsc"
@@ -45,6 +43,7 @@ app.component('services', {
             </q-popup-edit>
           </q-td>
         </q-tr>
+
       </template>
 
     </q-table>
