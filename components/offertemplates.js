@@ -1,5 +1,5 @@
-app.component('templates',{
-  name: 'templates',
+app.component('offertemplates',{
+  name: 'offertemplates',
   template:
   /*html*/
   `
@@ -12,7 +12,7 @@ app.component('templates',{
     }
   },
   setup(props){
-    
+
     return{
 
     }

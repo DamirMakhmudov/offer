@@ -15,12 +15,13 @@
 
 <body>
   <div id="q-app">
+    <offertemplates :temp='square'></offertemplates>
     <square :square='square' :options='filterSquare'></square>
     <categories :filter='categories'></categories>
-    <services :selected='selected' :columns='columns' :rows='rows' :filter='categories.val' :square='square.val'></services>
-    <payments :selected='selectedpayment' :columns='columnspayment' :rows='rowspayment' :filter='payments'></payments>
-    <additional :columns='columnsadditional' :rows='rowsadditional' :selected='selectedadditional'></additional>
-    <documents :columns='columnsdocuments' :rows='rowsdocuments' :selected='selecteddocuments' :filter='payments'></documents>
+    <!-- <services :selected='selected' :columns='columns' :rows='rows' :filter='categories.val' :square='square.val'></services> -->
+    <!-- <payments :selected='selectedpayment' :columns='columnspayment' :rows='rowspayment' :filter='payments'></payments> -->
+    <!-- <additional :columns='columnsadditional' :rows='rowsadditional' :selected='selectedadditional'></additional> -->
+    <!-- <documents :columns='columnsdocuments' :rows='rowsdocuments' :selected='selecteddocuments' :filter='payments'></documents> -->
   </div>
   
   <!-- Import Vue -->
