@@ -1,6 +1,9 @@
 var view = {
 
-  filterOffertemplates:["a", "b", "c"],
+  filterOffers:[
+    {"label":"Copy of Коммерческое предложение","value":"1ZhY0nEEJK-6HiIuM-rHN2H2uem2Htaia5jFgqC9KmeU"},
+    {"label":"Коммерческое предложение","value":"17ocUkGrgPPbxwOWF40uob6JsnRwsV5X3edO6a5LNy3c"}
+  ],
 
   filterSquare: [
     { "value": "price1", "label": "0-70" },
