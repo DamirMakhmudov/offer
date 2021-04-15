@@ -1,4 +1,7 @@
 var view = {
+
+  filterOffertemplates:["a", "b", "c"],
+
   filterSquare: [
     { "value": "price1", "label": "0-70" },
     { "value": "price2", "label": "71-100" },
@@ -54,13 +57,15 @@ var view = {
 }
 
 var model = {
+  selectedoffer: {"val": ""},
+
   discount: { "val": 0 },
 
-  square: { val: "" },
+  square: { "val": "" },
 
-  categories: { val: ["Ростех"] },
+  categories: { "val": ["Ростех"] },
 
-  payments: { val: [] },
+  payments: { "val": [] },
 
   rows: [
     { "id": 1, "filter": "Согласование , Узаконивание, ПТЗ, ТЗБ", "name": "Обмер Помещения с целью определения возможности переустройства и/или перепланировки и подготовки документации", "comment": "", "price": "", "price1": 98, "price2": 99, "price3": 100, "price4": 101, "time": 1, "document": "Заключение о возможности согласования перепланировки в ввиде текстового электронного письма без предоставления распечатанного экземпляра", "count": "1 (один)" },

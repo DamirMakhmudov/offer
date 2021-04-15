@@ -15,7 +15,7 @@
 
 <body>
   <div id="q-app">
-    <offertemplates :temp='square'></offertemplates>
+    <offers :temp='square' :options='filterSquare'></offers>
     <square :square='square' :options='filterSquare'></square>
     <categories :filter='categories'></categories>
     <!-- <services :selected='selected' :columns='columns' :rows='rows' :filter='categories.val' :square='square.val'></services> -->
@@ -43,6 +43,7 @@
   <script src="./components/payments.js"></script>
   <script src="./components/additional.js"></script>
   <script src="./components/documents.js"></script>
+  <script src="./components/offers.js"></script>
 
   <!-- Mount app -->
   <script>const mountedapp = app.mount('#q-app')</script>
