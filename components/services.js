@@ -23,7 +23,7 @@ app.component('services', {
       v-model:selected="selectedc.val"
       :selected-rows-label="getSelectedString"
     >
-
+      
       <template v-slot:top='props'>
         <div style="width:100%;float:right" :props='props'>
           <span style='font:14pt arial'>Услуги</span>
