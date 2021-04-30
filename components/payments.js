@@ -95,7 +95,6 @@ app.component('payments', {
       filter: ref({ value: 'none' }),
       getSelectedString,
       myfilterMethod
-
     } 
   },
   mounted: function(){

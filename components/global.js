@@ -1,10 +1,9 @@
 
-const { createApp, ref, reactive, computed, watch, onMounted, watchEffect } = Vue;
-const { useQuasar } = Quasar;
+const { createApp, ref, reactive, computed, watch, onMounted, watchEffect, onBeforeUnmount } = Vue;
+const { useQuasar, Loading, QSpinnerGears } = Quasar;
 
 var AppObject = {
   name: 'global',
-  components: ['categories', 'square', 'services'],
   methods: {
     keepfilter(val) {
       console.log('keepfilter was run')
@@ -47,7 +46,8 @@ const app = Vue.createApp(AppObject)
 
 app.use(Quasar, {
   config: {
-    notify: { /* look at QuasarConfOptions from the API card */ }
+    notify: { /* look at QuasarConfOptions from the API card */ },
+    loading: { /* look at QuasarConfOptions from the API card */ }
   }
 });
 

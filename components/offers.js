@@ -4,14 +4,24 @@ app.component('offers',{
   /*html*/
   `
   <div class="q-ma-md">
-      <q-select v-model="selectedoffer.val" :options="options" label="Выберите шаблон" map-options/>
+    <div class="full-width row justify-between">
+      <q-select v-model="selectedoffer.val" :options="options" label="Выберите шаблон" class="col" style="overflow: auto;"/>
+      <q-btn color="primary" icon="save" label="Сохранить" @click="saveIt(selectedoffer.val)" style="overflow: auto;max-height:4em"/>
+    </div>
   </div>
   `
   ,
   setup(){
+    const $q = useQuasar()
+    function saveIt(v){
+      saveDataJS(v.label);
+      $q.loading.show();
+
+    }
     return{
-      selectedoffer: ref(model.selectedoffer),
-      options: view.filterOffers
+      selectedoffer: ref(model.selectedOffer),
+      options: view.filterOffers,
+      saveIt
     }
   },
 })

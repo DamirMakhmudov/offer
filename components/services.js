@@ -1,10 +1,11 @@
 app.component('services', {
   name: 'services',
-  emits:['backsquared'],
+  emits:['calculateAmount', 'backsquared'],
   template:
   /*html*/
   `
   <div class="q-pa-md">
+  <p>{{ttt}}</p>
     <q-table
       :rows = "rowsc"
       :columns = "columnsc"
@@ -23,11 +24,11 @@ app.component('services', {
       v-model:selected="selectedc.val"
       :selected-rows-label="getSelectedString"
     >
-      
       <template v-slot:top='props'>
         <div style="width:100%;float:right" :props='props'>
           <span style='font:14pt arial'>Услуги</span>
           <q-input v-model.number="discounto.val" type="number" style="width:200px;float:right" dense label='Скидка,%'/>
+          <q-input v-model.number="amount.val" type="number" style="width:200px;float:right" dense label='Итого'/>
         </div>
       </template>
 
@@ -75,11 +76,8 @@ app.component('services', {
     var selectedc = ref(props.selected);
     var filtercategoryc = ref(props.filter)
 
-    function setvisiblecolumns(sq) {
-      // console.log('setvisiblecolumns was run');
-      // var cols = columnsc.value.map(row => row.name).filter(row => row.indexOf('price'));
-      // cols.push(sq);
-      // return cols
+    function setvisiblecolumns() {
+      // console.log('setvisiblecolumns');
       rowsc.value.map(row =>{
         row['price'] = Math.round(row[props.square]*(1-discounto.value.val/100));
       })
@@ -87,10 +85,22 @@ app.component('services', {
     };
 
     function myfilterMethod() {
+      console.log('myfilterMethod');
+      calculateAmount();
+
       let filteredRows = rowsc.value.filter(row => (
-        props.filter.filter(function(i) {return (row.filter.split(', ').indexOf(i) > -1);}).length > 0
+        props.filter.filter(i => {return (row.filter.split(', ').indexOf(i) > -1);}).length > 0
       ));
       return filteredRows
+    }
+
+    function calculateAmount(){
+      // console.log('calculateAmount');
+      let amo = 0;
+      selectedc.value.val.forEach((row, idx)=>{
+        amo += +row.price;
+      });
+      amount.value.val = amo;
     }
 
     function addRow() {
@@ -108,9 +118,10 @@ app.component('services', {
     }
 
     var discounto = ref(model.discount);
+    var amount = ref(model.amountServices)
     
     // watchEffect(() => {
-    //   console.log('watchEffect', props.square)
+    //   console.log('watchEffect', discounto.value.val);
     //   //  console.log('props', props.filter);
     //   //  myfilterMethod()
     //   // selectedc = props.selected
@@ -118,8 +129,19 @@ app.component('services', {
     // })
 
     var visibleColumns = computed(() => { return setvisiblecolumns(props.square) });
+    var ttt = computed(() => { return calculateAmount(props.rows)});
+
     // var visibleColumns = ref(computed(() => { return setvisiblecolumns(props.square) }));
     // var visibleColumns = ref(columnsc.value.map(col => col.name));
+    watch(rowsc.value, (val) => {
+      // console.log('ds');
+      calculateAmount();
+    // let priceColumnPosition = columnsc.value.filter((col, idx) =>{return /price/.test(col.name)}).map(col => col.name);
+    // rowsc.value.forEach(row =>{
+    //   priceColumnPosition.forEach(price =>{
+    //     row[price] = Math.round(row[price]*(1-discounto.value.val/100)); 
+    //   })
+    })
 
     // watch(discounto.value, () => {
     //   // let priceColumnPosition = columnsc.value.filter((col, idx) =>{return /price/.test(col.name)}).map(col => col.name);
@@ -147,6 +169,7 @@ app.component('services', {
     // })
 
     return {
+      ttt,
       filter: ref({ value: 'none' }),
       visibleColumns,
       squarec,
@@ -155,7 +178,9 @@ app.component('services', {
       selectedc,
       discounto,
       filtercategoryc,
+      amount,
       myfilterMethod,
+      calculateAmount,
       addRow,
       setvisiblecolumns,
       getSelectedString
@@ -178,6 +203,7 @@ app.component('services', {
     //   console.log(val);
     // }
   // },
+
   mounted: function () {
     // console.log(`${this.$options.name} component is mounted`);
   }

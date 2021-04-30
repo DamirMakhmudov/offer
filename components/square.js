@@ -32,7 +32,7 @@ app.component('square', {
     }  
   },
   mounted: function(){
-    // @update:modelValue="val => { $emit('backsquare', squarec) }"
     // console.log(`${this.$options.name} component is mounted`);
   }
 })
+// @update:modelValue="val => { $emit('backsquare', squarec) }"

@@ -5,25 +5,32 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
-  <!-- <link href="https://cdn.jsdelivr.net/npm/quasar@2.0.0-beta.7/dist/quasar.prod.css" rel="stylesheet" type="text/css"> -->
   <link href="https://cdn.jsdelivr.net/npm/quasar@2.0.0-beta.9/dist/quasar.prod.css" rel="stylesheet" type="text/css">
-
   <title>КП</title>
 </head>
 
 <body>
   <div id="q-app">
-    <offers :temp='square' :options='filterSquare'></offers>
-    <square :square='square' :options='filterSquare'></square>
-    <categories :filter='categories'></categories>
-    <services :selected='selected' :columns='columns' :rows='rows' :filter='categories.val' :square='square.val'></services>
-    <payments :selected='selectedpayment' :columns='columnspayment' :rows='rowspayment' :filter='payments'></payments>
-    <additional :columns='columnsadditional' :rows='rowsadditional' :selected='selectedadditional'></additional>
-    <documents :columns='columnsdocuments' :rows='rowsdocuments' :selected='selecteddocuments' :filter='payments'></documents>
+    <div class="q-ma-md">
+      <offers></offers>
+    </div>
+    <q-scroll-area style="height: 48em">
+      <square :square='square' :options='filterSquare'></square>
+      <categories :filter='categories'></categories>
+      <services :selected='selected' :columns='columns' :rows='rows' :filter='categories.val' :square='square.val'></services>
+      <payments :selected='selectedpayment' :columns='columnspayment' :rows='rowspayment' :filter='payments'></payments>
+      <additional :columns='columnsadditional' :rows='rowsadditional' :selected='selectedadditional'></additional>
+      <documents :columns='columnsdocuments' :rows='rowsdocuments' :selected='selecteddocuments' :filter='payments'></documents>
+    </q-scroll-area>
   </div>
   
+  <script>
+    function saveDataJS(v){
+      console.log(v)
+    }
+  </script>
+
   <!-- Import Vue -->
   <script src="https://unpkg.com/vue@next"></script>
   <!-- <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js"></script> -->
@@ -37,13 +44,13 @@
 
   <!-- Import components -->
   <script src="./components/global.js"></script>
+  <script src="./components/offers.js"></script>
   <script src="./components/square.js"></script>
   <script src="./components/categories.js"></script>
   <script src="./components/services.js"></script>
   <script src="./components/payments.js"></script>
   <script src="./components/additional.js"></script>
   <script src="./components/documents.js"></script>
-  <script src="./components/offers.js"></script>
 
   <!-- Mount app -->
   <script>const mountedapp = app.mount('#q-app')</script>

@@ -59,12 +59,13 @@ var view = {
   ]
 }
 
+
 var model = {
-  selectedoffer: {"val": ""},
+  selectedOffer: {"val": ""},
 
   discount: { "val": 0 },
 
-  square: { "val": "" },
+  square: { "val": "price3" },
 
   categories: { "val": ["Ростех"] },
 
@@ -131,11 +132,30 @@ var model = {
     { "id": 10, "name": "Технические условия на Помещение от управляющей компании.", "count": "1 (один)", "filter": "Рабочка" }
   ],
 
-  selected: { val: [] },
+  selected: { "val": [] },
 
-  selectedPayment: { val: [] },
+  selectedPayment: { "val": [] },
 
-  selectedAdditional: { val: [] },
+  selectedAdditional: { "val": [] },
 
-  selectedDocuments: { val: [] }
+  selectedDocuments: { "val": [] },
+
+  amountServices: { "val": 0 }
+}
+
+
+test();
+
+function test(){
+  let arr = model.rows;
+  let s = 0;
+  let acc = 0;
+
+  arr.forEach(row=>{
+    s += row.price1
+  })
+  console.log("s", s)
+  const red = (acc, cur) => +acc + cur.price1;
+  let sum = arr.reduce(red);
+  console.log('sum', sum);
 }

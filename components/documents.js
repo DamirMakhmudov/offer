@@ -3,23 +3,22 @@ app.component('documents', {
   template:
   /*html*/
   `
-    <p>{{paymentsc}}</p>
-    <div class="q-pa-md">
-      <q-table
-        :rows="rowsc"
-        :columns="columnsc"
-        title="Документы"
-        :rows-per-page-options="[20]"
-        row-key="id"
-        wrap-cells
-        no-data-label="Нет данных"
-        no-results-label = "Нет данных"
-        selection="multiple"
-        v-model:selected="selectedc.val"
-        :selected-rows-label="getSelectedString"
-        :filter = "filter"
-        :filter-method="myfilterMethod"
-      >
+  <div class="q-pa-md">
+    <q-table
+      :rows="rowsc"
+      :columns="columnsc"
+      title="Документы"
+      :rows-per-page-options="[20]"
+      row-key="id"
+      wrap-cells
+      no-data-label="Нет данных"
+      no-results-label = "Нет данных"
+      selection="multiple"
+      v-model:selected="selectedc.val"
+      :selected-rows-label="getSelectedString"
+      :filter = "filter"
+      :filter-method="myfilterMethod"
+    >
 
       <template v-slot:body="props">
         <q-tr :props="props">
