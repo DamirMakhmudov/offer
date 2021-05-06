@@ -31,10 +31,5 @@ app.component('square', {
       optionsc: ref(props.options),
     }  
   },
-  /*
-  mounted: function(){
-    console.log(`${this.$options.name} component is mounted`);
-  }
-  */
 })
 // @update:modelValue="val => { $emit('backsquare', squarec) }"

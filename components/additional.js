@@ -75,11 +75,6 @@ app.component('additional', {
       addRow
     } 
   },
-  /*
-  mounted: function(){
-    console.log(`${this.$options.name} component is mounted`);
-  }
-  */
 })
 // @update:modelValue="val => { $emit('fill-filter', filtersc) }"
 // :filter = "filter"

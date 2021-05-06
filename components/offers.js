@@ -13,10 +13,12 @@ app.component('offers',{
   ,
   setup(){
     const $q = useQuasar()
+
     function saveIt(v){
       saveDataJS(v.label);
       $q.loading.show();
     }
+    
     return{
       selectedoffer: ref(model.selectedOffer),
       options: view.filterOffers,

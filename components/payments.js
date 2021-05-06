@@ -111,11 +111,6 @@ app.component('payments', {
       myfilterMethod
     } 
   },
-  /*
-  mounted: function(){
-    console.log(`${this.$options.name} component is mounted`);
-  }
-  */
 })
 // @update:modelValue="val => { $emit('fill-filter', filtersc) }"
 // :filter = "filter"

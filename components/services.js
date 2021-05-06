@@ -185,12 +185,6 @@ app.component('services', {
     }
   },
   */
-
-  /*
-  mounted: function () {
-    console.log(`${this.$options.name} component is mounted`);
-  }
-  */
 });
 
 //  <q-td key="desc" :props="props">

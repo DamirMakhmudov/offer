@@ -47,8 +47,5 @@ app.component('categories', {
       filterCategoriesc: view.filterCategories
     } 
   },
-  mounted: function(){
-    // console.log(`${this.$options.name} component is mounted`);
-  },
 })
 // @update:modelValue="val => { $emit('fill-filter', filtersc) }"

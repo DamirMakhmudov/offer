@@ -54,21 +54,16 @@ app.component('documents', {
     }
   },
   setup(props) {
-    var columnsc = ref(props.columns)
-    var rowsc = ref(props.rows)
-    var selectedc= ref(props.selected)
-    var paymentsc = ref(props.filter)
+    var
+      columnsc = ref(props.columns),
+      rowsc = ref(props.rows),
+      selectedc= ref(props.selected),
+      paymentsc = ref(props.filter);
 
     function myfilterMethod() {
-      // return rowsc.value
-      let filteredRows = rowsc.value.filter(row => (
+      return rowsc.value.filter(row => (
         props.filter.val.filter(function(i) {return (row.filter.split(', ').indexOf(i) > -1);}).length > 0
       ));
-      return filteredRows
-
-      // return rowsc.value.filter(row => (
-      //   paymentsc.value.val.includes(row.filter)
-      // ))
     }
 
     function addRow() {
@@ -93,9 +88,6 @@ app.component('documents', {
       addRow,
       myfilterMethod
     } 
-  },
-  mounted: function(){
-    // console.log(`${this.$options.name} component is mounted`);
   },
 })
 // @update:modelValue="val => { $emit('fill-filter', filtersc) }"
