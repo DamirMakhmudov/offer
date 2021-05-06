@@ -17,31 +17,34 @@ app.component('payments', {
   </div>
 
   <div class="q-pa-md">
-  <q-table 
-    :rows="rowsc"
-    :columns="columnsc"
-    title="Порядок оплаты"
-    :rows-per-page-options="[20]"
-    row-key="id"
-    wrap-cells
-    no-data-label="Нет данных"
-    no-results-label = "Нет данных"
+    <q-table 
+      :rows="rowsc"
+      :columns="columnsc"
+      title="Порядок оплаты"
+      :rows-per-page-options="[20]"
+      row-key="id"
+      wrap-cells
+      no-data-label="Нет данных"
+      no-results-label = "Нет данных"
+      :filter = "filter"
+      :filter-method="myfilterMethod"
+      selection="multiple"
+      v-model:selected="selectedc.val"
+      :selected-rows-label="getSelectedString"
+    >
 
-    :filter = "filter"
-    :filter-method="myfilterMethod"
-
-    selection="multiple"
-    v-model:selected="selectedc.val"
-    :selected-rows-label="getSelectedString"
-  >
+    <template v-slot:top='props'>
+      <div style="width:100%;float:right" :props='props'>
+        <span style='font:14pt arial'>Услуги</span>
+        <q-input v-model.number="amount.val" type="number" style="width:200px;float:right" dense label='Итого'/>
+      </div>
+    </template>
 
     <template v-slot:body="props">
       <q-tr :props="props">
-
         <q-td>
           <q-checkbox v-model="props.selected" />
         </q-td>
-
         <q-td v-for='col in columnsc' :key="col.name" :props="props">
           {{ props.row[col.name] }}
           <q-popup-edit v-model="props.row[col.name]" :title="col.label" auto-save v-slot="scope">
@@ -49,7 +52,6 @@ app.component('payments', {
           </q-popup-edit>
         </q-td>
       </q-tr>
-
     </template>
 
   </q-table>
@@ -71,19 +73,30 @@ app.component('payments', {
     }
   },
   setup(props) {
-    var columnsc = ref(props.columns)
-    var rowsc = ref(props.rows)
-    var selectedc= ref(props.selected)
-    var paymentsc = ref(props.filter)
+    var
+      columnsc = ref(props.columns),
+      rowsc = ref(props.rows),
+      selectedc= ref(props.selected),
+      paymentsc = ref(props.filter),
+      amount = ref(model.amountPayments);
 
     function getSelectedString(){
       return `Выбрано строк: ${selectedc.value.val.length}`
     }
 
     function myfilterMethod() {
+      calculateAmount();
       return rowsc.value.filter(row => (
         paymentsc.value.val.includes(row.filter)
       ))
+    }
+
+    function calculateAmount(){
+      let amo = 0;
+      selectedc.value.val.forEach(row => {
+        amo += +row.price;
+      });
+      amount.value.val = amo;
     }
 
     return {
@@ -93,13 +106,16 @@ app.component('payments', {
       paymentsc,
       selectedc,
       filter: ref({ value: 'none' }),
+      amount,
       getSelectedString,
       myfilterMethod
     } 
   },
+  /*
   mounted: function(){
-    // console.log(`${this.$options.name} component is mounted`);
-  },
+    console.log(`${this.$options.name} component is mounted`);
+  }
+  */
 })
 // @update:modelValue="val => { $emit('fill-filter', filtersc) }"
 // :filter = "filter"

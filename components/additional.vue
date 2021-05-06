@@ -3,21 +3,21 @@ app.component('additional', {
   template:
   /*html*/
   `
-    <div class="q-pa-md">
+  <div class="q-pa-md">
 
-      <q-table
-        :rows="rowsc"
-        :columns="columnsc"
-        title="Дополнительные услуги"
-        :rows-per-page-options="[20]"
-        row-key="id"
-        wrap-cells
-        no-data-label="Нет данных"
-        no-results-label = "Нет данных"
-        selection="multiple"
-        v-model:selected="selectedc.val"
-        :selected-rows-label="getSelectedString"
-      >
+    <q-table
+      :rows="rowsc"
+      :columns="columnsc"
+      title="Дополнительные услуги"
+      :rows-per-page-options="[20]"
+      row-key="id"
+      wrap-cells
+      no-data-label="Нет данных"
+      no-results-label = "Нет данных"
+      selection="multiple"
+      v-model:selected="selectedc.val"
+      :selected-rows-label="getSelectedString"
+    >
 
       <template v-slot:body="props">
         <q-tr :props="props">
@@ -32,7 +32,7 @@ app.component('additional', {
           </q-td>
         </q-tr>
       </template>
-      
+    
     </q-table>
     <q-btn color="primary" label="Добавить строку" @click="addRow"/>
   </div>
@@ -50,9 +50,10 @@ app.component('additional', {
     }
   },
   setup(props) {
-    var columnsc = ref(props.columns)
-    var rowsc = ref(props.rows)
-    var selectedc= ref(props.selected)
+    var
+      columnsc = ref(props.columns),
+      rowsc = ref(props.rows),
+      selectedc= ref(props.selected);
 
     function addRow() {
       let arr = {};
@@ -74,9 +75,11 @@ app.component('additional', {
       addRow
     } 
   },
+  /*
   mounted: function(){
-    // console.log(`${this.$options.name} component is mounted`);
-  },
+    console.log(`${this.$options.name} component is mounted`);
+  }
+  */
 })
 // @update:modelValue="val => { $emit('fill-filter', filtersc) }"
 // :filter = "filter"

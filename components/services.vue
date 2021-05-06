@@ -5,7 +5,6 @@ app.component('services', {
   /*html*/
   `
   <div class="q-pa-md">
-  <p>{{ttt}}</p>
     <q-table
       :rows = "rowsc"
       :columns = "columnsc"
@@ -15,11 +14,9 @@ app.component('services', {
       wrap-cells
       no-data-label = "Нет данных"
       no-results-label = "Нет данных"
-     
       :filter = "filter"
       :filter-method="myfilterMethod"
       :visible-columns="visibleColumns"
-
       selection="multiple"
       v-model:selected="selectedc.val"
       :selected-rows-label="getSelectedString"
@@ -44,7 +41,6 @@ app.component('services', {
             </q-popup-edit>
           </q-td>
         </q-tr>
-
       </template>
 
     </q-table>
@@ -70,14 +66,17 @@ app.component('services', {
     }
   },
   setup(props) {
-    var columnsc = ref(props.columns);
-    var rowsc = ref(props.rows);
-    var squarec = ref(props.square);
-    var selectedc = ref(props.selected);
-    var filtercategoryc = ref(props.filter)
+    var
+      columnsc = ref(props.columns),
+      rowsc = ref(props.rows),
+      squarec = ref(props.square),
+      selectedc = ref(props.selected),
+      filtercategoryc = ref(props.filter),
+      discounto = ref(model.discount),
+      amount = ref(model.amountServices),
+      visibleColumns = computed(() => { return setvisiblecolumns(props.square) });
 
     function setvisiblecolumns() {
-      // console.log('setvisiblecolumns');
       rowsc.value.map(row =>{
         row['price'] = Math.round(row[props.square]*(1-discounto.value.val/100));
       })
@@ -85,19 +84,15 @@ app.component('services', {
     };
 
     function myfilterMethod() {
-      console.log('myfilterMethod');
       calculateAmount();
-
-      let filteredRows = rowsc.value.filter(row => (
+      return rowsc.value.filter(row => (
         props.filter.filter(i => {return (row.filter.split(', ').indexOf(i) > -1);}).length > 0
-      ));
-      return filteredRows
+      ))
     }
 
     function calculateAmount(){
-      // console.log('calculateAmount');
       let amo = 0;
-      selectedc.value.val.forEach((row, idx)=>{
+      selectedc.value.val.forEach(row => {
         amo += +row.price;
       });
       amount.value.val = amo;
@@ -117,9 +112,6 @@ app.component('services', {
       return `Выбрано строк: ${selectedc.value.val.length}`
     }
 
-    var discounto = ref(model.discount);
-    var amount = ref(model.amountServices)
-    
     // watchEffect(() => {
     //   console.log('watchEffect', discounto.value.val);
     //   //  console.log('props', props.filter);
@@ -128,48 +120,34 @@ app.component('services', {
     //   // console.log('watchEffect', discounto.val);
     // })
 
-    var visibleColumns = computed(() => { return setvisiblecolumns(props.square) });
-    var ttt = computed(() => { return calculateAmount(props.rows)});
-
     // var visibleColumns = ref(computed(() => { return setvisiblecolumns(props.square) }));
     // var visibleColumns = ref(columnsc.value.map(col => col.name));
     watch(rowsc.value, (val) => {
-      // console.log('ds');
       calculateAmount();
+    })
+
+    // watch(discounto.value, () => {
     // let priceColumnPosition = columnsc.value.filter((col, idx) =>{return /price/.test(col.name)}).map(col => col.name);
     // rowsc.value.forEach(row =>{
     //   priceColumnPosition.forEach(price =>{
     //     row[price] = Math.round(row[price]*(1-discounto.value.val/100)); 
     //   })
-    })
+    // })
 
-    // watch(discounto.value, () => {
-    //   // let priceColumnPosition = columnsc.value.filter((col, idx) =>{return /price/.test(col.name)}).map(col => col.name);
-    //   // rowsc.value.forEach(row =>{
-    //   //   priceColumnPosition.forEach(price =>{
-    //   //     row[price] = Math.round(row[price]*(1-discounto.value.val/100)); 
-    //   //   })
-    //   // })
-
-    //   rowsc.value.map(row =>{
-    //     row['price'] = Math.round(row[props.square]*(1-discounto.value.val/100));
-    //   })
-
-    //   // let filteredRows = rowsc.value.map(row => (
-    //     // props.filter.filter(function(i) {return (row.filter.split(', ').indexOf(i) > -1);}).length > 0
-    //   // ));
-    //   // console.log('filteredRows', filteredRows);
+    // let filteredRows = rowsc.value.map(row => (
+    //   props.filter.filter(function(i) {return (row.filter.split(', ').indexOf(i) > -1);}).length > 0
+    // ));
+    // console.log('filteredRows', filteredRows);
     // })
 
     // watch(() => props.square,()=>{
-      // console.log(props.square);
+    // console.log(props.square);
     //   rowsc.value.map(row =>{
     //     row['price'] = Math.round(row[props.square]*(1-discounto.value.val/100));
     //   })
     // })
 
     return {
-      ttt,
       filter: ref({ value: 'none' }),
       visibleColumns,
       squarec,
@@ -187,26 +165,32 @@ app.component('services', {
     }
   },
 
-  // watch:(discount, (discount, prediscount) => {
-  //   console.log(discount);
-  //   console.log(prediscount);
-  // }),
+  /*
+  watch:(discount, (discount, prediscount) => {
+    console.log(discount);
+    console.log(prediscount);
+  }),
+  */
 
-  // watch:{
-    // square(val){
-    //   console.log(`square was changed to ${val}`)
-    //   sqr = val
-    //   console.log(sqr)
-    //   // visibleColumns = setvisiblecolumns()
-    // },
-    // filter(val){
-    //   console.log(val);
-    // }
-  // },
+  /*
+  watch:{
+    square(val){
+      console.log(`square was changed to ${val}`)
+      sqr = val
+      console.log(sqr)
+      // visibleColumns = setvisiblecolumns()
+    },
+    filter(val){
+      console.log(val);
+    }
+  },
+  */
 
+  /*
   mounted: function () {
-    // console.log(`${this.$options.name} component is mounted`);
+    console.log(`${this.$options.name} component is mounted`);
   }
+  */
 });
 
 //  <q-td key="desc" :props="props">
@@ -223,7 +207,6 @@ app.component('services', {
 // :filter = "filter"
 // :filter-method="myfilterMethod"
 // :visible-columns="visibleColumns"
-
 // selection="multiple"
 // v-model:selected="selectedc"
 // :selected.sync="selected"

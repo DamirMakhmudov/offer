@@ -22,24 +22,23 @@ var AppObject = {
       filterSquare: ref(view.filterSquare),
       categories: ref(model.categories),
       selected: ref(model.selected),
-
       columnspayment: ref(view.columnsPayment),
       rowspayment: ref(model.rowsPayment),
       payments: ref(model.payments),
       selectedpayment: ref(model.selectedPayment),
-
       columnsadditional: ref(view.columnsAdditional),
       rowsadditional: ref(model.rowsAdditional),
       selectedadditional: ref(model.selectedAdditional),
-
       columnsdocuments: ref(view.columnsDocuments),
       rowsdocuments: ref(model.rowsDocuments),
       selecteddocuments: ref(model.selectedDocuments),
     }
   },
+  /*
   mounted: function () {
-    // console.log(`${this.$options.name} component is mounted`);
+    console.log(`${this.$options.name} component is mounted`);
   }
+  */
 }
 
 const app = Vue.createApp(AppObject)

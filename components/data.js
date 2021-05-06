@@ -59,7 +59,6 @@ var view = {
   ]
 }
 
-
 var model = {
   selectedOffer: {"val": ""},
 
@@ -140,22 +139,22 @@ var model = {
 
   selectedDocuments: { "val": [] },
 
-  amountServices: { "val": 0 }
+  amountServices: { "val": 0 },
+
+  amountPayments: { "val": 0 }
 }
 
 
-test();
+// test();
 
 function test(){
+  console.log('test');
   let arr = model.rows;
   let s = 0;
   let acc = 0;
-
   arr.forEach(row=>{
     s += row.price1
   })
-  console.log("s", s)
   const red = (acc, cur) => +acc + cur.price1;
   let sum = arr.reduce(red);
-  console.log('sum', sum);
 }

@@ -16,12 +16,11 @@ app.component('offers',{
     function saveIt(v){
       saveDataJS(v.label);
       $q.loading.show();
-
     }
     return{
       selectedoffer: ref(model.selectedOffer),
       options: view.filterOffers,
       saveIt
     }
-  },
+  }
 })
