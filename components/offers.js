@@ -18,14 +18,14 @@ app.component('offers',{
     function saveIt(v){
       // saveDataJS(v.label);
       $q.loading.show({
-        message: 'Секунду. Я сохраняю данные и сам закрою диалог...',
+        message: 'Секунду. Я сохраняю данные и сам закрою диалог...'
       });
     }
 
     function printIt(v){
-      // printJS(v.label);
+      // printJS(v.value);
       $q.loading.show({
-        message: 'Печатаю компредложение. Нужно немного подождать...',
+        message: 'Печатаю компредложение. Нужно немного подождать...'
       });
     }
     
