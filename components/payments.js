@@ -35,7 +35,7 @@ app.component('payments', {
 
     <template v-slot:top='props'>
       <div style="width:100%;float:right" :props='props'>
-        <span style='font:14pt arial'>Услуги</span>
+        <span style='font:14pt arial'>Порядок оплаты</span>
         <q-input v-model.number="amount.val" type="number" style="width:200px;float:right" dense label='Итого'/>
       </div>
     </template>

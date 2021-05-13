@@ -63,6 +63,9 @@ app.component('services', {
     },
     selected: {
       type: Object
+    },
+    selectedchoice: {
+      type: Object
     }
   },
   setup(props) {
@@ -74,7 +77,8 @@ app.component('services', {
       filtercategoryc = ref(props.filter),
       discounto = ref(model.discount),
       amount = ref(model.amountServices),
-      visibleColumns = computed(() => { return setvisiblecolumns(props.square) });
+      visibleColumns = computed(() => { return setvisiblecolumns(props.square) }),
+      selectedchoicec = ref(props.selectedchoice);
 
     function setvisiblecolumns() {
       rowsc.value.map(row =>{
@@ -85,8 +89,9 @@ app.component('services', {
 
     function myfilterMethod() {
       calculateAmount();
+      let length = props.filter.length;
       return rowsc.value.filter(row => (
-        props.filter.filter(i => {return (row.filter.split(', ').indexOf(i) > -1);}).length > 0
+        props.filter.filter(i => {return (row.filter.split(', ').indexOf(i) > -1);}).length >= length
       ))
     }
 
@@ -126,6 +131,13 @@ app.component('services', {
       calculateAmount();
     })
 
+    watch(selectedchoicec.value, (val) => {
+      let key = val.val.value;
+      selectedc.value.val = rowsc.value.filter(row =>{
+        return row[key] == true
+      });
+    })
+
     // watch(discounto.value, () => {
     // let priceColumnPosition = columnsc.value.filter((col, idx) =>{return /price/.test(col.name)}).map(col => col.name);
     // rowsc.value.forEach(row =>{
@@ -157,6 +169,7 @@ app.component('services', {
       discounto,
       filtercategoryc,
       amount,
+      selectedchoicec,
       myfilterMethod,
       calculateAmount,
       addRow,

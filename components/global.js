@@ -32,6 +32,7 @@ var AppObject = {
       columnsdocuments: ref(view.columnsDocuments),
       rowsdocuments: ref(model.rowsDocuments),
       selecteddocuments: ref(model.selectedDocuments),
+      selectedchoice: ref(model.selectedchoice),
     }
   },
   /*

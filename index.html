@@ -13,12 +13,12 @@
 <body>
   <div id="q-app">
     <div class="q-ma-md">
-      <offers></offers>
+      <offers :selectedchoice='selectedchoice'></offers>
     </div>
     <q-scroll-area style="height: 48em">
       <square :square='square' :options='filterSquare'></square>
       <categories :filter='categories'></categories>
-      <services :selected='selected' :columns='columns' :rows='rows' :filter='categories.val' :square='square.val'></services>
+      <services :selected='selected' :columns='columns' :rows='rows' :filter='categories.val' :square='square.val' :selectedchoice='selectedchoice'></services>
       <payments :selected='selectedpayment' :columns='columnspayment' :rows='rowspayment' :filter='payments'></payments>
       <additional :columns='columnsadditional' :rows='rowsadditional' :selected='selectedadditional'></additional>
       <documents :columns='columnsdocuments' :rows='rowsdocuments' :selected='selecteddocuments' :filter='payments'></documents>
