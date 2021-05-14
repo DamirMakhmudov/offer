@@ -6,7 +6,8 @@ app.component('offers',{
   <div class="q-ma-md">
     <div class="row justify-between">
       <q-select v-model="selectedoffer.val" :options="options" label="Выберите шаблон" class="col" style="overflow: auto;"/>
-      <q-select v-model="selectedchoicec.val" :options="optionschoice" label="Выберите автовыбор" class="col" style="overflow: auto;"/>
+      <q-select v-model="selectedchoicec.val" :options="optionschoice" label="Выберите профиль" class="col" style="overflow: auto;"/>
+      <q-select v-model="selectedformatc.val" :options="optionsformat" label="Выберите формат" class="col" style="overflow: auto;"/>
     </div>
     <div class="q-ma-sm row justify-end">
       <q-btn v-show="show" color="positive" icon="print" label="Печать" @click="printIt(selectedoffer.val)" style="overflow: auto;max-height:4em"/>
@@ -41,10 +42,12 @@ app.component('offers',{
 
     return{
       selectedoffer,
-      show: computed(() => { return selectedoffer.value.val =="" ? false : true }),
       selectedchoicec: ref(props.selectedchoice),
+      selectedformatc: ref(model.selectedFormat),
       options: view.filterOffers,
       optionschoice: view.filterChoice,
+      optionsformat: view.filterFormat,
+      show: computed(() => { return selectedoffer.value.val == "" ? false : true }),
       saveIt,
       printIt
     }

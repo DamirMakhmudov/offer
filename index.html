@@ -28,10 +28,14 @@
   <script>
     function saveDataJS(){
       let jsdata = JSON.stringify({view, model});
-      google.script.run.withSuccessHandler(finishSaving).saveDataGS(jsdata);
+      google.script.run.withSuccessHandler(closeModal).saveDataGS(jsdata);
     }
 
-    function finishSaving(message){
+    function printJS(template){
+      google.script.run.withSuccessHandler(closeModal).printGS(template, JSON.stringify(model));
+    }
+
+    function closeModal(message){
       google.script.host.close();
     }
   </script>
