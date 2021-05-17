@@ -6,7 +6,7 @@ app.component('offers',{
   <div class="q-ma-md">
     <div class="row justify-between">
       <q-select v-model="selectedoffer.val" :options="options" label="Выберите шаблон" class="col" style="overflow: auto;"/>
-      <q-select v-model="selectedchoicec.val" :options="optionschoice" label="Выберите профиль" class="col" style="overflow: auto;"/>
+      <q-select v-model="selectedprofilec.val" :options="optionsprofile" label="Выберите профиль" class="col" style="overflow: auto;"/>
       <q-select v-model="selectedformatc.val" :options="optionsformat" label="Выберите формат" class="col" style="overflow: auto;"/>
     </div>
     <div class="q-ma-sm row justify-end">
@@ -17,7 +17,7 @@ app.component('offers',{
   `
   ,
   props: {
-    selectedchoice: {
+    selectedprofile: {
       type: Object
     }
   }
@@ -42,10 +42,10 @@ app.component('offers',{
 
     return{
       selectedoffer,
-      selectedchoicec: ref(props.selectedchoice),
+      selectedprofilec: ref(props.selectedprofile),
       selectedformatc: ref(model.selectedFormat),
-      options: view.filterOffers,
-      optionschoice: view.filterChoice,
+      options: view.filterOffer,
+      optionsprofile: view.filterProfile,
       optionsformat: view.filterFormat,
       show: computed(() => { return selectedoffer.value.val == "" ? false : true }),
       saveIt,

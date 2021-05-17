@@ -1,11 +1,11 @@
 var view = {
 
-  filterOffers: [
+  filterOffer: [
     { "label": "Copy of Коммерческое предложение", "value": "1ZhY0nEEJK-6HiIuM-rHN2H2uem2Htaia5jFgqC9KmeU" },
     { "label": "Коммерческое предложение", "value": "17ocUkGrgPPbxwOWF40uob6JsnRwsV5X3edO6a5LNy3c" }
   ],
 
-  filterChoice: [
+  filterProfile: [
     { "label": "Шаблон 1", "value": "template1" },
     { "label": "Шаблон 2", "value": "template2" }
   ],
@@ -71,11 +71,11 @@ var view = {
 }
 
 var model = {
-  selectedFormat: { "val": view.filterFormat[0].label },
-
   selectedOffer: { "val": "" },
-
-  selectedChoice: { "val": "" },
+  
+  selectedProfile: { "val": "" },
+  
+  selectedFormat: { "val": view.filterFormat[0] },
 
   discount: { "val": 0 },
 

@@ -16,6 +16,7 @@ var AppObject = {
   },
   setup() {
     return {
+      selectedprofile: ref(model.selectedProfile),
       square: ref(model.square),
       columns: ref(view.columns),
       rows: ref(model.rows),
@@ -32,7 +33,6 @@ var AppObject = {
       columnsdocuments: ref(view.columnsDocuments),
       rowsdocuments: ref(model.rowsDocuments),
       selecteddocuments: ref(model.selectedDocuments),
-      selectedchoice: ref(model.selectedChoice),
     }
   },
   /*
