@@ -27,8 +27,7 @@
   
   <script>
     function saveDataJS(){
-      let jsdata = JSON.stringify({view, model});
-      google.script.run.withSuccessHandler(closeModal).saveDataGS(jsdata);
+      google.script.run.withSuccessHandler(closeModal).saveDataGS(JSON.stringify(model));
     }
 
     function printJS(template){

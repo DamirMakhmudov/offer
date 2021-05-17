@@ -26,15 +26,15 @@ app.component('offers',{
     const $q = useQuasar();
     const selectedoffer = ref(model.selectedOffer);
 
-    function saveIt(v){
-      // saveDataJS(v.label);
+    function saveIt(){
+      saveDataJS();
       $q.loading.show({
-        message: 'Секунду. Я сохраняю данные и сам закрою диалог...'
+        message: 'Секунду. Я сохраню данные и сам закрою диалог...'
       });
     }
 
     function printIt(v){
-      // printJS(v.value);
+      printJS(v.value);
       $q.loading.show({
         message: 'Печатаю компредложение. Нужно немного подождать...'
       });
