@@ -3,6 +3,16 @@ app.component('offers',{
   template:
   /*html*/
   `
+  <div class="q-ma-sm" style="overflow: auto">
+    <q-list dense bordered  separator class="rounded-borders">
+      <q-item v-for="item in selectedc.val" clickable v-ripple>
+        <q-item-section class="text-caption">
+         {{item.name}}
+        </q-item-section>
+      </q-item>
+    </q-list>
+  </div>
+
   <div class="q-ma-md">
     <div class="row justify-between">
       <q-select v-model="selectedoffer.val" :options="options" label="Выберите шаблон" class="col" style="overflow: auto;"/>
@@ -41,6 +51,7 @@ app.component('offers',{
     }
 
     return{
+      selectedc: ref(model.selected),
       selectedoffer,
       selectedprofilec: ref(props.selectedprofile),
       selectedformatc: ref(model.selectedFormat),
