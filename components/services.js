@@ -88,10 +88,12 @@ app.component('services', {
     };
 
     function myfilterMethod() {
+      console.log('myfilterMethod');
       calculateAmount();
       let length = props.filter.length;
       return rowsc.value.filter(row => (
-        props.filter.filter(i => {return (row.filter.split(', ').indexOf(i) > -1);}).length))
+        props.filter.filter(i => {return (row.filter.split(', ').indexOf(i) > -1);}).length)
+      )
     }
 
     function calculateAmount(){

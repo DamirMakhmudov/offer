@@ -3,6 +3,7 @@ app.component('additional', {
   template:
   /*html*/
   `
+  period:{{period}}
   <div class="q-pa-md">
 
     <q-table
@@ -76,6 +77,10 @@ app.component('additional', {
       return `Выбрано строк: ${selectedc.value.val.length}`
     }
 
+    onMounted:{
+      calculateTime();
+    }
+
     watch(selectedc.value, (val) => {
       calculateTime();
     })
@@ -86,9 +91,10 @@ app.component('additional', {
       selectedc,
       period,
       getSelectedString,
-      addRow
+      addRow,
     } 
   },
+
 })
 // @update:modelValue="val => { $emit('fill-filter', filtersc) }"
 // :filter = "filter"

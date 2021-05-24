@@ -16,8 +16,6 @@ app.component('documents', {
       selection="multiple"
       v-model:selected="selectedc.val"
       :selected-rows-label="getSelectedString"
-      :filter = "filter"
-      :filter-method="myfilterMethod"
     >
 
       <template v-slot:body="props">
@@ -60,11 +58,13 @@ app.component('documents', {
       selectedc= ref(props.selected),
       paymentsc = ref(props.filter);
 
+    /* restricted by client
     function myfilterMethod() {
       return rowsc.value.filter(row => (
         props.filter.val.filter(function(i) {return (row.filter.split(', ').indexOf(i) > -1);}).length > 0
       ));
     }
+    */
 
     function addRow() {
       let arr = {};
@@ -85,8 +85,7 @@ app.component('documents', {
       selectedc,
       paymentsc,
       getSelectedString,
-      addRow,
-      myfilterMethod
+      addRow
     } 
   },
 })
