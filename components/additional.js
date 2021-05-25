@@ -3,7 +3,6 @@ app.component('additional', {
   template:
   /*html*/
   `
-  period:{{period}}
   <div class="q-pa-md">
 
     <q-table
@@ -54,8 +53,7 @@ app.component('additional', {
     var
       columnsc = ref(props.columns),
       rowsc = ref(props.rows),
-      selectedc= ref(props.selected),
-      period = ref(model.amountTime);
+      selectedc= ref(props.selected);
 
     function addRow() {
       let arr = {};
@@ -65,33 +63,16 @@ app.component('additional', {
       rowsc.value.push(arr);
     }
 
-    function calculateTime(){
-      let amo = 0;
-      selectedc.value.val.forEach(row => {
-        amo += +row.time;
-      });
-      period.value.val = amo;
-    }
-
     function getSelectedString(){
       return `Выбрано строк: ${selectedc.value.val.length}`
     }
-
-    onMounted:{
-      calculateTime();
-    }
-
-    watch(selectedc.value, (val) => {
-      calculateTime();
-    })
 
     return {
       columnsc,
       rowsc,
       selectedc,
-      period,
       getSelectedString,
-      addRow,
+      addRow
     } 
   },
 

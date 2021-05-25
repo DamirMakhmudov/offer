@@ -77,6 +77,7 @@ app.component('services', {
       filtercategoryc = ref(props.filter),
       discounto = ref(model.discount),
       amount = ref(model.amountServices),
+      period = ref(model.amountTime),
       visibleColumns = computed(() => { return setvisiblecolumns(props.square) }),
       selectedprofilec = ref(props.selectedprofile);
 
@@ -88,9 +89,8 @@ app.component('services', {
     };
 
     function myfilterMethod() {
-      console.log('myfilterMethod');
       calculateAmount();
-      let length = props.filter.length;
+      // let length = props.filter.length;
       return rowsc.value.filter(row => (
         props.filter.filter(i => {return (row.filter.split(', ').indexOf(i) > -1);}).length)
       )
@@ -102,6 +102,14 @@ app.component('services', {
         amo += +row.price;
       });
       amount.value.val = amo;
+    }
+
+    function calculateTime(){
+      let amo = 0;
+      selectedc.value.val.forEach(row => {
+        amo += +row.time;
+      });
+      period.value.val = amo;
     }
 
     function addRow() {
@@ -128,6 +136,11 @@ app.component('services', {
 
     // var visibleColumns = ref(computed(() => { return setvisiblecolumns(props.square) }));
     // var visibleColumns = ref(columnsc.value.map(col => col.name));
+
+    watch(selectedc.value, (val) => {
+      calculateTime();
+    })
+
     watch(rowsc.value, (val) => {
       calculateAmount();
     })
@@ -138,6 +151,10 @@ app.component('services', {
         return row[key] == true
       });
     })
+
+    onMounted:{
+      calculateTime();
+    }
 
     // watch(discounto.value, () => {
     // let priceColumnPosition = columnsc.value.filter((col, idx) =>{return /price/.test(col.name)}).map(col => col.name);
@@ -170,6 +187,7 @@ app.component('services', {
       discounto,
       filtercategoryc,
       amount,
+      period,
       selectedprofilec,
       myfilterMethod,
       calculateAmount,
@@ -177,7 +195,7 @@ app.component('services', {
       setvisiblecolumns,
       getSelectedString
     }
-  },
+  }
 
   /*
   watch:(discount, (discount, prediscount) => {
