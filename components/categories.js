@@ -13,7 +13,8 @@ app.component('categories', {
         type="checkbox"
         inline
         dark
-      />
+      >
+      </q-option-group>
       <!--
       <template v-for='filter in filterarrcategoryc.value' :key='filter.label'>
         <q-checkbox

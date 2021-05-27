@@ -21,19 +21,19 @@ app.component('documents', {
       <template v-slot:body="props">
         <q-tr :props="props">
           <q-td>
-            <q-checkbox v-model="props.selected" />
+            <q-checkbox v-model="props.selected"></q-checkbox>
           </q-td>
           <q-td v-for='col in columnsc' :key="col.name" :props="props">
             {{ props.row[col.name] }}
             <q-popup-edit v-model="props.row[col.name]" :title="col.label" auto-save v-slot="scope">
-              <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" type="textarea"/>
+              <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" type="textarea"></q-input>
             </q-popup-edit>
           </q-td>
         </q-tr>
       </template>
       
     </q-table>
-    <q-btn color="primary" label="Добавить строку" @click="addRow"/>
+    <q-btn color="primary" label="Добавить строку" @click="addRow"></q-btn>
   </div>
   `
   ,

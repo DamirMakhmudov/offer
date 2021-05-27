@@ -11,7 +11,6 @@ var AppObject = {
     },
     megaclick() {
       this.rowsg[0].name = '123abx';
-      console.log('here');
     }
   },
   setup() {

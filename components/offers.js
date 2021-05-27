@@ -15,13 +15,13 @@ app.component('offers',{
 
   <div class="q-ma-md">
     <div class="row justify-between">
-      <q-select v-model="selectedoffer.val" :options="options" label="Выберите шаблон" class="col" style="overflow: auto;"/>
-      <q-select v-model="selectedprofilec.val" :options="optionsprofile" label="Выберите профиль" class="col" style="overflow: auto;"/>
-      <q-select v-model="selectedformatc.val" :options="optionsformat" label="Выберите формат" class="col" style="overflow: auto;"/>
+      <q-select v-model="selectedoffer.val" :options="options" label="Выберите шаблон" class="col" style="overflow: auto;"></q-select>
+      <q-select v-model="selectedprofilec.val" :options="optionsprofile" label="Выберите профиль" class="col" style="overflow: auto;"></q-select>
+      <q-select v-model="selectedformatc.val" :options="optionsformat" label="Выберите формат" class="col" style="overflow: auto;"></q-select>
     </div>
     <div class="q-ma-sm row justify-end">
-      <q-btn v-show="show" color="positive" icon="print" label="Печать" @click="printIt(selectedoffer.val)" style="overflow: auto;max-height:4em"/>
-      <q-btn color="primary" icon="save" label="Сохранить" @click="saveIt(selectedoffer.val)" style="overflow: auto;max-height:4em"/>
+      <q-btn v-show="show" color="positive" icon="print" label="Печать" @click="printIt(selectedoffer.val)" style="overflow: auto;max-height:4em"></q-btn>
+      <q-btn color="primary" icon="save" label="Сохранить" @click="saveIt(selectedoffer.val)" style="overflow: auto;max-height:4em"></q-btn>
     </div>
   </div>
   `

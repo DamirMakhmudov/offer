@@ -12,7 +12,8 @@ app.component('payments', {
         type="checkbox"
         inline
         dark
-      />
+      >
+      </q-option-group>
     </div>
   </div>
 
@@ -36,19 +37,19 @@ app.component('payments', {
     <template v-slot:top='props'>
       <div style="width:100%;float:right" :props='props'>
         <span style='font:14pt arial'>Порядок оплаты</span>
-        <q-input v-model.number="amount.val" type="number" style="width:200px;float:right" dense label='Итого'/>
+        <q-input v-model.number="amount.val" type="number" style="width:200px;float:right" dense label='Итого'></q-input>
       </div>
     </template>
 
     <template v-slot:body="props">
       <q-tr :props="props">
         <q-td>
-          <q-checkbox v-model="props.selected" />
+          <q-checkbox v-model="props.selected"></q-checkbox>
         </q-td>
         <q-td v-for='col in columnsc' :key="col.name" :props="props">
           {{ props.row[col.name] }}
           <q-popup-edit v-model="props.row[col.name]" :title="col.label" auto-save v-slot="scope">
-            <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" type="textarea"/>
+            <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" type="textarea"></q-input>
           </q-popup-edit>
         </q-td>
       </q-tr>

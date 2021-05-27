@@ -12,7 +12,8 @@ app.component('square', {
         color="primary"
         inline
         dark
-      />
+      >
+      </q-option-group>
     </div>
   </div>
   `
