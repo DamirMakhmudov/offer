@@ -1,6 +1,6 @@
 about
 =
-Data contents from model and view instances. External spreadsheet is using for store original data
+Frontend for modal dialog to manage offer. Data contents from model and view instances. External spreadsheet is using for store original data
 
 architecture
 =
