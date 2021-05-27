@@ -4,12 +4,14 @@ app.component('services', {
   template:
   /*html*/
   `
+
+  services{{selectedc.val}}
   <div class="q-pa-md">
     <q-table
       :rows = "rowsc"
       :columns = "columnsc"
       title = "Услуги"
-      :rows-per-page-options = "[20]"
+      :rows-per-page-options = "[100]"
       row-key = "id"
       wrap-cells
       no-data-label = "Нет данных"

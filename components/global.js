@@ -12,9 +12,21 @@ var AppObject = {
     megaclick() {
       this.rowsg[0].name = '123abx';
     }
+    // setdamir(na){
+    //   console.log('it works');
+    //   damirc.value = 'dd'
+    // }
   },
   setup() {
+    var damirc = ref(damir)
+
+    function  setdamir(na){
+      console.log('it works');
+      damirc.value.val = 'dd'
+    }
     return {
+      setdamir,
+      damirc,
       selectedprofile: ref(model.selectedProfile),
       square: ref(model.square),
       columns: ref(view.columns),
@@ -42,7 +54,7 @@ var AppObject = {
 }
 
 const app = Vue.createApp(AppObject)
-
+// window.app = mountedapp;
 app.use(Quasar, {
   config: {
     notify: { /* look at QuasarConfOptions from the API card */ },

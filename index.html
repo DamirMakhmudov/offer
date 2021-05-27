@@ -11,21 +11,33 @@
 </head>
 
 <body>
+  <input type="button" onclick="chdamir()">
   <div id="q-app">
+    name: {{damirc.val}}
+
     <div class="q-ma-md">
       <offers :selectedprofile='selectedprofile'></offers>
     </div>
     <q-scroll-area style="height: 48em">
-      <square :square='square' :options='filterSquare'></square>
-      <categories :filter='categories'></categories>
-      <services :selected='selected' :columns='columns' :rows='rows' :filter='categories.val' :square='square.val' :selectedprofile='selectedprofile'></services>
-      <payments :selected='selectedpayment' :columns='columnspayment' :rows='rowspayment' :filter='payments'></payments>
-      <additional :columns='columnsadditional' :rows='rowsadditional' :selected='selectedadditional'></additional>
-      <documents :columns='columnsdocuments' :rows='rowsdocuments' :selected='selecteddocuments' :filter='payments'></documents>
+      <example :selected='selectedadditional' :columns='columnsadditional' :rows='rowsadditional'></example>
+
+      <!-- <square :square='square' :options='filterSquare'></square> -->
+      <!-- <categories :filter='categories'></categories> -->
+      <!-- <services :selected='selected' :columns='columns' :rows='rows' :filter='categories.val' :square='square.val' :selectedprofile='selectedprofile'></services> -->
+      <!-- <payments :selected='selectedpayment' :columns='columnspayment' :rows='rowspayment' :filter='payments'></payments> -->
+      <!-- <additional :selected='selectedadditional' :columns='columnsadditional' :rows='rowsadditional'></additional> -->
+      <!-- <documents :columns='columnsdocuments' :rows='rowsdocuments' :selected='selecteddocuments' :filter='payments'></documents> -->
     </q-scroll-area>
   </div>
   
   <script>
+    function chdamir(){
+      console.log('d');
+      // console.log(window.app.setdamir());
+      console.log(window.app);
+      window.app.setdamir('new name');
+    }
+
     function saveDataJS(){
       google.script.run.withSuccessHandler(closeModal).saveDataGS(JSON.stringify(model));
     }
@@ -52,6 +64,8 @@
 
   <!-- Import components -->
   <script src="./components/global.js"></script>
+  <script src="./components/example.js"></script>
+
   <script src="./components/offers.js"></script>
   <script src="./components/square.js"></script>
   <script src="./components/categories.js"></script>
@@ -61,7 +75,9 @@
   <script src="./components/documents.js"></script>
   
   <!-- Mount app -->
-  <script>const mountedapp = app.mount('#q-app')</script>
+  <script>const mountedapp = app.mount('#q-app')
+  window.app = mountedapp;
+  </script>
   
 </body>
 </html>
