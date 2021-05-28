@@ -54,7 +54,6 @@ app.component('additional', {
       columnsc = ref(props.columns),
       rowsc = ref(props.rows),
       selectedc= ref(props.selected);
-      // selectedc= ref(model.selectedAdditional),
 
     function addRow() {
       let arr = {};

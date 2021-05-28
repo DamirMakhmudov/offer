@@ -2,31 +2,12 @@
 const { createApp, ref, reactive, computed, watch, onMounted, watchEffect, onBeforeUnmount } = Vue;
 const { useQuasar, Loading, QSpinnerGears } = Quasar;
 
-var AppObject = {
-  name: 'global',
-  methods: {
-    keepfilter(val) {
-      console.log('keepfilter was run')
-      this.filters = val
-    },
-    megaclick() {
-      this.rowsg[0].name = '123abx';
-    }
-    // setdamir(na){
-    //   console.log('it works');
-    //   damirc.value = 'dd'
-    // }
-  },
+var vueObject = {
+  name: 'root',
   setup() {
-    var damirc = ref(damir)
-
-    function  setdamir(na){
-      console.log('it works');
-      damirc.value.val = 'dd'
-    }
+    var first = ref('hello');
     return {
-      setdamir,
-      damirc,
+      first,
       selectedprofile: ref(model.selectedProfile),
       square: ref(model.square),
       columns: ref(view.columns),
@@ -53,8 +34,8 @@ var AppObject = {
   */
 }
 
-const app = Vue.createApp(AppObject)
-// window.app = mountedapp;
+const app = Vue.createApp(vueObject)
+
 app.use(Quasar, {
   config: {
     notify: { /* look at QuasarConfOptions from the API card */ },

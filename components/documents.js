@@ -87,7 +87,7 @@ app.component('documents', {
       getSelectedString,
       addRow
     } 
-  },
+  }
 })
 // @update:modelValue="val => { $emit('fill-filter', filtersc) }"
 // :filter = "filter"
