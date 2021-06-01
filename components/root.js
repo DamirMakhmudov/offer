@@ -5,9 +5,7 @@ const { useQuasar, Loading, QSpinnerGears } = Quasar;
 var vueObject = {
   name: 'root',
   setup() {
-    var first = ref('hello');
     return {
-      first,
       selectedprofile: ref(model.selectedProfile),
       square: ref(model.square),
       columns: ref(view.columns),

@@ -230,13 +230,6 @@ app.component('services', {
 
 // @selection="val => { $emit('backsquared', selectedc) }"
 
-// :filter = "filter"
-// :filter-method="myfilterMethod"
-// :visible-columns="visibleColumns"
-// selection="multiple"
-// v-model:selected="selectedc"
-// :selected.sync="selected"
-
 // <q-td>
 //   <q-checkbox v-model="props.selected" />
 // </q-td>

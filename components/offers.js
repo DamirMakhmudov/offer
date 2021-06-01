@@ -4,7 +4,7 @@ app.component('offers',{
   /*html*/
   `
   <div class="q-ma-sm" style="overflow: auto">
-    <q-list dense bordered  separator class="rounded-borders">
+    <q-list dense bordered separator class="rounded-borders">
       <q-item v-for="item in selectedc.val" clickable v-ripple>
         <q-item-section class="text-caption">
          {{item.name}}
