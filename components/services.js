@@ -136,7 +136,7 @@ app.component('services', {
     watch(selectedc.value, (val) => {
       calculateTime();
       calculateAmount();
-      selectedc.value.val.sort((a,b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0))
+      selectedc.value.val.sort((x,y) => (x.id > y.id) ? 1 : ((x.id > y.id) ? -1 : 0))
     })
 
     watch(selectedprofilec.value, (val) => {
