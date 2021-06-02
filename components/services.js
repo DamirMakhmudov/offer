@@ -4,6 +4,7 @@ app.component('services', {
   template:
   /*html*/
   `
+  <hr>
   <div class="q-pa-md">
     <q-table
       :rows = "rowsc"
@@ -36,7 +37,7 @@ app.component('services', {
           </q-td>
           <q-td v-for='col in columnsc' :key="col.name" :props="props">
             {{ props.row[col.name] }}
-            <q-popup-edit v-model="props.row[col.name]" :title="col.label" auto-save v-slot="scope">
+            <q-popup-edit v-model="props.row[col.name]" :title="col.label" auto-save v-slot="scope" @save="syncselected(props.row)">
               <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" type="textarea"></q-input>
             </q-popup-edit>
           </q-td>
@@ -90,7 +91,6 @@ app.component('services', {
 
     function myfilterMethod() {
       calculateAmount();
-      // let length = props.filter.length;
       return rowsc.value.filter(row => (
         props.filter.filter(i => {return (row.filter.split(', ').indexOf(i) > -1);}).length)
       )
@@ -126,23 +126,17 @@ app.component('services', {
       return `Выбрано строк: ${selectedc.value.val.length}`
     }
 
-    // watchEffect(() => {
-    //   console.log('watchEffect', discounto.value.val);
-    //   //  console.log('props', props.filter);
-    //   //  myfilterMethod()
-    //   // selectedc = props.selected
-    //   // console.log('watchEffect', discounto.val);
-    // })
-
-    // var visibleColumns = ref(computed(() => { return setvisiblecolumns(props.square) }));
-    // var visibleColumns = ref(columnsc.value.map(col => col.name));
+    function syncselected(rowo){
+      let idx = selectedc.value.val.findIndex(row => row.id === rowo.id);
+      if(idx!= -1){
+        selectedc.value.val[idx] = rowo
+      }
+    }
 
     watch(selectedc.value, (val) => {
       calculateTime();
-    })
-
-    watch(rowsc.value, (val) => {
       calculateAmount();
+      selectedc.value.val.sort((a,b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0))
     })
 
     watch(selectedprofilec.value, (val) => {
@@ -155,6 +149,17 @@ app.component('services', {
     onMounted:{
       calculateTime();
     }
+
+    // watchEffect(() => { 
+    //   console.log('watchEffect', discounto.value.val);
+    //   //  console.log('props', props.filter);
+    //   //  myfilterMethod()
+    //   // selectedc = props.selected
+    //   // console.log('watchEffect', discounto.val);
+    // })
+
+    // var visibleColumns = ref(computed(() => { return setvisiblecolumns(props.square) }));
+    // var visibleColumns = ref(columnsc.value.map(col => col.name));
 
     // watch(discounto.value, () => {
     // let priceColumnPosition = columnsc.value.filter((col, idx) =>{return /price/.test(col.name)}).map(col => col.name);
@@ -193,7 +198,8 @@ app.component('services', {
       calculateAmount,
       addRow,
       setvisiblecolumns,
-      getSelectedString
+      getSelectedString,
+      syncselected
     }
   }
 

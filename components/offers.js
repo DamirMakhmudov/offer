@@ -7,7 +7,7 @@ app.component('offers',{
     <q-list dense bordered separator class="rounded-borders">
       <q-item v-for="item in selectedc.val" clickable v-ripple>
         <q-item-section class="text-caption">
-         {{item.name}}
+        {{item.id}} {{item.name}}
         </q-item-section>
       </q-item>
     </q-list>

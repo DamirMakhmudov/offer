@@ -3,7 +3,6 @@ app.component('additional', {
   template:
   /*html*/
   `
-  additional: {{selected}}
   <div class="q-pa-md">
     <q-table
       :rows="rowsc"
@@ -25,7 +24,7 @@ app.component('additional', {
           </q-td>
           <q-td v-for='col in columnsc' :key="col.name" :props="props">
             {{ props.row[col.name] }}
-            <q-popup-edit v-model="props.row[col.name]" :title="col.label" auto-save v-slot="scope">
+            <q-popup-edit v-model="props.row[col.name]" :title="col.label" auto-save v-slot="scope" @save="syncselected(props.row)">
               <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" type="textarea"></q-input>
             </q-popup-edit>
           </q-td>
@@ -65,6 +64,13 @@ app.component('additional', {
 
     function getSelectedString(){
       return `Выбрано строк: ${selectedc.value.val.length}`
+    }
+
+    function syncselected(rowo){
+      let idx = selectedc.value.val.findIndex(row => row.id === rowo.id);
+      if(idx!= -1){
+        selectedc.value.val[idx] = rowo
+      }
     }
 
     return {

@@ -25,6 +25,7 @@ var vueObject = {
       selecteddocuments: ref(model.selectedDocuments),
     }
   },
+  
   /*
   mounted: function () {
     console.log(`${this.$options.name} component is mounted`);

@@ -33,7 +33,7 @@ app.component('example', {
 
         <q-td v-for='col in columnsc' :key="col.name" :props="props">
           {{ props.row[col.name] }}
-          <q-popup-edit v-model="props.row[col.name]" :title="col.label" auto-save v-slot="scope" @save="(value, initialvalue) =>testo(value, props.row, col.name)">
+          <q-popup-edit v-model="props.row[col.name]" :title="col.label" auto-save v-slot="scope" @save="syncselected(props.row)">
             <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" type="textarea"></q-input>
           </q-popup-edit>
         </q-td>
@@ -64,7 +64,7 @@ app.component('example', {
       rowsc = ref(props.rows),
       selectedc= ref(props.selected);
 
-    function testo(value, rowo, col){
+    function syncselected(rowo){
       let idx = selectedc.value.val.findIndex(row => row.id === rowo.id);
       if(idx!= -1){
         selectedc.value.val[idx] = rowo
@@ -90,19 +90,10 @@ app.component('example', {
       selectedc,
       addRow,
       testselection,
-      testo
+      syncselected
     } 
   }
 })
-
-
-function findo(element, index, array, id){
-  if(element.id == id){
-    return index
-  }else{
-    return'no'
-  }
-}
 
 // @selection = "val => { $emit('testselection', val) }"
 

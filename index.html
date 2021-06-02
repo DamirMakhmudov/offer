@@ -12,17 +12,17 @@
 
 <body>
   <div id="q-app">
-    <!-- <div class="q-ma-md">
+    <div class="q-ma-md">
       <offers :selectedprofile='selectedprofile'></offers>
-    </div> -->
-    <q-scroll-area style="height: 40em">
-      <example :selected='selectedadditional' :columns='columnsadditional' :rows='rowsadditional'></example>
-      <!-- <square :square='square' :options='filterSquare'></square>
+    </div>
+    <q-scroll-area style="height: 50em">
+      <!-- <example :selected='selectedadditional' :columns='columnsadditional' :rows='rowsadditional'></example> -->
+      <square :square='square' :options='filterSquare'></square>
       <categories :filter='categories'></categories>
       <services :selected='selected' :columns='columns' :rows='rows' :filter='categories.val' :square='square.val' :selectedprofile='selectedprofile'></services>
       <payments :selected='selectedpayment' :columns='columnspayment' :rows='rowspayment' :filter='payments'></payments>
       <additional :selected='selectedadditional' :columns='columnsadditional' :rows='rowsadditional'></additional>
-      <documents :columns='columnsdocuments' :rows='rowsdocuments' :selected='selecteddocuments' :filter='payments'></documents> -->
+      <documents :columns='columnsdocuments' :rows='rowsdocuments' :selected='selecteddocuments' :filter='payments'></documents>
     </q-scroll-area>
   </div>
   
@@ -31,8 +31,8 @@
       google.script.run.withSuccessHandler(closeModal).saveDataGS(JSON.stringify(model));
     }
 
-    function printJS(template){
-      google.script.run.withSuccessHandler(closeModal).printGS(template, JSON.stringify(model));
+    function printJS(template, format){
+      google.script.run.withSuccessHandler(closeModal).printGS(JSON.stringify(model), template, format);
     }
 
     function closeModal(message){
@@ -53,15 +53,15 @@
 
   <!-- Import components -->
   <script src="./components/root.js"></script>
-  <script src="./components/example.js"></script>
-  <!-- <script src="./components/offers.js"></script>
+  <!-- <script src="./components/example.js"></script> -->
+  <script src="./components/offers.js"></script>
   <script src="./components/square.js"></script>
   <script src="./components/categories.js"></script>
   <script src="./components/services.js"></script>
   <script src="./components/payments.js"></script>
   <script src="./components/additional.js"></script>
   <script src="./components/documents.js"></script>
-   -->
+  
   <!-- Mount app -->
   <script>const vm = app.mount('#q-app')</script>
   
