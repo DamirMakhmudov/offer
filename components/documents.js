@@ -92,7 +92,8 @@ app.component('documents', {
       selectedc,
       paymentsc,
       getSelectedString,
-      addRow
+      addRow,
+      syncselected
     } 
   }
 })

@@ -20,7 +20,7 @@ app.component('offers',{
       <q-select v-model="selectedformatc.val" :options="optionsformat" label="Выберите формат" class="col" style="overflow: auto;"></q-select>
     </div>
     <div class="q-ma-sm row justify-end">
-      <q-btn v-show="show" color="positive" icon="print" label="Печать" @click="printIt(selectedoffer.val)" style="overflow: auto;max-height:4em"></q-btn>
+      <q-btn v-show="show" color="positive" icon="print" label="Печать" @click="printIt(selectedoffer.val, selectedformatc.val)" style="overflow: auto;max-height:4em"></q-btn>
       <q-btn color="primary" icon="save" label="Сохранить" @click="saveIt(selectedoffer.val)" style="overflow: auto;max-height:4em"></q-btn>
     </div>
   </div>

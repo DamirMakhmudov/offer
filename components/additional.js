@@ -78,7 +78,8 @@ app.component('additional', {
       rowsc,
       selectedc,
       getSelectedString,
-      addRow
+      addRow,
+      syncselected
     } 
   },
 

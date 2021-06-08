@@ -3,6 +3,7 @@ app.component('payments', {
   template:
   /*html*/
   `
+  {{selectedc}}
   <div class="q-pa-md bg-grey-10 text-white">
     <div class="q-gutter-sm">
       <q-option-group
@@ -48,7 +49,7 @@ app.component('payments', {
         </q-td>
         <q-td v-for='col in columnsc' :key="col.name" :props="props">
           {{ props.row[col.name] }}
-          <q-popup-edit v-model="props.row[col.name]" :title="col.label" auto-save v-slot="scope">
+          <q-popup-edit v-model="props.row[col.name]" :title="col.label" buttons label-set="Сохранить" label-cancel="Отменить" v-slot="scope" @save="syncselected(props.row)">
             <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" type="textarea"></q-input>
           </q-popup-edit>
         </q-td>
@@ -99,6 +100,17 @@ app.component('payments', {
       });
       amount.value.val = amo;
     }
+    
+    watch(selectedc.value, (val) => {
+      selectedc.value.val.sort((a,b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0))
+    })
+
+    function syncselected(rowo){
+      let idx = selectedc.value.val.findIndex(row => row.id === rowo.id);
+      if(idx!= -1){
+        selectedc.value.val[idx] = rowo
+      }
+    }
 
     return {
       columnsc,
@@ -109,7 +121,8 @@ app.component('payments', {
       filter: ref({ value: 'none' }),
       amount,
       getSelectedString,
-      myfilterMethod
+      myfilterMethod,
+      syncselected
     } 
   },
 })

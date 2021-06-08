@@ -37,7 +37,7 @@ app.component('services', {
           </q-td>
           <q-td v-for='col in columnsc' :key="col.name" :props="props">
             {{ props.row[col.name] }}
-            <q-popup-edit v-model="props.row[col.name]" :title="col.label" auto-save v-slot="scope" @save="syncselected(props.row)">
+            <q-popup-edit v-model="props.row[col.name]" :title="col.label" v-slot="scope" buttons label-set="Сохранить" label-cancel="Отменить" @save="syncselected(props.row)">
               <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" type="textarea"></q-input>
             </q-popup-edit>
           </q-td>
@@ -136,7 +136,7 @@ app.component('services', {
     watch(selectedc.value, (val) => {
       calculateTime();
       calculateAmount();
-      selectedc.value.val.sort((x,y) => (x.id > y.id) ? 1 : ((x.id > y.id) ? -1 : 0))
+      selectedc.value.val.sort((a,b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0));
     })
 
     watch(selectedprofilec.value, (val) => {
