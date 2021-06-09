@@ -17,7 +17,6 @@ app.component('services', {
       no-results-label = "Нет данных"
       :filter = "filter"
       :filter-method="myfilterMethod"
-      :visible-columns="visibleColumns"
       selection="multiple"
       v-model:selected="selectedc.val"
       :selected-rows-label="getSelectedString"
@@ -51,7 +50,7 @@ app.component('services', {
   ,
   props: {
     square: {
-      type: String
+      type: Object
     },
     columns: {
       type: Array
@@ -79,14 +78,14 @@ app.component('services', {
       discounto = ref(model.discount),
       amount = ref(model.amountServices),
       period = ref(model.amountTime),
-      visibleColumns = computed(() => { return setvisiblecolumns(props.square) }),
+      // visibleColumns = computed(() => { return setvisiblecolumns(props.square) }),
       selectedprofilec = ref(props.selectedprofile);
 
     function setvisiblecolumns() {
       rowsc.value.map(row =>{
-        row['price'] = Math.round(row[props.square]*(1-discounto.value.val/100));
+        row['price'] = Math.round(row[props.square.val]*(1-discounto.value.val/100));
       })
-      return columnsc.value.map(col => col.name)
+      // return columnsc.value.map(col => col.name)
     };
 
     function myfilterMethod() {
@@ -128,6 +127,13 @@ app.component('services', {
 
     function syncselected(rowo){
       let idx = selectedc.value.val.findIndex(row => row.id === rowo.id);
+      rowsc.value[rowo.id-1].pricebufer = rowo.price;
+
+      console.log( rowsc.value[rowo.id-1].pricebufer );
+      console.log( rowo );
+      console.log( rowo.price );
+
+
       if(idx!= -1){
         selectedc.value.val[idx] = rowo
       }
@@ -146,9 +152,15 @@ app.component('services', {
       });
     })
 
+    watch(squarec.value, (val) => {
+      setvisiblecolumns();
+    })
+
     onMounted:{
       calculateTime();
     }
+
+    // :visible-columns="visibleColumns"
 
     // watchEffect(() => { 
     //   console.log('watchEffect', discounto.value.val);
@@ -184,7 +196,7 @@ app.component('services', {
 
     return {
       filter: ref({ value: 'none' }),
-      visibleColumns,
+      // visibleColumns,
       squarec,
       columnsc,
       rowsc,
