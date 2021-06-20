@@ -85,7 +85,6 @@ app.component('services', {
       rowsc.value.map(row =>{
         row['price'] = Math.round(row[props.square.val]*(1-discounto.value.val/100));
       })
-      // return columnsc.value.map(col => col.name)
     };
 
     function myfilterMethod() {
@@ -100,6 +99,7 @@ app.component('services', {
       selectedc.value.val.forEach(row => {
         amo += +row.price;
       });
+      amo = amo*(1-discounto.value.val/100);
       amount.value.val = amo;
     }
 
@@ -127,17 +127,14 @@ app.component('services', {
 
     function syncselected(rowo){
       let idx = selectedc.value.val.findIndex(row => row.id === rowo.id);
-      rowsc.value[rowo.id-1].pricebufer = rowo.price;
-
-      console.log( rowsc.value[rowo.id-1].pricebufer );
-      console.log( rowo );
-      console.log( rowo.price );
-
-
       if(idx!= -1){
         selectedc.value.val[idx] = rowo
       }
     }
+
+    watch(discounto.value, (val) => {
+      calculateAmount();
+    })
 
     watch(selectedc.value, (val) => {
       calculateTime();
@@ -154,6 +151,7 @@ app.component('services', {
 
     watch(squarec.value, (val) => {
       setvisiblecolumns();
+      // calculateAmount();
     })
 
     onMounted:{

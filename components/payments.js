@@ -3,7 +3,6 @@ app.component('payments', {
   template:
   /*html*/
   `
-  {{selectedc}}
   <div class="q-pa-md bg-grey-10 text-white">
     <div class="q-gutter-sm">
       <q-option-group
