@@ -70,6 +70,7 @@ var view = {
     { "name": "document", "label": "Документы", "align": "left", "style": "max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap" },
     { "name": "count", "label": "Количество", "align": "center" }
   ],
+  
   columnsPayment: [
     { "name": "name", "label": "Наименование", "align": "left", "style": "width: 70%" },
     { "name": "price", "label": "Стоимость", "align": "center" }

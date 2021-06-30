@@ -5,6 +5,8 @@ app.component('services', {
   /*html*/
   `
   <hr>
+  <q-input v-model.number="discounto.val" type="number" style="width:200px;float:right" dense label='Скидка,%'></q-input>
+
   <div class="q-pa-md">
     <q-table
       :rows = "rowsc"
@@ -84,6 +86,10 @@ app.component('services', {
     function setvisiblecolumns() {
       rowsc.value.map(row =>{
         row['price'] = Math.round(row[props.square.val]*(1-discounto.value.val/100));
+      });
+
+      selectedc.value.val.map(row =>{
+        row['price'] = Math.round(row[props.square.val]*(1-discounto.value.val/100));
       })
     };
 
@@ -151,7 +157,7 @@ app.component('services', {
 
     watch(squarec.value, (val) => {
       setvisiblecolumns();
-      // calculateAmount();
+      calculateAmount();
     })
 
     onMounted:{
