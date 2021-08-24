@@ -63,12 +63,12 @@ var view = {
   ],
 
   columns: [
-    { "name": "name", "label": "Наименование", "align": "left", "style": "max-width: 500px; overflow: hidden; text-overflow: ellipsis" },
-    { "name": "comment", "label": "Комментарий", "align": "left", "style": "max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap" },
-    { "name": "price", "label": "Сумма", "align": "center" },
-    { "name": "time", "label": "Срок оказания услуги, раб. дни", "align": "center" },
-    { "name": "document", "label": "Документы", "align": "left", "style": "max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap" },
-    { "name": "count", "label": "Количество", "align": "center" }
+    { "type":"textarea", "name": "name", "label": "Наименование", "align": "left", "style": "max-width: 500px; overflow: hidden; text-overflow: ellipsis" },
+    { "type":"textarea", "name": "comment", "label": "Комментарий", "align": "left", "style": "max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap" },
+    { "type":"number", "name": "price", "label": "Сумма", "align": "center" },
+    { "type":"textarea", "name": "time", "label": "Срок оказания услуги, раб. дни", "align": "center" },
+    { "type":"textarea", "name": "document", "label": "Документы", "align": "left", "style": "max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap" },
+    { "type":"textarea", "name": "count", "label": "Количество", "align": "center" }
   ],
   
   columnsPayment: [

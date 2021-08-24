@@ -5,7 +5,6 @@ app.component('services', {
   /*html*/
   `
   <hr>
-  <q-input v-model.number="discounto.val" type="number" style="width:200px;float:right" dense label='Скидка,%'></q-input>
 
   <div class="q-pa-md">
     <q-table
@@ -39,7 +38,7 @@ app.component('services', {
           <q-td v-for='col in columnsc' :key="col.name" :props="props">
             {{ props.row[col.name] }}
             <q-popup-edit v-model="props.row[col.name]" :title="col.label" v-slot="scope" buttons label-set="Сохранить" label-cancel="Отменить" @save="syncselected(props.row)">
-              <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" type="textarea"></q-input>
+              <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" :type="col.type"></q-input>
             </q-popup-edit>
           </q-td>
         </q-tr>
