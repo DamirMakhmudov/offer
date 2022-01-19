@@ -4,8 +4,6 @@ app.component('services', {
   template:
   /*html*/
   `
-  <hr>
-
   <div class="q-pa-md">
     <q-table
       :rows = "rowsc"

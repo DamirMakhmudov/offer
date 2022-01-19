@@ -27,16 +27,23 @@
   </div>
   
   <script>
+    // var view = JSON.parse(<?= getView() ?>);
+    // var model = JSON.parse(<?= getModel(id) ?>);
+
     function saveDataJS(){
       google.script.run.withSuccessHandler(closeModal).saveDataGS(JSON.stringify(model));
     }
 
     function printJS(template, format){
-      google.script.run.withSuccessHandler(closeModal).printGS(JSON.stringify(model), template, format);
+      google.script.run.withSuccessHandler(openUrl).printGS(JSON.stringify(model), template, format);
     }
 
     function closeModal(message){
-      google.script.host.close();
+      // google.script.host.close();
+    }
+
+    function openUrl(url){
+      window.open(url)
     }
   </script>
 

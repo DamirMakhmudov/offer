@@ -1,9 +1,14 @@
-app.component('offers',{
+app.component('offers', {
   name: 'offers',
   template:
-  /*html*/
-  `
-  <!--
+    /*html*/
+    `
+  <q-expansion-item
+        expand-separator
+        icon="view_list"
+        label="Выбранные позиции"
+        default-opened
+      >
   <div class="q-ma-sm" style="overflow: auto">
     <q-list dense bordered separator class="rounded-borders">
       <q-item v-for="item in selectedc.val" clickable v-ripple>
@@ -13,7 +18,8 @@ app.component('offers',{
       </q-item>
     </q-list>
   </div>
--->
+  </q-expansion-item>
+
   <div class="q-ma-md">
     <div class="row justify-between">
       <q-select v-model="selectedoffer.val" :options="options" label="Выберите шаблон" class="col" style="overflow: auto;"></q-select>
@@ -33,25 +39,25 @@ app.component('offers',{
     }
   }
   ,
-  setup(props){
+  setup(props) {
     const $q = useQuasar();
     const selectedoffer = ref(model.selectedOffer);
 
-    function saveIt(){
+    function saveIt() {
       saveDataJS();
       $q.loading.show({
         message: 'Секунду. Я сохраню данные и сам закрою диалог...'
       });
     }
 
-    function printIt(v){
+    function printIt(v) {
       printJS(v.value);
       $q.loading.show({
         message: 'Печатаю компредложение. Нужно немного подождать...'
       });
     }
 
-    return{
+    return {
       selectedc: ref(model.selected),
       selectedoffer,
       selectedprofilec: ref(props.selectedprofile),
