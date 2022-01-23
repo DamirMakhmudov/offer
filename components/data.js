@@ -39,13 +39,6 @@ var view = {
     { "value": "price4", "label": "151-200" },
   ],
 
- /* some new object */
- newObject: {
-   a: 1,
-   b: 2,
-   c: 3
- },
-
   filterCategories: [
     { "label": "ПТЗ", "value": "ПТЗ" },
     { "label": "ТЗБ", "value": "ТЗБ" },
