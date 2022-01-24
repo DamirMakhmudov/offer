@@ -12,9 +12,16 @@
 
 <body>
   <div id="q-app">
-    <div class="q-ma-md">
-      <offers :selectedprofile='selectedprofile'></offers>
-    </div>
+    <titleblock></titleblock>
+
+    <!-- <div class="q-ma-md"> -->
+    <!-- </div> -->
+    <q-expansion-item
+      expand-separator
+      icon="article"
+      label="Конструктор документа"
+    >
+    <offers :selectedprofile='selectedprofile'></offers>
     <q-scroll-area style="height: 50em">
       <!-- <example :selected='selectedadditional' :columns='columnsadditional' :rows='rowsadditional'></example> -->
       <square :square='square' :options='filterSquare'></square>
@@ -24,6 +31,9 @@
       <additional :selected='selectedadditional' :columns='columnsadditional' :rows='rowsadditional'></additional>
       <documents :columns='columnsdocuments' :rows='rowsdocuments' :selected='selecteddocuments' :filter='payments'></documents>
     </q-scroll-area>
+
+  </q-expansion-item>
+
   </div>
   
   <script>
@@ -60,7 +70,7 @@
 
   <!-- Import components -->
   <script src="./components/root.js"></script>
-  <!-- <script src="./components/example.js"></script> -->
+  <script src="./components/titleblock.js"></script>
   <script src="./components/offers.js"></script>
   <script src="./components/square.js"></script>
   <script src="./components/categories.js"></script>

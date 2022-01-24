@@ -1,25 +1,9 @@
 app.component('offers', {
   name: 'offers',
   template:
-    /*html*/
-    `
-  <q-expansion-item
-        expand-separator
-        icon="view_list"
-        label="Выбранные позиции"
-        default-opened
-      >
-  <div class="q-ma-sm" style="overflow: auto">
-    <q-list dense bordered separator class="rounded-borders">
-      <q-item v-for="item in selectedc.val" clickable v-ripple>
-        <q-item-section class="text-caption">
-        {{item.id}} {{item.name}}
-        </q-item-section>
-      </q-item>
-    </q-list>
-  </div>
-  </q-expansion-item>
-
+  /*html*/
+  `
+  <!-- Выбор шаблона документа, профиля и формата + кнопки Пачать и Сохранить-->
   <div class="q-ma-md">
     <div class="row justify-between">
       <q-select v-model="selectedoffer.val" :options="options" label="Выберите шаблон" class="col" style="overflow: auto;"></q-select>
