@@ -11,3 +11,17 @@ categories|view.filterCategories | model.categories
 services|view.columns <br> view.discount| model.rows <br> model.selected 
 payments|view.filterPayments <br> view.columnsPayment | model.payments <br> model.rowsPayment <br> model.selectedPayment
 additional|view.columnsAdditional|model.rowsAdditional <br>
+
+offer
+=
+firstname
+surname
+secondname
+
+**common**
+
+**customer**
+
+**legal**
+
+**ip**

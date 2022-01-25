@@ -91,6 +91,7 @@ var view = {
 var damir = { 'val': 'hello' };
 
 var model = {
+  
   selectedOffer: { "val": "" },
 
   selectedProfile: { "val": "" },
