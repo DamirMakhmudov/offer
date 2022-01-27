@@ -12,28 +12,25 @@
 
 <body>
   <div id="q-app">
-    <titleblock></titleblock>
+    <selectedrows></selectedrows>
 
-    <!-- <div class="q-ma-md"> -->
-    <!-- </div> -->
+    <fields></fields>
+
     <q-expansion-item
       expand-separator
       icon="article"
-      label="Конструктор документа"
+      label="Конструктор документов"
     >
-    <offers :selectedprofile='selectedprofile'></offers>
-    <q-scroll-area style="height: 50em">
-      <!-- <example :selected='selectedadditional' :columns='columnsadditional' :rows='rowsadditional'></example> -->
-      <square :square='square' :options='filterSquare'></square>
-      <categories :filter='categories'></categories>
-      <services :selected='selected' :columns='columns' :rows='rows' :filter='categories.val' :square='square' :selectedprofile='selectedprofile'></services>
-      <payments :selected='selectedpayment' :columns='columnspayment' :rows='rowspayment' :filter='payments'></payments>
-      <additional :selected='selectedadditional' :columns='columnsadditional' :rows='rowsadditional'></additional>
-      <documents :columns='columnsdocuments' :rows='rowsdocuments' :selected='selecteddocuments' :filter='payments'></documents>
-    </q-scroll-area>
-
-  </q-expansion-item>
-
+      <offers :selectedprofile='selectedprofile'></offers>
+      <q-scroll-area style="height: 50em">
+        <square :square='square' :options='filterSquare'></square>
+        <categories :filter='categories'></categories>
+        <services :selected='selected' :columns='columns' :rows='rows' :filter='categories.val' :square='square' :selectedprofile='selectedprofile'></services>
+        <payments :selected='selectedpayment' :columns='columnspayment' :rows='rowspayment' :filter='payments'></payments>
+        <additional :selected='selectedadditional' :columns='columnsadditional' :rows='rowsadditional'></additional>
+        <documents :columns='columnsdocuments' :rows='rowsdocuments' :selected='selecteddocuments' :filter='payments'></documents>
+      </q-scroll-area>
+    </q-expansion-item>
   </div>
   
   <script>
@@ -70,7 +67,8 @@
 
   <!-- Import components -->
   <script src="./components/root.js"></script>
-  <script src="./components/titleblock.js"></script>
+  <script src="./components/selectedrows.js"></script>
+  <script src="./components/fields.js"></script>
   <script src="./components/offers.js"></script>
   <script src="./components/square.js"></script>
   <script src="./components/categories.js"></script>
