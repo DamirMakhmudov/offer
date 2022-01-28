@@ -16,7 +16,6 @@ selectedAdditional = [
 ];
 
 var view = {
-
   filterOffer: [
     { "label": "Copy of Коммерческое предложение", "value": "1ZhY0nEEJK-6HiIuM-rHN2H2uem2Htaia5jFgqC9KmeU" },
     { "label": "Коммерческое предложение", "value": "17ocUkGrgPPbxwOWF40uob6JsnRwsV5X3edO6a5LNy3c" }
@@ -88,9 +87,40 @@ var view = {
   ]
 }
 
-var damir = { 'val': 'hello' };
-
 var model = {
+  fields: {
+    // common
+    firstname: "",
+    surname: "",
+    patronymic: "",
+    phonenumber: "",
+    email: "",
+    passportnumber: "",
+    passportdate:"",
+    passportdepartmentcode: "",
+    contractdate:"",
+    workdays: 3,
+    contractnumber: "",
+    payment1: 100,
+    payment2: 200,
+    payment3: 300,
+    payment4: 400,
+    payment5: 500,
+    // legal entity
+    inn: "",
+    kpp: "",
+    bik: "",
+    ogrn: "",
+    bank: "",
+    bankaccount: "",
+    correspondentaccount: "",
+    pfshort: "",
+    pffull: "",
+    company: "",
+    legalentityaddress: "",
+    factaddress: "",
+    paymentaccount: ""
+  },
   
   selectedOffer: { "val": "" },
 
@@ -183,6 +213,12 @@ var model = {
 // test();
 
 function test() {
+
+  let email = "samrukov@gmail.com"
+
+  let reg = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  console.log(reg.test(email));
+
   // let
   //   arr = model.rows,
   //   filters = ['МосгорБТИ', 'Объединение'],
@@ -197,5 +233,5 @@ function test() {
 
   let findrow = selectedAdditional[0];
   let idx = model.selectedAdditional.val.indexOf(findrow);
-  console.log(idx)
+  // console.log(idx)
 }
