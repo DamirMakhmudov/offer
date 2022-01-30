@@ -88,39 +88,36 @@ var view = {
 }
 
 var model = {
-  fields: {
-    // common
-    firstname: "",
-    surname: "",
-    patronymic: "",
-    phonenumber: "",
-    email: "",
-    passportnumber: "",
-    passportdate:"",
-    passportdepartmentcode: "",
-    contractdate:"",
-    workdays: 3,
-    contractnumber: "",
-    payment1: 100,
-    payment2: 200,
-    payment3: 300,
-    payment4: 400,
-    payment5: 500,
-    // legal entity
-    inn: "",
-    kpp: "",
-    bik: "",
-    ogrn: "",
-    bank: "",
-    bankaccount: "",
-    correspondentaccount: "",
-    pfshort: "",
-    pffull: "",
-    company: "",
-    legalentityaddress: "",
-    factaddress: "",
-    paymentaccount: ""
-  },
+  firstname: "",
+  surname: "",
+  patronymic: "",
+  phonenumber: "",
+  email: "",
+  passportnumber: "",
+  passportdate:"",
+  passportdepartmentcode: "",
+  contractdate:"",
+  workdays: 3,
+  contractnumber: "",
+  payment1: 0,
+  payment2: 0,
+  payment3: 0,
+  payment4: 0,
+  payment5: 0,
+  inn: "",
+  kpp: "",
+  bik: "",
+  ogrn: "",
+  bank: "",
+  correspondentaccount: "",
+  pfshort: "",
+  pffull: "",
+  company: "",
+  legalentityaddress: "",
+  factaddress: "",
+  paymentaccount: "",
+  contractNumber: "",
+  contractdDate :"",
   
   selectedOffer: { "val": "" },
 
@@ -196,18 +193,12 @@ var model = {
   ],
 
   selected: { "val": [] },
-
   selectedPayment: { "val": [] },
-
   selectedAdditional: { "val": [] },
-
   selectedDocuments: { "val": [] },
-
   amountServices: { "val": 0 },
-
   amountPayments: { "val": 0 },
-
-  amountTime: { "val": 0 }
+  amountTime: 0,
 }
 
 // test();
