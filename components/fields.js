@@ -5,7 +5,7 @@ app.component('fields', {
   `
   <!-- Данные физлица -->
   <q-expansion-item expand-separator icon="account_circle" label="Данные физлица" :default-opened=false>
-    <!-- common modelc -->
+    <!-- common data -->
     <div class="q-ma-md fit row justify-start">
       <q-input v-model=modelc.firstname class="q-mx-md" label="Имя"></q-input>
       <q-input v-model=modelc.surname class="q-mx-md" label="Фамилия"></q-input>
@@ -46,7 +46,7 @@ app.component('fields', {
 
   <!-- Данные ИП -->
   <q-expansion-item expand-separator icon="work" label="Данные ИП" :default-opened=false>
-    <!-- common modelc -->
+    <!-- common data -->
     <div class="q-ma-md fit row justify-start">
       <q-input v-model=modelc.firstname class="q-mx-md" label="Имя"></q-input>
       <q-input v-model=modelc.surname class="q-mx-md" label="Фамилия"></q-input>
@@ -83,11 +83,27 @@ app.component('fields', {
       <q-input v-model= modelc.contractNumber class="q-mx-md" label="Номер договора"></q-input>
       <datepicker :modelc=modelc property="contractdDate" label="Дата заключения договора"></datepicker>
     </div>
+
+    <!-- requisites -->
+    <q-separator color="orange" size="2pt" @dark="true" inset></q-separator>
+    <div class="q-ma-md fit row justify-start">
+      <q-input v-model=modelc.inn class="q-mx-md" label="ИНН"></q-input>
+      <q-input v-model=modelc.kpp class="q-mx-md" label="КПП"></q-input>
+      <q-input v-model=modelc.bik class="q-mx-md" label="БИК"></q-input>
+      <q-input v-model=modelc.bank class="q-mx-md" label="Банк"></q-input>
+      <q-input v-model=modelc.correspondentaccount class="q-mx-md" label="Кор. счет"></q-input>
+      <q-input v-model=modelc.paymentaccount class="q-mx-md" label="Расч. счет"></q-input>
+      <q-input v-model=modelc.factaddress class="q-mx-md" label="Факт. адрес"></q-input>
+      <q-input v-model=modelc.legalentityaddress class="q-mx-md" label="Юр. адрес"></q-input>
+      <q-input v-model=modelc.company class="q-mx-md" label="Название организации"></q-input>
+      <q-input v-model=modelc.pfshort class="q-mx-md" label="Правовая форма полностью"></q-input>
+      <q-input v-model=modelc.pffull class="q-mx-md" label="Правовая форма сокращенно"></q-input>
+    </div>
   </q-expansion-item>
 
   <!-- Данные юрлица -->
-  <q-expansion-item expand-separator icon="store" label="Данные юрлица" default-opened>
-    <!-- common modelc -->
+  <q-expansion-item expand-separator icon="store" label="Данные юрлица" :default-opened=fasle>
+    <!-- common data -->
     <div class="q-ma-md fit row justify-start">
       <q-input v-model=modelc.firstname class="q-mx-md" label="Имя"></q-input>
       <q-input v-model=modelc.surname class="q-mx-md" label="Фамилия"></q-input>

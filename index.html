@@ -34,9 +34,11 @@
   </div>
   
   <script>
+    // var idc = <?= id ?>;
     // var view = JSON.parse(<?= getView() ?>);
     // var model = JSON.parse(<?= getModel(id) ?>);
-
+    
+    /*restrictred*/
     function saveDataJS(){
       google.script.run.withSuccessHandler(closeModal).saveDataGS(JSON.stringify(model));
     }
@@ -45,6 +47,7 @@
       google.script.run.withSuccessHandler(openUrl).printGS(JSON.stringify(model), template, format);
     }
 
+    /*restrictred*/
     function closeModal(message){
       // google.script.host.close();
     }

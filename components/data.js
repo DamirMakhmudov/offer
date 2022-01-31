@@ -97,7 +97,6 @@ var model = {
   passportdate:"",
   passportdepartmentcode: "",
   contractdate:"",
-  workdays: 3,
   contractnumber: "",
   payment1: 0,
   payment2: 0,

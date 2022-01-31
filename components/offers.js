@@ -1,4 +1,4 @@
-app.component('offers', {
+  app.component('offers',{
   name: 'offers',
   template:
   /*html*/
@@ -23,25 +23,47 @@ app.component('offers', {
     }
   }
   ,
-  setup(props) {
+  setup(props){
     const $q = useQuasar();
     const selectedoffer = ref(model.selectedOffer);
 
-    function saveIt() {
-      saveDataJS();
+    function saveIt(){
       $q.loading.show({
-        message: 'Секунду. Я сохраню данные и сам закрою диалог...'
+        message: 'Секунду. Я сохраняю данные...'
       });
+
+      // saveDataJS();
+      google.script.run.withSuccessHandler(hideLoading).saveDataGS(JSON.stringify(model));
+
+      // timer = setTimeout(() => {
+      //   $q.loading.hide();
+      //   timer = void 0
+      // }, 2000)
     }
 
-    function printIt(v) {
-      printJS(v.value);
+    function hideLoading(res){
+      $q.loading.hide();
+      console.log(res);
+      if(res!=true){
+        $q.notify({
+          message: res,
+          color: 'red'
+        });
+      }
+    }
+
+    function printIt(template, format){
+      printJS(template.value, format.value);
       $q.loading.show({
         message: 'Печатаю компредложение. Нужно немного подождать...'
       });
+      timer = setTimeout(() => {
+        $q.loading.hide()
+        timer = void 0
+      }, 5000)
     }
 
-    return {
+    return{
       selectedc: ref(model.selected),
       selectedoffer,
       selectedprofilec: ref(props.selectedprofile),
