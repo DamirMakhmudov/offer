@@ -77,9 +77,7 @@ app.component('fields', {
     <!-- contract data -->
     <q-separator color="orange" size="2pt" @dark="true" inset></q-separator>
     <div class="q-ma-md fit row justify-start">
-      <q-input v-model= modelc.amountTime type=number class="q-mx-md" label="Сроки, рабочих дней" readonly>
-        <q-tooltip>Рассчитвается автоматически в конструторе документов</q-tooltip>
-      </q-input>
+      
       <q-input v-model= modelc.contractNumber class="q-mx-md" label="Номер договора"></q-input>
       <datepicker :modelc=modelc property="contractdDate" label="Дата заключения договора"></datepicker>
     </div>
@@ -102,7 +100,7 @@ app.component('fields', {
   </q-expansion-item>
 
   <!-- Данные юрлица -->
-  <q-expansion-item expand-separator icon="store" label="Данные юрлица" :default-opened=fasle>
+  <q-expansion-item expand-separator icon="store" label="Данные юрлица" :default-opened=false>
     <!-- common data -->
     <div class="q-ma-md fit row justify-start">
       <q-input v-model=modelc.firstname class="q-mx-md" label="Имя"></q-input>
