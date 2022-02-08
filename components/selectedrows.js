@@ -20,7 +20,7 @@ app.component('selectedrows', {
 
     </div>
 
-    <q-btn color="primary" icon="save" label="Сохранить" @click="saveIt()" style="overflow: auto;max-height:2em"></q-btn>
+    <q-btn color="primary" icon="save" label="Сохранить" @click="saveIt()" style="overflow: auto;max-height:2em;width:16em"></q-btn>
   </div>
   `
   ,

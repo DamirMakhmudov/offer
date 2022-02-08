@@ -9,19 +9,13 @@
       <q-select v-model="selectedoffer.val" :options="options" label="Выберите шаблон КП" class="col" style="overflow: auto;"></q-select>
       <q-select v-model="selectedprofilec.val" :options="optionsprofile" label="Выберите профиль" class="col" style="overflow: auto;"></q-select>
       <q-select v-model="selectedformatc.val" :options="optionsformat" label="Выберите формат" class="col" style="overflow: auto;"></q-select>
+      <q-select v-model="selectedContract.val" :options="optionsContract" label="Выберите шаблон Договора" class="col" style="overflow: auto;"></q-select>
+
     </div>
     
-    <div class="q-ma-md row justify-end">
-      <q-btn v-show="show" color="positive" icon="print" label="Печать КП" @click="printIt(selectedoffer.val, selectedformatc.val)" style="overflow: auto;max-height:4em"></q-btn>
-      <!-- <q-btn color="primary" icon="save" label="Сохранить" @click="saveIt()" style="overflow: auto;max-height:4em"></q-btn> -->
-    </div>
-
-    <div class="row justify-between">
-      <q-select v-model="selectedContract.val" :options="optionsContract" label="Выберите шаблон Договора" class="col" style="overflow: auto;"></q-select>
-    </div>
-
-    <div class="q-ma-md row justify-end">
-      <q-btn v-show="showContract" color="positive" icon="print" label="Печать договора" @click="printContract(selectedContract.val)" style="overflow: auto;max-height:4em"></q-btn>
+    <div class="q-ma-md row justify-between">
+      <q-btn v-show="show" color="positive" icon="print" label="Печать КП" @click="printOffer(selectedoffer.val, selectedformatc.val)" style="overflow: auto;max-height:2em;width:16em"></q-btn>
+      <q-btn v-show="showContract" color="positive" icon="print" label="Печать договора" @click="printContract(selectedContract.val)" style="overflow: auto;max-height:2em;width:16em"></q-btn>
     </div>
   </div>
   `
@@ -42,7 +36,6 @@
         message: 'Секунду. Я сохраняю данные...'
       });
 
-      // saveDataJS();
       // google.script.run.withSuccessHandler(hideLoading).saveDataGS(JSON.stringify(model));
 
       timer = setTimeout(() => {
@@ -63,8 +56,9 @@
 
     function printOffer(template, format){
       // google.script.run.withSuccessHandler(openUrl).printGS(JSON.stringify(model), template.value, format.value);
+
       $q.loading.show({
-        message: 'Печатаю компредложение. Нужно немного подождать...'
+        message: 'Печатаю КП. Нужно немного подождать...'
       });
       timer = setTimeout(() => {
         $q.loading.hide()
@@ -74,6 +68,7 @@
 
     function printContract(template){
       // google.script.run.withSuccessHandler(openUrl).printGS(JSON.stringify(model), template.value, format.value);
+
       $q.loading.show({
         message: 'Печатаю договор. Нужно немного подождать...'
       });

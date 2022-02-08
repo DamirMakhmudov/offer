@@ -23,11 +23,11 @@ app.component('services', {
       <template v-slot:top='props'>
         <div style="width:100%;float:right" :props='props'>
           <span style='font:14pt arial'>Услуги</span>
-          <q-input v-model= period type=number style="width:200px;float:right" dense label="Сроки, рабочих дней" readonly>
-            <q-tooltip>Рассчитвается автоматически в конструторе документов</q-tooltip>
+          <q-input v-model=period type=number style="width:200px;float:right" dense label="Сроки, рабочих дней" readonly>
+            <q-tooltip>Рассчитывается автоматически в конструторе документов</q-tooltip>
           </q-input>
           <q-input v-model.number="discounto.val" type="number" style="width:200px;float:right" dense label='Скидка,%'></q-input>
-          <q-input v-model.number="amount.val" type="number" style="width:200px;float:right" dense label='Итого'></q-input>
+          <q-input v-model.number="amount.val" type="number" style="width:200px;float:right" dense label='Общая сумма договора'></q-input>
         </div>
       </template>
 
