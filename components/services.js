@@ -4,6 +4,7 @@ app.component('services', {
   template:
   /*html*/
   `
+  {{period}}
   <div class="q-pa-md">
     <q-table
       :rows = "rowsc"
@@ -72,7 +73,7 @@ app.component('services', {
   },
   setup(props) {
     var
-      modelc = ref(model),
+      modelc = reactive(model),
       columnsc = ref(props.columns),
       rowsc = ref(props.rows),
       squarec = ref(props.square),
@@ -80,7 +81,7 @@ app.component('services', {
       filtercategoryc = ref(props.filter),
       discounto = ref(model.discount),
       amount = ref(model.amountServices),
-      period = ref(model.amountTime),
+      period = modelc.amountTime,
       // visibleColumns = computed(() => { return setvisiblecolumns(props.square) }),
       selectedprofilec = ref(props.selectedprofile);
 
@@ -115,6 +116,7 @@ app.component('services', {
       selectedc.value.val.forEach(row => {
         amo += +row.time;
       });
+      // modelc.amountTime = amo;
       period.value = amo;
     }
 

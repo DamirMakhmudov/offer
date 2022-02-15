@@ -3,6 +3,7 @@ app.component('fields', {
   template:
   /*html*/
   `
+  {{modelc.amountTime}}
   <!-- Данные физлица -->
   <q-expansion-item expand-separator icon="account_circle" label="Данные физлица" :default-opened=false>
     <!-- common data -->
@@ -162,7 +163,7 @@ app.component('fields', {
 
   },
   setup(props) {
-    amountTime = ref(model.amountTime)
+    amountTime = ref(model.amountTime),
     modelc = ref(model)
 
     function isValidEmail(val) {
