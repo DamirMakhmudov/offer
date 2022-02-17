@@ -3,7 +3,6 @@ app.component('fields', {
   template:
   /*html*/
   `
-  {{modelc.amountTime}}
   <!-- Данные физлица -->
   <q-expansion-item expand-separator icon="account_circle" label="Данные физлица" :default-opened=false>
     <!-- common data -->
@@ -37,9 +36,9 @@ app.component('fields', {
     <!-- contract data -->
     <q-separator color="orange" size="2pt" @dark="true" inset></q-separator>
     <div class="q-ma-md fit row justify-start">
-      <q-input v-model= modelc.amountTime type=number class="q-mx-md" label="Сроки, рабочих дней" readonly>
+      <!-- <q-input v-model= modelc.amountTime type=number class="q-mx-md" label="Сроки, рабочих дней" readonly>
         <q-tooltip>Рассчитвается автоматически в конструторе документов</q-tooltip>
-      </q-input>
+      </q-input> -->
       <q-input v-model= modelc.contractNumber class="q-mx-md" label="Номер договора"></q-input>
       <datepicker :modelc=modelc property="contractdDate" label="Дата заключения договора"></datepicker>
     </div>
@@ -78,7 +77,6 @@ app.component('fields', {
     <!-- contract data -->
     <q-separator color="orange" size="2pt" @dark="true" inset></q-separator>
     <div class="q-ma-md fit row justify-start">
-      
       <q-input v-model= modelc.contractNumber class="q-mx-md" label="Номер договора"></q-input>
       <datepicker :modelc=modelc property="contractdDate" label="Дата заключения договора"></datepicker>
     </div>
@@ -133,9 +131,9 @@ app.component('fields', {
     <!-- contract data -->
     <q-separator color="orange" size="2pt" @dark="true" inset></q-separator>
     <div class="q-ma-md fit row justify-start">
-      <q-input v-model= modelc.amountTime type=number class="q-mx-md" label="Сроки, рабочих дней" readonly>
+      <!-- <q-input v-model= modelc.amountTime type=number class="q-mx-md" label="Сроки, рабочих дней" readonly>
         <q-tooltip>Рассчитвается автоматически в конструторе документов</q-tooltip>
-      </q-input>
+      </q-input> -->
       <q-input v-model= modelc.contractNumber class="q-mx-md" label="Номер договора"></q-input>
       <datepicker :modelc=modelc property="contractdDate" label="Дата заключения договора"></datepicker>
     </div>
@@ -163,7 +161,7 @@ app.component('fields', {
 
   },
   setup(props) {
-    amountTime = ref(model.amountTime),
+    // amountTime = ref(model.amountTime),
     modelc = ref(model)
 
     function isValidEmail(val) {
@@ -173,7 +171,7 @@ app.component('fields', {
 
     return {
       modelc,
-      amountTime,
+      // amountTime,
       isValidEmail
     }
   }

@@ -203,7 +203,7 @@ var model = {
   selectedDocuments: { "val": [] },
   amountServices: { "val": 0 },
   amountPayments: { "val": 0 },
-  amountTime: 0,
+  amountTime: { "val": 0 },
 }
 
 // test();
