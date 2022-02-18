@@ -1,8 +1,9 @@
 app.component('payments', {
   name: 'payments',
   template:
-  /*html*/
-  `
+    /*html*/
+    `
+  {{modelc.payment1}}
   <div class="q-pa-md bg-grey-10 text-white">
     <div class="q-gutter-sm">
       <q-option-group
@@ -59,7 +60,7 @@ app.component('payments', {
 </div>
   `
   ,
-  props:{
+  props: {
     filter: {
       type: Object
     },
@@ -69,19 +70,20 @@ app.component('payments', {
     rows: {
       type: Array
     },
-    selected:{
+    selected: {
       type: Object
     }
   },
   setup(props) {
     var
+      modelc = reactive(model),
       columnsc = ref(props.columns),
       rowsc = ref(props.rows),
-      selectedc= ref(props.selected),
+      selectedc = ref(props.selected),
       paymentsc = ref(props.filter),
       amount = ref(model.amountPayments);
 
-    function getSelectedString(){
+    function getSelectedString() {
       return `Выбрано строк: ${selectedc.value.val.length}`
     }
 
@@ -92,26 +94,33 @@ app.component('payments', {
       ))
     }
 
-    function calculateAmount(){
+    function calculateAmount() {
       let amo = 0;
       selectedc.value.val.forEach(row => {
         amo += +row.price;
       });
       amount.value.val = amo;
     }
-    
+
     watch(selectedc.value, (val) => {
-      selectedc.value.val.sort((a,b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0))
+      selectedc.value.val.sort((a, b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0));
+      selectedc.value.val.forEach((row, idx) => {
+        if (idx < 5) {
+          modelc[`payment${idx+1}`] = row.price
+        }
+      })
+
     })
 
-    function syncselected(rowo){
+    function syncselected(rowo) {
       let idx = selectedc.value.val.findIndex(row => row.id === rowo.id);
-      if(idx!= -1){
+      if (idx != -1) {
         selectedc.value.val[idx] = rowo
       }
     }
 
     return {
+      modelc,
       columnsc,
       rowsc,
       filterPaymentsc: view.filterPayments,
@@ -122,7 +131,7 @@ app.component('payments', {
       getSelectedString,
       myfilterMethod,
       syncselected
-    } 
+    }
   },
 })
 // @update:modelValue="val => { $emit('fill-filter', filtersc) }"

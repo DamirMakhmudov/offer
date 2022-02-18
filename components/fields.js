@@ -21,16 +21,17 @@ app.component('fields', {
       <q-input v-model=modelc.passportnumber class="q-mx-md" label="Серия и номер паспорта"></q-input>
       <datepicker :modelc=modelc property="passportdate" label="Дата выдачи"></datepicker>
       <q-input v-model=modelc.passportdepartmentcode class="q-mx-md" label="Код подразделения"></q-input>
+      <q-input v-model=modelc.passportdepartment class="q-mx-md" label="Кем выдан"></q-input>
     </div>
 
     <!-- payment series -->
     <q-separator color="orange" size="2pt" @dark="true" inset></q-separator>
     <div class="q-ma-md fit row justify-start">
-      <q-input v-model=modelc.payment1 class="q-mx-md" label="1 платеж"></q-input>
-      <q-input v-model=modelc.payment2 class="q-mx-md" label="2 платеж"></q-input>
-      <q-input v-model=modelc.payment3 class="q-mx-md" label="3 платеж"></q-input>
-      <q-input v-model=modelc.payment4 class="q-mx-md" label="4 платеж"></q-input>
-      <q-input v-model=modelc.payment5 class="q-mx-md" label="5 платеж"></q-input>
+      <q-input v-model=modelc.payment1 type=number class="q-mx-md" label="1 платеж"></q-input>
+      <q-input v-model=modelc.payment2 type=number class="q-mx-md" label="2 платеж"></q-input>
+      <q-input v-model=modelc.payment3 type=number class="q-mx-md" label="3 платеж"></q-input>
+      <q-input v-model=modelc.payment4 type=number class="q-mx-md" label="4 платеж"></q-input>
+      <q-input v-model=modelc.payment5 type=number class="q-mx-md" label="5 платеж"></q-input>
     </div>
 
     <!-- contract data -->
@@ -67,11 +68,11 @@ app.component('fields', {
     <!-- payment series -->
     <q-separator color="orange" size="2pt" @dark="true" inset></q-separator>
     <div class="q-ma-md fit row justify-start">
-      <q-input v-model=modelc.payment1 class="q-mx-md" label="1 платеж"></q-input>
-      <q-input v-model=modelc.payment2 class="q-mx-md" label="2 платеж"></q-input>
-      <q-input v-model=modelc.payment3 class="q-mx-md" label="3 платеж"></q-input>
-      <q-input v-model=modelc.payment4 class="q-mx-md" label="4 платеж"></q-input>
-      <q-input v-model=modelc.payment5 class="q-mx-md" label="5 платеж"></q-input>
+      <q-input v-model=modelc.payment1 type=number class="q-mx-md" label="1 платеж"></q-input>
+      <q-input v-model=modelc.payment2 type=number class="q-mx-md" label="2 платеж"></q-input>
+      <q-input v-model=modelc.payment3 type=number class="q-mx-md" label="3 платеж"></q-input>
+      <q-input v-model=modelc.payment4 type=number class="q-mx-md" label="4 платеж"></q-input>
+      <q-input v-model=modelc.payment5 type=number class="q-mx-md" label="5 платеж"></q-input>
     </div>
 
     <!-- contract data -->
@@ -121,11 +122,11 @@ app.component('fields', {
     <!-- payment series -->
     <q-separator color="orange" size="2pt" @dark="true" inset></q-separator>
     <div class="q-ma-md fit row justify-start">
-      <q-input v-model=modelc.payment1 class="q-mx-md" label="1 платеж"></q-input>
-      <q-input v-model=modelc.payment2 class="q-mx-md" label="2 платеж"></q-input>
-      <q-input v-model=modelc.payment3 class="q-mx-md" label="3 платеж"></q-input>
-      <q-input v-model=modelc.payment4 class="q-mx-md" label="4 платеж"></q-input>
-      <q-input v-model=modelc.payment5 class="q-mx-md" label="5 платеж"></q-input>
+      <q-input v-model=modelc.payment1 type=number class="q-mx-md" label="1 платеж"></q-input>
+      <q-input v-model=modelc.payment2 type=number class="q-mx-md" label="2 платеж"></q-input>
+      <q-input v-model=modelc.payment3 type=number class="q-mx-md" label="3 платеж"></q-input>
+      <q-input v-model=modelc.payment4 type=number class="q-mx-md" label="4 платеж"></q-input>
+      <q-input v-model=modelc.payment5 type=number class="q-mx-md" label="5 платеж"></q-input>
     </div>
 
     <!-- contract data -->
@@ -162,7 +163,7 @@ app.component('fields', {
   },
   setup(props) {
     // amountTime = ref(model.amountTime),
-    modelc = ref(model)
+    modelc = reactive(model)
 
     function isValidEmail(val) {
       const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;

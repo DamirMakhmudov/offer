@@ -100,6 +100,7 @@ var model = {
   passportnumber: "",
   passportdate:"",
   passportdepartmentcode: "",
+  passportdepartment: "",
   contractdate:"",
   contractnumber: "",
   payment1: 0,
@@ -203,7 +204,8 @@ var model = {
   selectedDocuments: { "val": [] },
   amountServices: { "val": 0 },
   amountPayments: { "val": 0 },
-  amountTime: { "val": 0 },
+  // amountTime: { "val": 0 },
+  amountTime: 0,
 }
 
 // test();

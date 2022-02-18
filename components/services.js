@@ -23,8 +23,8 @@ app.component('services', {
       <template v-slot:top='props'>
         <div style="width:100%;float:right" :props='props'>
           <span style='font:14pt arial'>Услуги</span>
-          <q-input v-model=period.val type=number style="width:200px;float:right" dense label="Сроки, рабочих дней" readonly>
-            <q-tooltip>Рассчитывается автоматически в конструторе документов</q-tooltip>
+          <q-input v-model=modelc.amountTime type=number style="width:200px;float:right" dense label="Сроки, рабочих дней" :readonly=false>
+            <q-tooltip>Рассчитывается автоматически в конструкторе документов</q-tooltip>
           </q-input>
           <q-input v-model.number="discounto.val" type="number" style="width:200px;float:right" dense label='Скидка,%'></q-input>
           <q-input v-model.number="amount.val" type="number" style="width:200px;float:right" dense label='Общая сумма договора'></q-input>
@@ -79,7 +79,7 @@ app.component('services', {
       filtercategoryc = ref(props.filter),
       discounto = ref(model.discount),
       amount = ref(model.amountServices),
-      period = ref(model.amountTime),
+      modelc = reactive(model),
       // visibleColumns = computed(() => { return setvisiblecolumns(props.square) }),
       selectedprofilec = ref(props.selectedprofile);
 
@@ -114,7 +114,8 @@ app.component('services', {
       selectedc.value.val.forEach(row => {
         amo += +row.time;
       });
-      period.value.val = amo;
+      // period.value.val = amo;
+      modelc.amountTime = amo;
     }
 
     function addRow() {
@@ -164,6 +165,7 @@ app.component('services', {
       calculateTime();
     }
 
+    //#region draft
     // :visible-columns="visibleColumns"
 
     // watchEffect(() => { 
@@ -197,8 +199,10 @@ app.component('services', {
     //     row['price'] = Math.round(row[props.square]*(1-discounto.value.val/100));
     //   })
     // })
+    //#endregion
 
     return {
+      modelc,
       filter: ref({ value: 'none' }),
       // visibleColumns,
       squarec,
@@ -208,7 +212,7 @@ app.component('services', {
       discounto,
       filtercategoryc,
       amount,
-      period,
+      // period,
       selectedprofilec,
       myfilterMethod,
       calculateAmount,
