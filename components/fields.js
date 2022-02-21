@@ -63,6 +63,7 @@ app.component('fields', {
       <q-input v-model=modelc.passportnumber class="q-mx-md" label="Серия и номер паспорта"></q-input>
       <datepicker :modelc=modelc property="passportdate" label="Дата выдачи"></datepicker>
       <q-input v-model=modelc.passportdepartmentcode class="q-mx-md" label="Код подразделения"></q-input>
+      <q-input v-model=modelc.passportdepartment class="q-mx-md" label="Кем выдан"></q-input>
     </div>
 
     <!-- payment series -->
@@ -117,6 +118,7 @@ app.component('fields', {
       <q-input v-model=modelc.passportnumber class="q-mx-md" label="Серия и номер паспорта"></q-input>
       <datepicker :modelc=modelc property="passportdate" label="Дата выдачи"></datepicker>
       <q-input v-model=modelc.passportdepartmentcode class="q-mx-md" label="Код подразделения"></q-input>
+      <q-input v-model=modelc.passportdepartment class="q-mx-md" label="Кем выдан"></q-input>
     </div>
 
     <!-- payment series -->
