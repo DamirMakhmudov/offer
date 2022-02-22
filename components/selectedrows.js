@@ -4,14 +4,15 @@ app.component('selectedrows', {
     /*html*/
     `
 <!-- Выбранные позиции -->
+{{modelc.manager}}
 <div class="q-ma-none row fit justify-start">
   <div class="col">
-    <q-expansion-item expand-separator icon="view_list" label="Выбранные позиции" :default-opened=false overflow: auto>
+    <q-expansion-item expand-separator icon="view_list" label="Выбранные позиции" :default-opened=true overflow: auto>
       <div class="q-ma-md fit row justify-start">
         <!-- <q-input v-model=modelc.manager class="q-mx-md" label="Менеджер"></q-input> -->
-        <q-select v-model=modelc.manager :options=viewc.filterUsers label="Менеджер" class="col" style="overflow: auto;"></q-select>
-        <q-input v-model=modelc.managerEmail class="q-mx-md" label="Почта"></q-input>
-        <q-input v-model=modelc.managerPhone class="q-mx-md" label="Телефон"></q-input>
+        <q-select v-model=modelc.manager.val :options=viewc.filterUsers label="Менеджер" class="col" style="overflow: auto;"></q-select>
+        <q-input v-model=modelc.managerEmail.val class="q-mx-md" label="Почта"></q-input>
+        <q-input v-model=modelc.managerPhone.val class="q-mx-md" label="Телефон"></q-input>
       </div>
 
       <div class="q-ma-sm" style="overflow: auto">
@@ -27,8 +28,7 @@ app.component('selectedrows', {
 
   </div>
 
-  <q-btn color="primary" icon="save" label="Сохранить" @click="saveIt()"
-    style="overflow: auto;max-height:2em;width:16em"></q-btn>
+  <q-btn color="primary" icon="save" label="Сохранить" @click="saveIt()" style="overflow: auto;max-height:2em;width:16em"></q-btn>
 </div>
 `
   ,
@@ -36,7 +36,7 @@ app.component('selectedrows', {
 
   },
   setup(props) {
-    modelc = reactive(model)
+    const modelc = reactive(model)
     viewc = reactive(view)
 
     const $q = useQuasar();
@@ -64,6 +64,13 @@ app.component('selectedrows', {
         });
       }
     }
+
+    watch(modelc.manager, (val) => {
+      console.log(val.val.value);
+      let user = viewc.users.filter(user =>{ return user.name == val.val.value});
+      console.log(user);
+      // modelc.managerEmail.val = 
+    })
 
     return {
       modelc,

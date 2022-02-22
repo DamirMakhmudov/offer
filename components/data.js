@@ -32,7 +32,44 @@ var view = {
   ],
 
   filterContract: [
-    { "label": "Рабочие проекты", "value": "1ModfPq9MrXVPhjfLK-iQC3zkE8HZUMq0KBb0SyEK4hU" }, { "label": "Дополнительное соглашение Замена БТИ на Ростех (юр. лицо) (&&&)", "value": "1ozPtsUFycvBds3CXK71xjudz5pha6PiIvem8xxasyCo" }, { "label": "(ИП Замятин) ПТЗ,ТЗБ (с юр. лицом)", "value": "1Mi-Q5O9c3X84WHmQPPg0Aas6DIPKWX63Pj7VObsRx54" }, { "label": "(ИП Замятин) С+ПТЗ (с юр. лицом)", "value": "14TBfHB7NyVx1xvbm5ZNuI_VlQoXU6yKwoGIN6k3PA_A" }, { "label": "(ИП Замятин) У + ТЗБ (с юр. лицом)", "value": "1UWyNhgo4J7P71Agu8thdCREPEY1pwjvB2Tf5jtZE1y4" }, { "label": "ПТЗ,ТЗБ (с юр. лицом)", "value": "1w3UPO89NVCqZHjcX8pQxMo2cUx0OkcHYmV82_PUo_xQ" }, { "label": "С+ПТЗ (с юр. лицом)", "value": "1IMUyW5LSNJgEwGorNiJgeLtSa-wd2GO9n3VmpZnTx48" }, { "label": "У + ТЗБ (с юр. лицом)", "value": "12TchjCanbh8kQ94P89CYNM-jJ7KCm3ANywUMq0dpP08" }, { "label": "У+ТЗБ (с ИП)", "value": "1n7vMMOXRLgnH2AxGCkYMi0g5gDTsApHie5ZaGr7_-uo" }, { "label": "ПТЗ,ТЗБ (с ИП)", "value": "1xNc0xTHLYlr69TPzNgbEtyUak2simGp9WDh_ETZ8Dls" }, { "label": "С+ПТЗ (с ИП)", "value": "1SMME8uNsVX3kXUthkMh8ArjRD-YiRL0qopmT9lPg02o" }, { "label": "ПТЗ,ТЗБ", "value": "1gwnp5wR63obO3nWJHR43iXPoWOmVyXJLsvziqs73BAs" }, { "label": "(ИП Замятин) С+ПТЗ", "value": "1-A8ruQpHK6WL-otiFDI8e7jdqQ-CQuIqShg2PUecuIk" }, { "label": "(ИП Замятин) С+ПТЗ (с ИП)", "value": "1Ht-mPQM-5x2FhAcgaGrAQI87rynpF7dHoy0t3qvYk2g" }, { "label": "(ИП Замятин) У+ТЗБ", "value": "1xg6B2I0lBhs0Bo-Y82_tQjzKCvPaSLzBGki2AbhJyTU" }, { "label": "(ИП Замятин) У+ТЗБ (с ИП)", "value": "18bniEqU4eqNyg5jDG4oEtPthFnjBoX_rHBSBnb_X80Y" }, { "label": "НЕЖИЛОЕ ПТЗ+БТИ+ЕГРН  НОВЫЙ", "value": "19dsA_rbRArULuIVGOURyi5cGfUaTXTgoob1vC5amnnA" }, { "label": "(ИП Замятин) ПТЗ,ТЗБ", "value": "1TsJ7ZTKH8ZbtdDmA6nQsAf7Ka_uCLKmo8B8Tf93GYyk" }, { "label": "(ИП Замятин) ПТЗ,ТЗБ (с ИП)", "value": "1UVUJ9u7Zrhv5Ji30PrHgBdOpXICEQ6VRQVlLHLx7uJE" }, { "label": "С+ПТЗ", "value": "1WjSMDdy-XqpPNHR49Aouln-OwOjYSQdmbhrZuaHMD_Q" }, { "label": "У+ТЗБ", "value": "17VE3BLv0kqQ8340DqQHC-KDpEahXKfLujc6yr2E6CEw" }, { "label": "Тех.план с внесением 2 платежа (&&&)", "value": "1B0QuCj4Sc3UXoQxF8neHcyhg8dbKkIhYwm3VdIBe9Dg" }, { "label": "Тех.надзор", "value": "1hjohU6hvvlnkcQHiQjovyioamx1v64cGbVprVsBzgro" }, { "label": "( ИП Замятин) Рабочие проекты (с ИП)", "value": "1L1etAxdbJcCbAFiwc7Sz8CT0FSdKEuEwo-mGjAXVANY" }, { "label": "( ИП Замятин ) Рабочие проекты", "value": "1EdneuKHQMU2PlJcJyW37GKbk8zCiVrgziyUaCQcBfqQ" }, { "label": "Рабочие проекты (с ИП)", "value": "1uCfZEtPVGfymAUe7Z6SiwzrTJj4H4ho-fhDbg4C3KU4" }, { "label": "( ИП Замятин) Рабочие проекты (с Юр. лицом)", "value": "14lq8x4Tw6QLE83zUULrM8XbzrGvuLQS0zJh0cMOBVZU" }, { "label": "Рабочие проекты (с Юр. лицом)", "value": "1wBbQOmkoJcJ3rgtzMQXJ2KVzAWNsg5jEc04J9N_FmTE" }, { "label": "КР", "value": "1ceWlz3T9aCxJudlhZO0y9aXmNmhGImlxTDY7EtFrLUE" }, { "label": "Договор - счет (с юр.лицом) (&&&)", "value": "1Dm4Eim3Wt0_0Cc71kkvQXyR4uwSxxheI7LLVmAHBGsI" }, { "label": "Договор - счет (с ИП) (&&&)", "value": "1p86BAFknsEOpvf9vu2giQrc6o0ocpDZl1bAxQfo7xBo" }, { "label": "Договор - счет (&&&)", "value": "1NopwPN4cTGHWd-ft_vecu89kHUauhZXP63jr-ai-vAk" }, { "label": "Дополнительное соглашение Замена БТИ на Ростех (физ. лицо) (&&&)", "value": "1osHVIzJHf76WHRpo4dgWUx37rrSeZ5xIQUIki9yHn_s" }, { "label": "Договор - счет (Юр.лицо) ИП Замятин (&&&)", "value": "1vYRsoyXeemakRdo9o9IZA9--1oYnZNdSCYRJyc_oRkY" }, { "label": "Договор - счет ИП Замятин (&&&)", "value": "1pfr3cmhErUj5--4eTHpZXw7t5I-En1veUvpmthw8AJs" }, { "label": "Тех.план 1 платеж (&&&)", "value": "1_ch-IQ2GEcD5ndKAtR3l61j_tRxmm9nf_PKWwA-7eqw" }, { "label": "Для согласователей", "value": "1i_LCGDXNZrtCNAlgmY4zS41q9FGqO6KH-8TN8KqXV2Y" }, { "label": "НЕЖИЛОЕ ПТЗ+БТИ+ЕГРН  с выездом В РАБОТЕ ", "value": "1bPnVolesom8Z2Txw2mcPRJEmvI8KQV03X9IPB-rZ5jg" }
+    { "label": "Рабочие проекты", "value": "1ModfPq9MrXVPhjfLK-iQC3zkE8HZUMq0KBb0SyEK4hU" },
+    { "label": "Дополнительное соглашение Замена БТИ на Ростех (юр. лицо) (&&&)", "value": "1ozPtsUFycvBds3CXK71xjudz5pha6PiIvem8xxasyCo" },
+    { "label": "(ИП Замятин) ПТЗ,ТЗБ (с юр. лицом)", "value": "1Mi-Q5O9c3X84WHmQPPg0Aas6DIPKWX63Pj7VObsRx54" },
+    { "label": "(ИП Замятин) С+ПТЗ (с юр. лицом)", "value": "14TBfHB7NyVx1xvbm5ZNuI_VlQoXU6yKwoGIN6k3PA_A" },
+    { "label": "(ИП Замятин) У + ТЗБ (с юр. лицом)", "value": "1UWyNhgo4J7P71Agu8thdCREPEY1pwjvB2Tf5jtZE1y4" },
+    { "label": "ПТЗ,ТЗБ (с юр. лицом)", "value": "1w3UPO89NVCqZHjcX8pQxMo2cUx0OkcHYmV82_PUo_xQ" },
+    { "label": "С+ПТЗ (с юр. лицом)", "value": "1IMUyW5LSNJgEwGorNiJgeLtSa-wd2GO9n3VmpZnTx48" },
+    { "label": "У + ТЗБ (с юр. лицом)", "value": "12TchjCanbh8kQ94P89CYNM-jJ7KCm3ANywUMq0dpP08" },
+    { "label": "У+ТЗБ (с ИП)", "value": "1n7vMMOXRLgnH2AxGCkYMi0g5gDTsApHie5ZaGr7_-uo" },
+    { "label": "ПТЗ,ТЗБ (с ИП)", "value": "1xNc0xTHLYlr69TPzNgbEtyUak2simGp9WDh_ETZ8Dls" },
+    { "label": "С+ПТЗ (с ИП)", "value": "1SMME8uNsVX3kXUthkMh8ArjRD-YiRL0qopmT9lPg02o" },
+    { "label": "ПТЗ,ТЗБ", "value": "1gwnp5wR63obO3nWJHR43iXPoWOmVyXJLsvziqs73BAs" },
+    { "label": "(ИП Замятин) С+ПТЗ", "value": "1-A8ruQpHK6WL-otiFDI8e7jdqQ-CQuIqShg2PUecuIk" },
+    { "label": "(ИП Замятин) С+ПТЗ (с ИП)", "value": "1Ht-mPQM-5x2FhAcgaGrAQI87rynpF7dHoy0t3qvYk2g" },
+    { "label": "(ИП Замятин) У+ТЗБ", "value": "1xg6B2I0lBhs0Bo-Y82_tQjzKCvPaSLzBGki2AbhJyTU" },
+    { "label": "(ИП Замятин) У+ТЗБ (с ИП)", "value": "18bniEqU4eqNyg5jDG4oEtPthFnjBoX_rHBSBnb_X80Y" },
+    { "label": "НЕЖИЛОЕ ПТЗ+БТИ+ЕГРН  НОВЫЙ", "value": "19dsA_rbRArULuIVGOURyi5cGfUaTXTgoob1vC5amnnA" },
+    { "label": "(ИП Замятин) ПТЗ,ТЗБ", "value": "1TsJ7ZTKH8ZbtdDmA6nQsAf7Ka_uCLKmo8B8Tf93GYyk" },
+    { "label": "(ИП Замятин) ПТЗ,ТЗБ (с ИП)", "value": "1UVUJ9u7Zrhv5Ji30PrHgBdOpXICEQ6VRQVlLHLx7uJE" },
+    { "label": "С+ПТЗ", "value": "1WjSMDdy-XqpPNHR49Aouln-OwOjYSQdmbhrZuaHMD_Q" },
+    { "label": "У+ТЗБ", "value": "17VE3BLv0kqQ8340DqQHC-KDpEahXKfLujc6yr2E6CEw" },
+    { "label": "Тех.план с внесением 2 платежа (&&&)", "value": "1B0QuCj4Sc3UXoQxF8neHcyhg8dbKkIhYwm3VdIBe9Dg" },
+    { "label": "Тех.надзор", "value": "1hjohU6hvvlnkcQHiQjovyioamx1v64cGbVprVsBzgro" },
+    { "label": "( ИП Замятин) Рабочие проекты (с ИП)", "value": "1L1etAxdbJcCbAFiwc7Sz8CT0FSdKEuEwo-mGjAXVANY" },
+    { "label": "( ИП Замятин ) Рабочие проекты", "value": "1EdneuKHQMU2PlJcJyW37GKbk8zCiVrgziyUaCQcBfqQ" },
+    { "label": "Рабочие проекты (с ИП)", "value": "1uCfZEtPVGfymAUe7Z6SiwzrTJj4H4ho-fhDbg4C3KU4" },
+    { "label": "( ИП Замятин) Рабочие проекты (с Юр. лицом)", "value": "14lq8x4Tw6QLE83zUULrM8XbzrGvuLQS0zJh0cMOBVZU" },
+    { "label": "Рабочие проекты (с Юр. лицом)", "value": "1wBbQOmkoJcJ3rgtzMQXJ2KVzAWNsg5jEc04J9N_FmTE" },
+    { "label": "КР", "value": "1ceWlz3T9aCxJudlhZO0y9aXmNmhGImlxTDY7EtFrLUE" },
+    { "label": "Договор - счет (с юр.лицом) (&&&)", "value": "1Dm4Eim3Wt0_0Cc71kkvQXyR4uwSxxheI7LLVmAHBGsI" },
+    { "label": "Договор - счет (с ИП) (&&&)", "value": "1p86BAFknsEOpvf9vu2giQrc6o0ocpDZl1bAxQfo7xBo" },
+    { "label": "Договор - счет (&&&)", "value": "1NopwPN4cTGHWd-ft_vecu89kHUauhZXP63jr-ai-vAk" },
+    { "label": "Дополнительное соглашение Замена БТИ на Ростех (физ. лицо) (&&&)", "value": "1osHVIzJHf76WHRpo4dgWUx37rrSeZ5xIQUIki9yHn_s" },
+    { "label": "Договор - счет (Юр.лицо) ИП Замятин (&&&)", "value": "1vYRsoyXeemakRdo9o9IZA9--1oYnZNdSCYRJyc_oRkY" },
+    { "label": "Договор - счет ИП Замятин (&&&)", "value": "1pfr3cmhErUj5--4eTHpZXw7t5I-En1veUvpmthw8AJs" },
+    { "label": "Тех.план 1 платеж (&&&)", "value": "1_ch-IQ2GEcD5ndKAtR3l61j_tRxmm9nf_PKWwA-7eqw" },
+    { "label": "Для согласователей", "value": "1i_LCGDXNZrtCNAlgmY4zS41q9FGqO6KH-8TN8KqXV2Y" },
+    { "label": "НЕЖИЛОЕ ПТЗ+БТИ+ЕГРН  с выездом В РАБОТЕ ", "value": "1bPnVolesom8Z2Txw2mcPRJEmvI8KQV03X9IPB-rZ5jg" }
   ],
 
   filterSquare: [
@@ -58,8 +95,8 @@ var view = {
   ],
 
   filterUsers: [
-    { "label": "Дамир", "value": "Дамир" },
-    { "label": "Дима", "value": "Дима" }
+    { "label": "Дамир", "value": "Дамир"},
+    { "label": "Дима", "value": "Дима"}
   ],
 
   filterPayments: [
@@ -93,6 +130,11 @@ var view = {
   columnsDocuments: [
     { "name": "name", "label": "Наименование", "align": "left", "style": "width: 70%" },
     { "name": "count", "label": "Кол-во экз.", "align": "center" }
+  ],
+
+  users:[
+    {"name": "Дамир", "email": "samrukov@gmail.com", "phone": "89274433788"},
+    {"name": "Дима", "email": "dima@gmail.com", "phone": "89172463459"}
   ]
 }
 
@@ -101,9 +143,9 @@ var model = {
   surname: "",
   patronymic: "",
   phonenumber: "",
-  manager: "",
-  managerEmail: "",
-  managerPhone: "",
+  manager: {"val":""},
+  managerEmail: {"val":""},
+  managerPhone: {"val":""},
   email: "",
   passportnumber: "",
   passportdate: "",
@@ -130,21 +172,13 @@ var model = {
   paymentaccount: "",
   contractNumber: "",
   contractdDate: "",
-
   selectedOffer: { "val": "" },
-
   selectedProfile: { "val": "" },
-
   selectedContract: { "val": "" },
-
   selectedFormat: { "val": view.filterFormat[0] },
-
   discount: { "val": 0 },
-
   square: { "val": "" },
-
   categories: { "val": [] },
-
   payments: { "val": [] },
 
   rows: [

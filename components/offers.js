@@ -10,11 +10,10 @@
       <q-select v-model="selectedprofilec.val" :options="optionsprofile" label="Выберите профиль" class="col" style="overflow: auto;"></q-select>
       <q-select v-model="selectedformatc.val" :options="optionsformat" label="Выберите формат" class="col" style="overflow: auto;"></q-select>
       <q-select v-model="selectedContract.val" :options="optionsContract" label="Выберите шаблон Договора" class="col" style="overflow: auto;"></q-select>
-
     </div>
     
     <div class="q-ma-md row justify-between">
-      <q-btn v-show="show" color="positive" icon="print" label="Печать КП" @click="printOffer(selectedoffer.val, selectedformatc.val)" style="overflow: auto;max-height:2em;width:16em"></q-btn>
+      <q-btn v-show="showOffer" color="positive" icon="print" label="Печать КП" @click="printOffer(selectedoffer.val, selectedformatc.val)" style="overflow: auto;max-height:2em;width:16em"></q-btn>
       <q-btn v-show="showContract" color="positive" icon="print" label="Печать договора" @click="printContract(selectedContract.val)" style="overflow: auto;max-height:2em;width:16em"></q-btn>
     </div>
   </div>
@@ -88,7 +87,7 @@
       optionsprofile: view.filterProfile,
       optionsformat: view.filterFormat,
       optionsContract: view.filterContract,
-      show: computed(() => { return selectedoffer.value.val == "" ? false : true }),
+      showOffer: computed(() => { return selectedoffer.value.val == "" ? false : true }),
       showContract: computed(() => { return selectedContract.value.val == "" ? false : true }),
       saveIt,
       printOffer,
