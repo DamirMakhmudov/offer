@@ -4,12 +4,11 @@ app.component('selectedrows', {
     /*html*/
     `
 <!-- Выбранные позиции -->
-{{modelc.manager}}
 <div class="q-ma-none row fit justify-start">
   <div class="col">
     <q-expansion-item expand-separator icon="view_list" label="Выбранные позиции" :default-opened=true overflow: auto>
+      <q-input v-model=modelc.address.val class="q-mx-md" label="Адрес объекта"></q-input>
       <div class="q-ma-md fit row justify-start">
-        <!-- <q-input v-model=modelc.manager class="q-mx-md" label="Менеджер"></q-input> -->
         <q-select v-model=modelc.manager.val :options=viewc.filterUsers label="Менеджер" class="col" style="overflow: auto;"></q-select>
         <q-input v-model=modelc.managerEmail.val class="q-mx-md" label="Почта"></q-input>
         <q-input v-model=modelc.managerPhone.val class="q-mx-md" label="Телефон"></q-input>
@@ -36,7 +35,7 @@ app.component('selectedrows', {
 
   },
   setup(props) {
-    const modelc = reactive(model)
+    modelc = reactive(model)
     viewc = reactive(view)
 
     const $q = useQuasar();
@@ -46,8 +45,8 @@ app.component('selectedrows', {
         message: 'Секунду. Я сохраняю данные...'
       });
 
-      // saveDataJS();
       // google.script.run.withSuccessHandler(hideLoading).saveDataGS(JSON.stringify(model));
+      // google.script.run.withSuccessHandler(hideLoading).setOfferValue(JSON.stringify(model));
 
       timer = setTimeout(() => {
         $q.loading.hide();
@@ -66,17 +65,17 @@ app.component('selectedrows', {
     }
 
     watch(modelc.manager, (val) => {
-      console.log(val.val.value);
-      let user = viewc.users.filter(user =>{ return user.name == val.val.value});
-      console.log(user);
-      // modelc.managerEmail.val = 
+      let userIdx = viewc.users.names.indexOf(val.val.value);
+      // let user = viewc.users.filter(user => { return user.name == val.val.value })[0];
+      modelc.managerEmail.val = viewc.users.emails[userIdx];
+      modelc.managerPhone.val = viewc.users.phones[userIdx];
     })
 
     return {
       modelc,
       viewc,
       saveIt,
-      selectedc: ref(model.selected),
+      selectedc: ref(model.selected)
     }
   }
 })

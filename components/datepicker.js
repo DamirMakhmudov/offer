@@ -19,7 +19,6 @@ app.component('datepicker', {
   `
   ,
   props: {
-    // fields: Object,
     modelc: Object,
     property: String,
     label: String

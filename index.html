@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet"
+    type="text/css">
   <link href="https://cdn.jsdelivr.net/npm/quasar@2.0.0-beta.9/dist/quasar.prod.css" rel="stylesheet" type="text/css">
   <title>КП</title>
 </head>
@@ -13,47 +14,69 @@
 <body>
   <div id="q-app">
     <selectedrows></selectedrows>
-
     <fields></fields>
 
-    <q-expansion-item
-      expand-separator
-      icon="article"
-      label="Конструктор документов"
-      :default-opened=true
-    >
-        <offers :selectedprofile='selectedprofile'></offers>
+    <q-expansion-item expand-separator icon="article" label="Конструктор документов" :default-opened=true>
+      <offers :selectedprofile='selectedprofile'></offers>
       <!-- <q-scroll-area style="height: 50em"> -->
-        <square :square='square' :options='filterSquare'></square>
-        <categories :filter='categories'></categories>
-        <services :selected='selected' :columns='columns' :rows='rows' :filter='categories.val' :square='square' :selectedprofile='selectedprofile'></services>
-        <payments :selected='selectedpayment' :columns='columnspayment' :rows='rowspayment' :filter='payments'></payments>
-        <additional :selected='selectedadditional' :columns='columnsadditional' :rows='rowsadditional'></additional>
-        <documents :columns='columnsdocuments' :rows='rowsdocuments' :selected='selecteddocuments' :filter='payments'></documents>
+      <square :square='square' :options='filterSquare'></square>
+      <categories :filter='categories'></categories>
+      <services :selected='selected' :columns='columns' :rows='rows' :filter='categories.val' :square='square':selectedprofile='selectedprofile'></services>
+      <payments :selected='selectedpayment' :columns='columnspayment' :rows='rowspayment' :filter='payments'></payments>
+      <additional :selected='selectedadditional' :columns='columnsadditional' :rows='rowsadditional'></additional>
+      <documents :columns='columnsdocuments' :rows='rowsdocuments' :selected='selecteddocuments' :filter='payments'>
+      </documents>
       <!-- </q-scroll-area> -->
     </q-expansion-item>
   </div>
-  
+
   <script>
     // var idc = <?= id ?>;
     // var view = JSON.parse(<?= getView() ?>);
     // var model = JSON.parse(<?= getModel(id) ?>);
-    
-    /*restrictred*/
-    function saveDataJS(){
-      google.script.run.withSuccessHandler(closeModal).saveDataGS(JSON.stringify(model));
+
+    // function saveDataJS(){
+    //   google.script.run.withSuccessHandler(closeModal).saveDataGS(JSON.stringify(model));
+    // }
+
+    // function printJS(template, format){
+    //   google.script.run.withSuccessHandler(openUrl).printGS(JSON.stringify(model), template, format);
+    // }
+
+    // function closeModal(message){
+    //   google.script.host.close();
+    // }
+
+    async function sendPOST() {
+      let
+        url = 'https://crm.pereplan-one.ru/bitrix/tools/act/update_deal.php',
+        // url = 'https://script.google.com/macros/s/AKfycbzUgwNF8Tqs3tmw7sV3ZxWKBDN5bUJ2mfr7mUR5MLrWeCMIvo3GSS4ZfKUbYZN5eXRY/exec',
+        data = {};
+
+      data["id"] = 1200;
+      data["urlOffer"] = "url address";
+      data["mode"] = "addressesbyengineer";
+      data["engineer"] = "Александр_Макаров";
+
+      let response = await fetch(url, {
+        method: 'POST',
+        muteHttpExceptions: false,
+        // mode: 'no-cors', // no-cors, *cors, same-origin, cors
+        headers: {
+          // 'Content-Type': 'application/json'
+          'Content-Type': 'application/x-www-form-urlencoded',
+          // 'Content-Type': "application/json; charset=UTF-8",
+          'accept': 'application/json',
+        },
+        body: JSON.stringify(data)
+      }
+        // ).then(resp =>
+        // console.log(resp.json())
+      );
+      console.log(await response.json());
     }
 
-    function printJS(template, format){
-      google.script.run.withSuccessHandler(openUrl).printGS(JSON.stringify(model), template, format);
-    }
-
-    /*restrictred*/
-    function closeModal(message){
-      // google.script.host.close();
-    }
-
-    function openUrl(url){
+    function openUrl(url) {
       window.open(url)
     }
 
@@ -63,7 +86,7 @@
   <script src="https://unpkg.com/vue@next"></script>
   <!-- <script src="https://unpkg.com/vue@3.0.0-beta.12/dist/vue.global.js"></script> -->
   <!-- <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script> -->
-  
+
   <!-- Import Quasar -->
   <script src="https://cdn.jsdelivr.net/npm/quasar@2.0.0-beta.9/dist/quasar.umd.prod.js"></script>
 
@@ -85,6 +108,7 @@
 
   <!-- Mount app -->
   <script>const vm = app.mount('#q-app')</script>
-  
+
 </body>
+
 </html>
