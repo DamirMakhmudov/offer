@@ -25,6 +25,7 @@ app.component('fields', {
     </div>
 
     <!-- payment series -->
+    <!--
     <q-separator color="orange" size="2pt" @dark="true" inset></q-separator>
     <div class="q-ma-md fit row justify-start">
       <q-input v-model=modelc.payment1 type=number class="q-mx-md" label="1 платеж"></q-input>
@@ -33,6 +34,7 @@ app.component('fields', {
       <q-input v-model=modelc.payment4 type=number class="q-mx-md" label="4 платеж"></q-input>
       <q-input v-model=modelc.payment5 type=number class="q-mx-md" label="5 платеж"></q-input>
     </div>
+    -->
 
     <!-- contract data -->
     <q-separator color="orange" size="2pt" @dark="true" inset></q-separator>
