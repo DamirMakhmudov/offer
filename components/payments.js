@@ -104,7 +104,7 @@ app.component('payments', {
     watch(selectedc.value, (val) => {
       selectedc.value.val.sort((a, b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0));
       selectedc.value.val.forEach((row, idx) => {
-        if (idx < 5) {
+        if (idx < 6) {
           modelc[`payment${idx+1}`] = row.price
         }
       })

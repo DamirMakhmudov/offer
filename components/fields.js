@@ -3,7 +3,7 @@ app.component('fields', {
   template:
   /*html*/
   `
-  <!-- Данные физлица -->
+  <!-- ДАННЫЕ ФИЗЛИЦА -->
   <q-expansion-item expand-separator icon="account_circle" label="Данные физлица" :default-opened=false>
     <!-- common data -->
     <div class="q-ma-md fit row justify-start">
@@ -47,7 +47,7 @@ app.component('fields', {
     </div>
   </q-expansion-item>
 
-  <!-- Данные ИП -->
+  <!-- ДАННЫЕ ИП -->
   <q-expansion-item expand-separator icon="work" label="Данные ИП" :default-opened=false>
     <!-- common data -->
     <div class="q-ma-md fit row justify-start">
@@ -66,16 +66,6 @@ app.component('fields', {
       <datepicker :modelc=modelc property="passportdate" label="Дата выдачи"></datepicker>
       <q-input v-model=modelc.passportdepartmentcode class="q-mx-md" label="Код подразделения"></q-input>
       <q-input v-model=modelc.passportdepartment class="q-mx-md" label="Кем выдан"></q-input>
-    </div>
-
-    <!-- payment series -->
-    <q-separator color="orange" size="2pt" @dark="true" inset></q-separator>
-    <div class="q-ma-md fit row justify-start">
-      <q-input v-model=modelc.payment1 type=number class="q-mx-md" label="1 платеж"></q-input>
-      <q-input v-model=modelc.payment2 type=number class="q-mx-md" label="2 платеж"></q-input>
-      <q-input v-model=modelc.payment3 type=number class="q-mx-md" label="3 платеж"></q-input>
-      <q-input v-model=modelc.payment4 type=number class="q-mx-md" label="4 платеж"></q-input>
-      <q-input v-model=modelc.payment5 type=number class="q-mx-md" label="5 платеж"></q-input>
     </div>
 
     <!-- contract data -->
@@ -102,16 +92,16 @@ app.component('fields', {
     </div>
   </q-expansion-item>
 
-  <!-- Данные юрлица -->
-  <q-expansion-item expand-separator icon="store" label="Данные юрлица" :default-opened=false>
+  <!-- ДАННЫЕ ЮРЛИЦА -->
+  <q-expansion-item expand-separator icon="store" label="Данные юрлица" :default-opened=true>
     <!-- common data -->
     <div class="q-ma-md fit row justify-start">
       <q-input v-model=modelc.firstname class="q-mx-md" label="Имя"></q-input>
       <q-input v-model=modelc.surname class="q-mx-md" label="Фамилия"></q-input>
       <q-input v-model=modelc.patronymic class="q-mx-md" label="Отчество"></q-input>
       <q-input v-model=modelc.phonenumber class="q-mx-md" label="Телефон" mask="+7(###)#######"></q-input>
-      <q-input v-model=modelc.email class="q-mx-md" label="Почта"
-        :rules="[val => !!val || 'Email is missing', isValidEmail,]"></q-input>
+      <q-input v-model=modelc.email class="q-mx-md" label="Почта" :rules="[val => !!val || 'Email is missing', isValidEmail,]"></q-input>
+      <q-input v-model=modelc.patronymic class="q-mx-md" label="Отчество"></q-input>
     </div>
 
     <!-- passport data -->
@@ -121,16 +111,7 @@ app.component('fields', {
       <datepicker :modelc=modelc property="passportdate" label="Дата выдачи"></datepicker>
       <q-input v-model=modelc.passportdepartmentcode class="q-mx-md" label="Код подразделения"></q-input>
       <q-input v-model=modelc.passportdepartment class="q-mx-md" label="Кем выдан"></q-input>
-    </div>
-
-    <!-- payment series -->
-    <q-separator color="orange" size="2pt" @dark="true" inset></q-separator>
-    <div class="q-ma-md fit row justify-start">
-      <q-input v-model=modelc.payment1 type=number class="q-mx-md" label="1 платеж"></q-input>
-      <q-input v-model=modelc.payment2 type=number class="q-mx-md" label="2 платеж"></q-input>
-      <q-input v-model=modelc.payment3 type=number class="q-mx-md" label="3 платеж"></q-input>
-      <q-input v-model=modelc.payment4 type=number class="q-mx-md" label="4 платеж"></q-input>
-      <q-input v-model=modelc.payment5 type=number class="q-mx-md" label="5 платеж"></q-input>
+      <q-input v-model=modelc.customerposition.val class="q-mx-md" label="В лице"></q-input>
     </div>
 
     <!-- contract data -->

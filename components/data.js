@@ -151,12 +151,14 @@ var model = {
   surname: "",
   patronymic: "",
   phonenumber: "",
+  shortname: "",
   email: "",
   address: {"val": ""},
   passportnumber: "",
   passportdate: "",
   passportdepartmentcode: "",
   passportdepartment: "",
+  customerposition: {"val": ""},
   contractdate: "",
   contractnumber: "",
   payment1: 0,
@@ -330,7 +332,11 @@ async function sendPOST() {
   console.log(await response.json());
 }
 
+// master();
 function master() {
+  let [a, b, c] = ['Петров', 'Иван', 'Николаевич'];
+  console.log(`${a} ${b[0]}.${c[0]}.`);
+  return;
   let
     users = { "names": ["Адам Джанкулаев", "Айдемир Нагоев", "Александр Макаров", "Александра Карасева", "Алексей Калашников", "Алексей Кугушев", "Алина Лагутенко", "Альмира Темукуева", "Анастасия Блинова", "Анастасия Лупащенко", "Анастасия Мельничук", "Анастасия Сумская", "Анастасия Устинова", "Андрей Ларин", "Андрей Маслов", "Арам Арутюнян", "Астемир Валиев", "Астемир Гучев", "Вера Паршина", "Виктор Белоконь", "Виктория Лукошина", "Владимир Михейкин", "Григорий Лазаренко", "Дамир", "Дмитрий Горбунов", "Дмитрий Замятин", "Дмитрий Кайстро", "Дмитрий Леонов", "Евгения Светлекова", "Екатерина Николаенко", "Елена Сумская", "Любовь Куликова", "Максим Джураев", "Максим Сорока", "Марина Бареева", "Марина Дубицкая", "Мария Харитонова", "Михаил Вальт", "Наталья Якунина", "Общий М", "Общий С", "Роман Галахов", "Роман Медведев", "Юлия Емельянова", "Юрий Воробец", "Ярослав Корягин"], "emails": ["adamdzhankulaev@gmail.com", "nagoevajdemir@gmail.com", "i7@pereplan.msk.ru", "5@pereplan.msk.ru", "i0@pereplan.msk.ru", "i10@pereplan.msk.ru", "i2@pereplan.msk.ru", "almira.job1@gmail.com", "anastasiya-blinova-83@mail.ru", "m2@pereplan.msk.ru", "antananariy@gmail.com", "2@pereplan.msk.ru", "m1@pereplan.msk.ru", "s3@pereplan.msk.ru", "masl-a@yandex.ru", "i6@pereplan.msk.ru", "i3@pereplan.spb.ru", "i4@pereplan.msk.ru", "10@pereplan.msk.ru", "i1@pereplan.msk.ru", "vlukoshina@gmail.com", "-", "6@pereplan.msk.ru", "samrukov@gmail.com", "k1@pereplan.msk.ru", "dimazamyatin@bk.ru", "-", "i8@pereplan.msk.ru", "m4@pereplan.msk.ru", "7@pereplan.msk.ru", "12@pereplan.msk.ru", "i9@pereplan.msk.ru", "13@pereplan.msk.ru", "maxim91135@gmail.com", "9@pereplan.msk.ru", "3@pereplan.msk.ru", "8@pereplan.msk.ru", "s2@pereplan.msk.ru", "4@pereplan.msk.ru", "info@pereplan-one.ru", "s1@pereplan.msk.ru", "sapogvs@mail.ru", "-", "m3@pereplan.msk.ru", "dwgautocadpro@gmail.com", "i5@pereplan.msk.ru"], "phones": ["89289135526", "89300743997", "89399006415", "89399006410", "89399006416", "89399001095", "89399006404", "89389145569", "89688302886", "89399006412", "89399006398", "89399006401", "89399006396", "89031598522", "89808004523", "89399006414", "89399006409", "89808003561", "89399006405", "89399006408", "89274433788", "89399006403", "89258075049", "89808004521", "89399006417", "89399006413", "89699001834", "89399001096", "89699001832", "89399006406", "89399006407", "89808004520", "89399006419", "89399006402", "84951811309", "84951811309", "89850462253", "89399006397", "89399006395"] },
     names = users.names,
