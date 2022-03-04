@@ -6,7 +6,7 @@ app.component('selectedrows', {
 <!-- Выбранные позиции -->
 <div class="q-ma-none row fit justify-start">
   <div class="col">
-    <q-expansion-item expand-separator icon="view_list" label="Выбранные позиции" :default-opened=true overflow: auto>
+    <q-expansion-item expand-separator icon="view_list" label="Выбранные позиции" :default-opened=false overflow: auto>
       <q-input v-model=modelc.address.val class="q-mx-md" label="Адрес объекта"></q-input>
       <div class="q-ma-md fit row justify-start">
         <q-select v-model=modelc.manager.val :options=viewc.filterUsers label="Менеджер" class="col" style="overflow: auto;"></q-select>
