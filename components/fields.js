@@ -124,14 +124,16 @@ app.component('fields', {
 
     <!-- requisites -->
     <q-separator color="orange" size="2pt" @dark="true" inset></q-separator>
-    <div class="q-ma-md fit row justify-start">
-      <q-select v-model=modelc.pfshort.val :options=viewc.filterPF label="Правовая форма" class="q-mx-md" style="overflow: auto;"></q-select>
-      <q-input v-model=modelc.company class="q-mx-md" label="Название организации"></q-input>
+    <div class="q-ma-md row justify-start">
+      <q-select v-model=modelc.pfshort.val :options=viewc.filterPF label="Правовая форма" class="q-mx-md" style="width:200px"></q-select>
+      <q-input v-model=modelc.pffull.val class="q-mx-md" label="Правовая форма полностью"></q-input>
+
+      <q-input v-model=modelc.company class="col" label="Название организации"></q-input>
     </div>
     <div class="q-ma-md fit row justify-start">
       <q-input v-model=modelc.inn class="q-mx-md" label="ИНН"></q-input>
       <q-input v-model=modelc.kpp class="q-mx-md" label="КПП"></q-input>
-      <q-input v-model=modelc.bik class="q-mx-md" label="БИК"></q-input>
+      <q-input v-model=modelc.bik class="q-mx-md" label="БИК"></q-input>      
       <q-input v-model=modelc.bank class="q-mx-md" label="Банк"></q-input>
       <q-input v-model=modelc.correspondentaccount class="q-mx-md" label="Кор. счет"></q-input>
       <q-input v-model=modelc.paymentaccount class="q-mx-md" label="Расч. счет"></q-input>
@@ -139,7 +141,6 @@ app.component('fields', {
       <q-input v-model=modelc.legalentityaddress class="q-mx-md" label="Юр. адрес"></q-input>
       <!-- <div class="q-ma-md fit row justify-start"> -->
         <!-- <q-input v-model=modelc.pffull.val class="q-mx-md" label="Правовая форма полностью"></q-input> -->
-      <!-- <q-input v-model=modelc.pffull class="q-mx-md" label="Правовая форма сокращенно"></q-input>-->
       <!-- </div> -->
     </div>
 
