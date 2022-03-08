@@ -111,17 +111,6 @@ app.component('fields', {
       <q-input v-model=modelc.email class="q-mx-md" label="Почта" :rules="[val => !!val || 'Email is missing', isValidEmail,]"></q-input>
     </div>
 
-    <!-- passport data -->
-    <!--
-    <q-separator color="orange" size="2pt" @dark="true" inset></q-separator>
-    <div class="q-ma-md fit row justify-start items-between content-start">
-      <q-input v-model=modelc.passportnumber class="q-mx-md" label="Серия и номер паспорта"></q-input>
-      <datepicker :modelc=modelc property="passportdate" label="Дата выдачи"></datepicker>
-      <q-input v-model=modelc.passportdepartmentcode class="q-mx-md" label="Код подразделения"></q-input>
-      <q-input v-model=modelc.passportdepartment class="q-mx-md" label="Кем выдан"></q-input>
-    </div>
-    -->
-
     <!-- contract data -->
     <q-separator color="orange" size="2pt" @dark="true" inset></q-separator>
     <div class="q-ma-md fit row justify-start">
@@ -168,6 +157,10 @@ app.component('fields', {
       const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
       return emailPattern.test(val) || 'Invalid email';
     }
+
+    watch(modelc.pfshort, value =>{
+      modelc.pffull.val = value.val.full
+    })
 
     return {
       modelc,

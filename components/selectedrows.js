@@ -5,18 +5,20 @@ app.component('selectedrows', {
     `
 <!-- Выбранные позиции -->
 <div class="q-ma-xs row justify-start">
-  <q-btn color="primary" icon="save" label="Сохранить" @click="saveIt()" style="overflow: auto;max-height:2em;width:16em"></q-btn>
+  <q-btn color="primary" icon="save" label="Сохранить" @click="saveIt()" style="overflow: auto; max-height:2em;width:16em"></q-btn>
+  <q-select v-model=modelc.manager.val dense :options=viewc.filterUsers label="Менеджер" class="q-mx-xs col" style="overflow: auto;"></q-select>
+
 </div>
 
 <!-- <div class="q-ma-md row justify-start"> -->
   <!-- <div class="col"> -->
     <q-expansion-item expand-separator icon="view_list" label="Выбранные позиции" :default-opened=false overflow: auto>
       <!-- <q-input v-model=modelc.address.val class="q-mx-md" label="Адрес объекта"></q-input> -->
-      <div class="q-ma-md row justify-start">
-        <q-select v-model=modelc.manager.val :options=viewc.filterUsers label="Менеджер" class="col" style="overflow: auto;"></q-select>
+      <!-- <div class="q-ma-md row justify-start"> -->
+        <!-- <q-select v-model=modelc.manager.val :options=viewc.filterUsers label="Менеджер" class="col" style="overflow: auto;"></q-select> -->
         <!-- <q-input v-model=modelc.managerEmail.val class="q-mx-md" label="Почта"></q-input> -->
         <!-- <q-input v-model=modelc.managerPhone.val class="q-mx-md" label="Телефон"></q-input> -->
-      </div>
+      <!-- </div> -->
 
       <div class="q-ma-md row justify-start">
         <q-list dense bordered separator class="rounded-borders">
@@ -67,7 +69,6 @@ app.component('selectedrows', {
 
     watch(modelc.manager, (val) => {
       let userIdx = viewc.users.names.indexOf(val.val.value);
-      // let user = viewc.users.filter(user => { return user.name == val.val.value })[0];
       modelc.managerEmail.val = viewc.users.emails[userIdx];
       modelc.managerPhone.val = viewc.users.phones[userIdx];
     })
