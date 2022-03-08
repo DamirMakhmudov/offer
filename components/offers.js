@@ -12,9 +12,9 @@
       <q-select v-model="selectedContract.val" :options="optionsContract" label="Выберите шаблон Договора" class="col" style="overflow: auto;"></q-select>
     </div>
     
-    <div class="q-ma-md row justify-between">
-      <q-btn v-show="showOffer" color="positive" icon="print" label="Печать КП" @click="printOffer(selectedoffer.val, selectedformatc.val)" style="overflow: auto;max-height:2em;width:16em"></q-btn>
-      <q-btn v-show="showContract" color="positive" icon="print" label="Печать договора" @click="printContract(selectedContract.val)" style="overflow: auto;max-height:2em;width:16em"></q-btn>
+    <div class="q-ma-xs row justify-start">
+      <q-btn v-show="showOffer" color="positive" class="q-ma-xs" icon="print" label="Печать КП" @click="printOffer(selectedoffer.val, selectedformatc.val)" style="overflow: auto;max-height:2em;width:16em"></q-btn>
+      <q-btn v-show="showContract" color="positive" class="q-ma-xs" icon="print" label="Печать договора" @click="printContract(selectedContract.val)" style="overflow: auto;max-height:2em;width:16em"></q-btn>
     </div>
   </div>
   `

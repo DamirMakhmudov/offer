@@ -4,17 +4,21 @@ app.component('selectedrows', {
     /*html*/
     `
 <!-- Выбранные позиции -->
-<div class="q-ma-none row fit justify-start">
-  <div class="col">
+<div class="q-ma-xs row justify-start">
+  <q-btn color="primary" icon="save" label="Сохранить" @click="saveIt()" style="overflow: auto;max-height:2em;width:16em"></q-btn>
+</div>
+
+<!-- <div class="q-ma-md row justify-start"> -->
+  <!-- <div class="col"> -->
     <q-expansion-item expand-separator icon="view_list" label="Выбранные позиции" :default-opened=false overflow: auto>
-      <q-input v-model=modelc.address.val class="q-mx-md" label="Адрес объекта"></q-input>
-      <div class="q-ma-md fit row justify-start">
+      <!-- <q-input v-model=modelc.address.val class="q-mx-md" label="Адрес объекта"></q-input> -->
+      <div class="q-ma-md row justify-start">
         <q-select v-model=modelc.manager.val :options=viewc.filterUsers label="Менеджер" class="col" style="overflow: auto;"></q-select>
-        <q-input v-model=modelc.managerEmail.val class="q-mx-md" label="Почта"></q-input>
-        <q-input v-model=modelc.managerPhone.val class="q-mx-md" label="Телефон"></q-input>
+        <!-- <q-input v-model=modelc.managerEmail.val class="q-mx-md" label="Почта"></q-input> -->
+        <!-- <q-input v-model=modelc.managerPhone.val class="q-mx-md" label="Телефон"></q-input> -->
       </div>
 
-      <div class="q-ma-sm" style="overflow: auto">
+      <div class="q-ma-md row justify-start">
         <q-list dense bordered separator class="rounded-borders">
           <q-item v-for="item in selectedc.val" clickable v-ripple>
             <q-item-section class="text-caption">
@@ -24,11 +28,8 @@ app.component('selectedrows', {
         </q-list>
       </div>
     </q-expansion-item>
-
-  </div>
-
-  <q-btn color="primary" icon="save" label="Сохранить" @click="saveIt()" style="overflow: auto;max-height:2em;width:16em"></q-btn>
-</div>
+  <!-- </div> -->
+<!-- </div> -->
 `
   ,
   props: {
