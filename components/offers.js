@@ -4,8 +4,8 @@
   /*html*/
   `
   <!-- Выбор шаблона документа, профиля и формата + кнопки Пачать и Сохранить-->
-  <div class="q-ma-md">
-    <div class="row justify-between">
+  <div class="q-ma-xs row justify-between">
+    <!-- <div class="row justify-between"> -->
       <q-select v-model="selectedoffer.val" :options="options" label="Выберите шаблон КП" class="col" style="overflow: auto;"></q-select>
       <q-select v-model="selectedprofilec.val" :options="optionsprofile" label="Выберите профиль" class="col" style="overflow: auto;"></q-select>
       <q-select v-model="selectedformatc.val" :options="optionsformat" label="Выберите формат" class="col" style="overflow: auto;"></q-select>
@@ -16,7 +16,7 @@
       <q-btn v-show="showOffer" color="positive" class="q-ma-xs" icon="print" label="Печать КП" @click="printOffer(selectedoffer.val, selectedformatc.val)" style="overflow: auto;max-height:2em;width:16em"></q-btn>
       <q-btn v-show="showContract" color="positive" class="q-ma-xs" icon="print" label="Печать договора" @click="printContract(selectedContract.val)" style="overflow: auto;max-height:2em;width:16em"></q-btn>
     </div>
-  </div>
+  <!-- </div> -->
   `
   ,
   props: {

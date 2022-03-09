@@ -7,7 +7,6 @@ app.component('selectedrows', {
 <div class="q-ma-xs row justify-start">
   <q-btn color="primary" icon="save" label="Сохранить" @click="saveIt()" style="overflow: auto; max-height:2em;width:16em"></q-btn>
   <q-select v-model=modelc.manager.val dense :options=viewc.filterUsers label="Менеджер" class="q-mx-xs col" style="overflow: auto;"></q-select>
-
 </div>
 
 <!-- <div class="q-ma-md row justify-start"> -->

@@ -193,7 +193,7 @@ var model = {
   paymentaccount: "",
   contractNumber: "",
   contractdDate: "",
-  selectedOffer: { "val": "" },
+  selectedOffer: { "val":  { "label": "Copy of Коммерческое предложение", "value": "1ZhY0nEEJK-6HiIuM-rHN2H2uem2Htaia5jFgqC9KmeU" } },
   selectedProfile: { "val": "" },
   selectedContract: { "val": "" },
   selectedFormat: { "val": view.filterFormat[0] },
