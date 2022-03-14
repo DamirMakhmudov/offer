@@ -5,7 +5,8 @@ app.component('selectedrows', {
     `
 <!-- Выбранные позиции -->
 <div class="q-ma-xs row justify-start">
-  <q-btn color="primary" icon="save" label="Сохранить" @click="saveIt()" style="overflow: auto; max-height:2em;width:16em"></q-btn>
+  <q-btn color="primary" icon="save" label="Сохранить" @click="saveIt()" class="q-mr-xs" style="overflow: auto; max-height:2em;width:16em"></q-btn>
+  <q-btn color="primary" icon="upload" label="Импорт" @click="sendGET()"  class="q-mr-xs" style="overflow: auto; max-height:2em;width:16em"></q-btn>
   <q-select v-model=modelc.manager.val dense :options=viewc.filterUsers label="Менеджер" class="q-mx-xs col" style="overflow: auto;"></q-select>
 </div>
 
@@ -42,6 +43,39 @@ app.component('selectedrows', {
 
     const $q = useQuasar();
 
+    function importFromBitrix(){
+
+    }
+
+    async function sendGET() {
+      let url = 'https://crm.pereplan-one.ru/bitrix/tools/act/update_deal.php?id=19300';
+        // url = 'https://script.google.com/macros/s/AKfycbzUgwNF8Tqs3tmw7sV3ZxWKBDN5bUJ2mfr7mUR5MLrWeCMIvo3GSS4ZfKUbYZN5eXRY/exec',
+        // data = {};
+
+      // data["id"] = 1200;
+      // data["urlOffer"] = "url address";
+      // data["mode"] = "addressesbyengineer";
+      // data["engineer"] = "Александр_Макаров";
+
+      let response = await fetch(url, {
+        method: 'GET',
+        muteHttpExceptions: false,
+        // mode: 'no-cors', // no-cors, *cors, same-origin, cors
+        headers: {
+          //'Content-Type': 'application/json',
+          // 'Content-Type': "application/json; charset=UTF-8",
+          // 'Content-Type': "multipart/form-data",
+          'Content-Type': 'application/x-www-form-urlencoded',
+          // 'Accept': 'application/json'
+        },
+        // body: JSON.stringify(data)
+      }
+        //  ).then(resp =>
+        // console.log(resp.json())
+      );
+      console.log(await response.json());
+    }
+
     function saveIt() {
       $q.loading.show({
         message: 'Секунду. Я сохраняю данные...'
@@ -76,6 +110,7 @@ app.component('selectedrows', {
       modelc,
       viewc,
       saveIt,
+      sendGET,
       selectedc: ref(model.selected)
     }
   }

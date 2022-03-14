@@ -297,25 +297,36 @@ function test() {
   // console.log(idx)
 }
 
+// async function sendGET() {
+//   let url = 'https://crm.pereplan-one.ru/bitrix/tools/act/update_deal.php';
+//     // url = 'https://script.google.com/macros/s/AKfycbzUgwNF8Tqs3tmw7sV3ZxWKBDN5bUJ2mfr7mUR5MLrWeCMIvo3GSS4ZfKUbYZN5eXRY/exec',
+//     // data = {};
+
+//   // data["id"] = 1200;
+//   // data["urlOffer"] = "url address";
+//   // data["mode"] = "addressesbyengineer";
+//   // data["engineer"] = "Александр_Макаров";
+
+//   let response = await fetch(url, {
+//     method: 'POST',
+//     muteHttpExceptions: false,
+//     // mode: 'no-cors', // no-cors, *cors, same-origin, cors
+//     headers: {
+//       //'Content-Type': 'application/json',
+//       // 'Content-Type': "application/json; charset=UTF-8",
+//       // 'Content-Type': "multipart/form-data",
+//       'Content-Type': 'application/x-www-form-urlencoded',
+//       'Accept': 'application/json',
+//     },
+//     body: JSON.stringify(data)
+//   }
+//     //  ).then(resp =>
+//     // console.log(resp.json())
+//   );
+//   console.log(await response.json());
+// }
+
 async function sendPOST() {
-  /*
- fetch('https://jsonplaceholder.typicode.com/posts', {
-   method: 'POST',
-   body: JSON.stringify({
-     title: 'foo',
-     body: 'bar',
-     userId: 1,
-   }),
-   headers: {
-     'Content-type': 'application/json; charset=UTF-8',
-   },
- })
-   .then((response) => response.json())
-   .then((json) => console.log(json));
-
- return;
-  */
-
   let
     url = 'https://crm.pereplan-one.ru/bitrix/tools/act/update_deal.php',
     // url = 'https://script.google.com/macros/s/AKfycbzUgwNF8Tqs3tmw7sV3ZxWKBDN5bUJ2mfr7mUR5MLrWeCMIvo3GSS4ZfKUbYZN5eXRY/exec',
