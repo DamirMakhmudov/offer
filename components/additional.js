@@ -81,8 +81,7 @@ app.component('additional', {
       addRow,
       syncselected
     } 
-  },
-
+  }
 })
 // @update:modelValue="val => { $emit('fill-filter', filtersc) }"
 // :filter = "filter"

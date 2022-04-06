@@ -34,13 +34,9 @@ app.component('selectedrows', {
 <!-- </div> -->
 `
   ,
-  props: {
-
-  },
   setup(props) {
     modelc = reactive(model)
     viewc = reactive(view)
-
     const $q = useQuasar();
 
     function importFromBitrix(){
@@ -81,7 +77,6 @@ app.component('selectedrows', {
         message: 'Секунду. Я сохраняю данные...'
       });
 
-      // google.script.run.withSuccessHandler(hideLoading).saveDataGS(JSON.stringify(model));
       // google.script.run.withSuccessHandler(hideLoading).setOfferValue(JSON.stringify(model));
 
       timer = setTimeout(() => {

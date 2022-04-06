@@ -271,31 +271,6 @@ var model = {
   amountTime: 0,
 }
 
-// test();
-
-function test() {
-
-  let email = "samrukov@gmail.com"
-
-  let reg = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-  console.log(reg.test(email));
-
-  // let
-  //   arr = model.rows,
-  //   filters = ['МосгорБТИ', 'Объединение'],
-  //   frows = model.rows.filter(row => (
-  //     filters.filter(i => { return (row.filter.split(', ').indexOf(i) > -1); }).length >= filters.length
-  //   ));
-  // console.log('length', frows.length);
-  // frows.forEach(row => { console.log(row.id) })
-
-  // const red = (acc, cur) => +acc + cur.price1;
-  // let sum = arr.reduce(red);
-
-  let findrow = selectedAdditional[0];
-  let idx = model.selectedAdditional.val.indexOf(findrow);
-  // console.log(idx)
-}
 async function sendGET() {
   let url = 'https://crm.pereplan-one.ru/bitrix/tools/act/update_deal.php';
     // url = 'https://script.google.com/macros/s/AKfycbzUgwNF8Tqs3tmw7sV3ZxWKBDN5bUJ2mfr7mUR5MLrWeCMIvo3GSS4ZfKUbYZN5eXRY/exec',
