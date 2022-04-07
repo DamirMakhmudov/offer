@@ -330,8 +330,12 @@ async function sendPOST() {
   console.log(await response.json());
 }
 
-// master();
+master();
+
 function master() {
+  // console.log(someVar);
+  return;
+
   let [a, b, c] = ['Петров', 'Иван', 'Николаевич'];
   console.log(`${a} ${b[0]}.${c[0]}.`);
   return;
@@ -344,3 +348,9 @@ function master() {
     arr.push({ "label": name, "value": name });
   })
 }
+
+var someVar = (a) =>{
+  console.log(a);
+}
+
+someVar('aasddde');
