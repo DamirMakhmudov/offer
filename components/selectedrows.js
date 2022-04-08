@@ -26,7 +26,7 @@ app.component('selectedrows', {
 `
   ,
   setup(props) {
-    let 
+    let
       modelc = reactive(model),
       viewc = reactive(view);
     const $q = useQuasar();
@@ -46,14 +46,17 @@ app.component('selectedrows', {
         },
       }
       ).then(resp => resp.json());
-      console.log(response)
-      Object.entries(response).forEach((ent, idx) => {
-        console.log(ent);
-        console.log(idx);
 
+      console.log(response)
+      Object.entries(response).forEach(ent => {
+        let key = ent[0];
+        if (modelc.hasOwnProperty(key)) {
+          modelc[key].hasOwnProperty('val') ? modelc[key].val = ent[1] : modelc[key] = ent[1];
+        }
       })
     }
 
+    /* resctricted */
     async function sendGET() {
       let url = 'https://crm.pereplan-one.ru/bitrix/tools/act/update_deal.php?id=19300';
       // url = 'https://script.google.com/macros/s/AKfycbzUgwNF8Tqs3tmw7sV3ZxWKBDN5bUJ2mfr7mUR5MLrWeCMIvo3GSS4ZfKUbYZN5eXRY/exec',
