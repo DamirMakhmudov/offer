@@ -157,7 +157,7 @@ var view = {
 }
 
 var model = {
-  id: '123456',
+  id: '19885',
   manager: { "val": "" },
   managerEmail: { "val": "" },
   managerPhone: { "val": "" },
@@ -334,6 +334,10 @@ async function sendPOST() {
 // master();
 
 function master(){
+  let n = null;
+  console.log(n.toString())
+
+  return;
 
   let [a, b, c] = ['Петров', 'Иван', 'Николаевич'];
   console.log(`${a} ${b[0]}.${c[0]}.`);

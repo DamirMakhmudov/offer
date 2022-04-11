@@ -32,6 +32,7 @@ app.component('selectedrows', {
     const $q = useQuasar();
 
     async function importBx() {
+      console.log(modelc.id);
       let url = `https://crm.pereplan-one.ru/bitrix/tools/act/update_deal.php?id=${modelc.id}`;
       let response = await fetch(url, {
         method: 'GET',
@@ -49,8 +50,17 @@ app.component('selectedrows', {
 
       Object.entries(response).forEach(ent => {
         let key = ent[0];
+        console.log(key, ent[1])
         if (modelc.hasOwnProperty(key)) {
-          modelc[key].hasOwnProperty('val') ? modelc[key].val = ent[1] : modelc[key] = ent[1];
+          if (modelc[key].hasOwnProperty('val')) {
+            if (modelc[key].val == '') {
+              modelc[key].val = (ent[1] === null ? '' :ent[1])
+            }
+          } else {
+            if (modelc[key] == '') {
+              modelc[key] = (ent[1] === null ? '' :ent[1])
+            }
+          }
         }
       })
     }
