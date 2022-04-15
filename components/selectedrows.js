@@ -5,8 +5,11 @@ app.component('selectedrows', {
     `
   <!-- Сохранить, Импорт, Менеджер -->
   <div class="q-ma-xs row justify-start">
+    <q-btn round color="primary" :icon="modelc.urlfolder.val == ''? 'folder_off' : 'folder'" @click="openFolder()"></q-btn>
     <q-btn color="primary" icon="save" label="Сохранить" @click="saveIt()" class="q-mr-xs" style="overflow: auto; max-height:2em;width:16em"></q-btn>
     <q-btn color="primary" icon="get_app" label="Импорт Bitrix" @click="importBx()"  class="q-mr-xs" style="overflow: auto; max-height:2em;width:16em"></q-btn>
+    <q-btn color="primary" icon="get_app" label="Папка" @click="checkFolder()"  class="q-mr-xs" style="overflow: auto; max-height:2em;width:16em"></q-btn>
+
     <!-- <q-btn color="primary" icon="get_app" label="Импорт" @click="sendGET()"  class="q-mr-xs" style="overflow: auto; max-height:2em;width:16em"></q-btn> -->
     <q-select v-model=modelc.manager.val dense :options=viewc.filterUsers label="Менеджер" class="q-mx-xs col" style="overflow: auto;"></q-select>
   </div>
@@ -31,8 +34,45 @@ app.component('selectedrows', {
       viewc = reactive(view);
     const $q = useQuasar();
 
+    function openFolder(){
+      if(!modelc.urlfolder.val){
+        $q.loading.show({
+          message: 'Секунду. Ищу папку...'
+        });
+        checkFolder()
+      }else{
+        window.open( modelc.urlfolder.val);
+      }
+      
+
+      // timer = setTimeout(() => {
+      //   $q.loading.hide();
+      //   timer = void 0
+      // }, 5000)
+    }
+
+    async function checkFolder(){
+      let url = 'https://script.google.com/macros/s/AKfycbw0kKa-yHVMcrWyihYHaqNQh1FvvdG5hHqmZyjvJEddZxwtJwoTc4EzHBNsiW_5neu4/exec';
+      let response = await fetch(url, {
+        method: 'POST',
+        muteHttpExceptions: false,
+        body: JSON.stringify({mode: 'folder', address: modelc.address.val}),
+        // mode: 'no-cors', // no-cors, *cors, same-origin, cors
+        headers: {
+          //'Content-Type': 'application/json',
+          // 'Content-Type': "application/json; charset=UTF-8",
+          // 'Content-Type': "multipart/form-data",
+          'Content-Type': 'application/x-www-form-urlencoded',
+          // 'Accept': 'application/json'
+        },
+      }
+      ).then(resp => resp.json());
+      console.log(response);
+      modelc.urlfolder.val = response.url;
+      $q.loading.hide();
+    }
+
     async function importBx() {
-      console.log(modelc.id);
       let url = `https://crm.pereplan-one.ru/bitrix/tools/act/update_deal.php?id=${modelc.id}`;
       let response = await fetch(url, {
         method: 'GET',
@@ -85,7 +125,7 @@ app.component('selectedrows', {
         });
       }
     }
-
+    
     watch(modelc.manager, (val) => {
       let userIdx = viewc.users.names.indexOf(val.val.value);
       modelc.managerEmail.val = viewc.users.emails[userIdx];
@@ -93,11 +133,14 @@ app.component('selectedrows', {
     })
 
     return {
+      folderIcon: 'folder',
       modelc,
       viewc,
+      selectedc: ref(model.selected),
+      openFolder,
       saveIt,
       importBx,
-      selectedc: ref(model.selected)
+      checkFolder
     }
   }
 })
