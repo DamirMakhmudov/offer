@@ -157,7 +157,7 @@ var view = {
 }
 
 var model = {
-  id: '19885',
+  id: '7924',
   manager: { "val": "" },
   managerEmail: { "val": "" },
   managerPhone: { "val": "" },
@@ -261,7 +261,7 @@ var model = {
     { "id": 9, "name": "Дизайн-проект Помещения с указанием мест расположения и характеристик устраиваемого оборудования для подготовки рабочей документации", "count": "1 (один)", "filter": "ТЗБ" },
     { "id": 10, "name": "Технические условия на Помещение от управляющей компании.", "count": "1 (один)", "filter": "Рабочка" }
   ],
-  urlfolder: {"val": ""},
+  urlfolder: {"val": "https://drive.google.com/drive/folders/1ddfEanLXuzXHlmE44qPm27vNmt6cOMED"},
   selected: { "val": [] },
   selectedPayment: { "val": [] },
   selectedAdditional: { "val": [] },

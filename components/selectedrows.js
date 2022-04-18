@@ -5,11 +5,11 @@ app.component('selectedrows', {
     `
   <!-- Сохранить, Импорт, Менеджер -->
   <div class="q-ma-xs row justify-start">
-    <q-btn round color="primary" :icon="modelc.urlfolder.val == ''? 'folder_off' : 'folder'" @click="openFolder()"></q-btn>
+    <q-btn round color="primary" :icon="modelc.urlfolder.val == '' ? 'folder_off' : 'folder'" @click="openFolder()">
+      <q-tooltip>Папка на диске с документами по проекту</q-tooltip>
+    </q-btn>
     <q-btn color="primary" icon="save" label="Сохранить" @click="saveIt()" class="q-mr-xs" style="overflow: auto; max-height:2em;width:16em"></q-btn>
     <q-btn color="primary" icon="get_app" label="Импорт Bitrix" @click="importBx()"  class="q-mr-xs" style="overflow: auto; max-height:2em;width:16em"></q-btn>
-    <q-btn color="primary" icon="get_app" label="Папка" @click="checkFolder()"  class="q-mr-xs" style="overflow: auto; max-height:2em;width:16em"></q-btn>
-
     <!-- <q-btn color="primary" icon="get_app" label="Импорт" @click="sendGET()"  class="q-mr-xs" style="overflow: auto; max-height:2em;width:16em"></q-btn> -->
     <q-select v-model=modelc.manager.val dense :options=viewc.filterUsers label="Менеджер" class="q-mx-xs col" style="overflow: auto;"></q-select>
   </div>
@@ -43,12 +43,6 @@ app.component('selectedrows', {
       }else{
         window.open( modelc.urlfolder.val);
       }
-      
-
-      // timer = setTimeout(() => {
-      //   $q.loading.hide();
-      //   timer = void 0
-      // }, 5000)
     }
 
     async function checkFolder(){
@@ -57,17 +51,11 @@ app.component('selectedrows', {
         method: 'POST',
         muteHttpExceptions: false,
         body: JSON.stringify({mode: 'folder', address: modelc.address.val}),
-        // mode: 'no-cors', // no-cors, *cors, same-origin, cors
         headers: {
-          //'Content-Type': 'application/json',
-          // 'Content-Type': "application/json; charset=UTF-8",
-          // 'Content-Type': "multipart/form-data",
           'Content-Type': 'application/x-www-form-urlencoded',
-          // 'Accept': 'application/json'
         },
       }
       ).then(resp => resp.json());
-      console.log(response);
       modelc.urlfolder.val = response.url;
       $q.loading.hide();
     }
@@ -133,7 +121,6 @@ app.component('selectedrows', {
     })
 
     return {
-      folderIcon: 'folder',
       modelc,
       viewc,
       selectedc: ref(model.selected),
