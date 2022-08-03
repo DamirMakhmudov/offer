@@ -3,7 +3,7 @@
   template:
   /*html*/
   `
-  <!-- Выбор шаблона документа, профиля и формата + кнопки Пачать и Сохранить-->
+  <!-- Выбор шаблона документа, профиля и формата + кнопки Пачать-->
   <div class="q-ma-xs row justify-between">
     <!-- <div class="row justify-between"> -->
       <q-select v-model="selectedoffer.val" :options="options" label="Выберите шаблон КП" class="col" style="overflow: auto;"></q-select>

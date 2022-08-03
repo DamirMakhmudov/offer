@@ -199,6 +199,7 @@ var model = {
   selectedContract: { "val": "" },
   selectedFormat: { "val": view.filterFormat[0] },
   discount: { "val": 0 },
+  includedPayments: 0,
   square: { "val": "" },
   categories: { "val": [] },
   payments: { "val": [] },
