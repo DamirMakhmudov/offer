@@ -5,7 +5,7 @@ app.component('selectedrows', {
     `
   <!-- Сохранить, Импорт, Менеджер -->
   <div class="q-ma-xs row justify-start">
-    <q-btn round color="primary" :icon="modelc.urlfolder.val == '' ? 'folder_off' : 'folder'" @click="openFolder()">
+    <q-btn round color="primary" :icon="modelc.urlFolder.val == '' ? 'folder_off' : 'folder'" @click="openFolder()">
       <q-tooltip>Папка на диске с документами по проекту</q-tooltip>
     </q-btn>
     <q-btn color="primary" icon="save" label="Сохранить" @click="saveIt()" class="q-mr-xs" style="overflow: auto; max-height:2em;width:16em"></q-btn>
