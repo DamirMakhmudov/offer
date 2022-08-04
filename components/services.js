@@ -23,7 +23,7 @@ app.component('services', {
       <template v-slot:top='props'>
         <div style="width:100%;float:right" :props='props'>
           <span style='font:14pt arial'>Услуги</span>
-          <q-input v-model.number="modelc.includedPayments" type="number" style="width:200px;float:right" dense label='Включенные платежи'></q-input>
+          <q-input v-model=modelc.includedPayments type="number" style="width:200px;float:right" dense label='Включенные платежи'></q-input>
           <q-input v-model=modelc.amountTime type=number style="width:200px;float:right" dense label="Сроки, рабочих дней" :readonly=false>
             <q-tooltip>Рассчитывается автоматически в конструкторе документов</q-tooltip>
           </q-input>
