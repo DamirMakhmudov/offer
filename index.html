@@ -1,108 +1,169 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet" type="text/css">
-  <link href="https://cdn.jsdelivr.net/npm/quasar@2.0.0-beta.9/dist/quasar.prod.css" rel="stylesheet" type="text/css">
-  <title>КП</title>
-</head>
-
-<body>
-  <div id="q-app">
-    <selectedrows></selectedrows>
-    <fields></fields>
-    <q-expansion-item expand-separator icon="article" label="Конструктор документов" :default-opened=true>
-      <offers :selectedprofile='selectedprofile'></offers>
-      <!-- <q-scroll-area style="height: 50em"> -->
-      <square :square='square' :options='filterSquare'></square>
-      <categories :filter='categories'></categories>
-      <services :selected='selected' :columns='columns' :rows='rows' :filter='categories.val' :square='square':selectedprofile='selectedprofile'></services>
-      <payments :selected='selectedpayment' :columns='columnspayment' :rows='rowspayment' :filter='payments'></payments>
-      <additional :selected='selectedadditional' :columns='columnsadditional' :rows='rowsadditional'></additional>
-      <documents :columns='columnsdocuments' :rows='rowsdocuments' :selected='selecteddocuments' :filter='payments'></documents>
-      <!-- </q-scroll-area> -->
-    </q-expansion-item>
-  </div>
-
-  <script>
-    // var view = JSON.parse(<?= getView() ?>);
-    // var model = JSON.parse(<?= getModel(id) ?>);
-
-    // function saveDataJS(){
-    //   google.script.run.withSuccessHandler(closeModal).saveDataGS(JSON.stringify(model));
-    // }
-
-    // function printJS(template, format){
-    //   google.script.run.withSuccessHandler(openUrl).printGS(JSON.stringify(model), template, format);
-    // }
-
-    // function closeModal(message){
-    //   google.script.host.close();
-    // }
-
-    async function sendPOST() {
-      let
-        url = 'https://crm.pereplan-one.ru/bitrix/tools/act/update_deal.php',
-        // url = 'https://script.google.com/macros/s/AKfycbzUgwNF8Tqs3tmw7sV3ZxWKBDN5bUJ2mfr7mUR5MLrWeCMIvo3GSS4ZfKUbYZN5eXRY/exec',
-        data = {};
-
-      data["id"] = 1200;
-      data["urlOffer"] = "url address";
-      data["mode"] = "addressesbyengineer";
-      data["engineer"] = "Александр_Макаров";
-
-      let response = await fetch(url, {
-        method: 'POST',
-        muteHttpExceptions: false,
-        // mode: 'no-cors', // no-cors, *cors, same-origin, cors
-        headers: {
-          // 'Content-Type': 'application/json'
-          'Content-Type': 'application/x-www-form-urlencoded',
-          // 'Content-Type': "application/json; charset=UTF-8",
-          'accept': 'application/json',
-        },
-        body: JSON.stringify(data)
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald&family=Rowdies:wght@300&family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/quasar@2.15.2/dist/quasar.prod.css"
+      rel="stylesheet"
+    />
+    <title>КП</title>
+    <script>
+      if (window.trustedTypes && window.trustedTypes.createPolicy) {
+        window.trustedTypes.createPolicy("default", {
+          createHTML: (string) => string,
+          createScriptURL: (string) => string,
+          createScript: (string) => string,
+        });
       }
-        // ).then(resp =>
-        // console.log(resp.json())
-      );
-    }
+    </script>
+    <style scoped>
+      .buttons {
+        margin-top: 35px;
+      }
 
-    function openUrl(url) {
-      window.open(url)
-    }
-  </script>
+      .ghost {
+        opacity: 0.5;
+        background: #c8ebfb;
+      }
+    </style>
+  </head>
 
-  <!-- Import Vue -->
-  <script src="https://unpkg.com/vue@next"></script>
+  <body>
+    <div id="q-app">
+      <selectedrows :selected="selected"></selectedrows>
+      <!-- <selectedrows></selectedrows> -->
+      <fields></fields>
+      <q-expansion-item
+        expand-separator
+        icon="article"
+        label="Конструктор документов"
+        :default-opened="true"
+      >
+        <offers :selectedprofile="selectedprofile"></offers>
+        <!-- <q-scroll-area style="height: 50em"> -->
+        <square :square="square" :options="filterSquare"></square>
+        <categories :filter="categories"></categories>
+        <!-- :selected="selected" !?! -->
+        <services
+        :selected="selected" 
+          :columns="columns"
+          :rows="rows"
+          :filter="categories.val"
+          :square="square"
+          :selectedprofile="selectedprofile"
+        ></services>
+        <payments
+          :selected="selectedpayment"
+          :columns="columnspayment"
+          :rows="rowspayment"
+          :filter="payments"
+        ></payments>
+        <additional
+          :selected="selectedadditional"
+          :columns="columnsadditional"
+          :rows="rowsadditional"
+        ></additional>
+        <documents
+          :columns="columnsdocuments"
+          :rows="rowsdocuments"
+          :selected="selecteddocuments"
+          :filter="payments"
+        ></documents>
+        <!-- </q-scroll-area> -->
+      </q-expansion-item>
+    </div>
 
-  <!-- Import Quasar -->
-  <script src="https://cdn.jsdelivr.net/npm/quasar@2.0.0-beta.9/dist/quasar.umd.prod.js"></script>
+    <script>
+      // var view = JSON.parse(<?= getView() ?>);
+      // var model = JSON.parse(<?= getModel(id) ?>);
 
-  <!-- Import JS -->
-  <script src="./components/data.js"></script>
+      // function saveDataJS(){
+      //   google.script.run.withSuccessHandler(closeModal).saveDataGS(JSON.stringify(model));
+      // }
 
-  <!-- Import components -->
-  <script src="./components/root.js"></script>
-  <script src="./components/selectedrows.js"></script>
-  <script src="./components/fields.js"></script>
-  <script src="./components/offers.js"></script>
-  <script src="./components/square.js"></script>
-  <script src="./components/categories.js"></script>
-  <script src="./components/services.js"></script>
-  <script src="./components/payments.js"></script>
-  <script src="./components/additional.js"></script>
-  <script src="./components/documents.js"></script>
-  <script src="./components/datepicker.js"></script>
+      // function printJS(template, format){
+      //   google.script.run.withSuccessHandler(openUrl).printGS(JSON.stringify(model), template, format);
+      // }
 
-  <!-- Mount app -->
-  <script>
-    const vm = app.mount('#q-app')
-  </script>
+      // function closeModal(message){
+      //   google.script.host.close();
+      // }
 
-</body>
+      async function sendPOST() {
+        let url =
+            "https://crm.pereplan-one.ru/bitrix/tools/act/update_deal.php",
+          // url = 'https://script.google.com/macros/s/AKfycbzUgwNF8Tqs3tmw7sV3ZxWKBDN5bUJ2mfr7mUR5MLrWeCMIvo3GSS4ZfKUbYZN5eXRY/exec',
+          data = {};
 
+        data["id"] = 1200;
+        data["urlOffer"] = "url address";
+        data["mode"] = "addressesbyengineer";
+        data["engineer"] = "Александр_Макаров";
+
+        let response = await fetch(
+          url,
+          {
+            method: "POST",
+            muteHttpExceptions: false,
+            // mode: 'no-cors', // no-cors, *cors, same-origin, cors
+            headers: {
+              // 'Content-Type': 'application/json'
+              "Content-Type": "application/x-www-form-urlencoded",
+              // 'Content-Type': "application/json; charset=UTF-8",
+              accept: "application/json",
+            },
+            body: JSON.stringify(data),
+          }
+          // ).then(resp =>
+          // console.log(resp.json())
+        );
+      }
+
+      function openUrl(url) {
+        window.open(url);
+      }
+    </script>
+
+    <!-- Import Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+
+    <!-- Import Quasar -->
+    <script src="https://cdn.jsdelivr.net/npm/quasar@2.15.2/dist/quasar.umd.prod.js"></script>
+
+    <!-- <script src="//cdn.jsdelivr.net/npm/sortablejs@1.8.4/Sortable.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vuedraggable@4"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.2/vue.min.js"></script> -->
+
+    <!-- Import JS -->
+    <script src="./components/data.js"></script>
+
+    <!-- Import components -->
+    <script src="./components/root.js"></script>
+    <script src="./components/selectedrows.js"></script>
+    <!-- <script src="./components/fields.js"></script> -->
+    <!-- <script src="./components/offers.js"></script> -->
+    <!-- <script src="./components/square.js"></script> -->
+    <!-- <script src="./components/categories.js"></script> -->
+    <script src="./components/services.js"></script>
+    <script src="./components/payments.js"></script>
+    <script src="./components/additional.js"></script>
+    <script src="./components/documents.js"></script>
+    <script src="./components/datepicker.js"></script>
+
+    <!-- Mount app -->
+    <script>
+      const vm = app.mount("#q-app");
+    </script>
+  </body>
 </html>

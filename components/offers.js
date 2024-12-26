@@ -3,7 +3,7 @@
   template:
   /*html*/
   `
-  <!-- Выбор шаблона документа, профиля и формата + кнопки Пачать-->
+  <!-- Выбор шаблона документа, профиля и формата + кнопки Пачать и Сохранить-->
   <div class="q-ma-xs row justify-between">
     <!-- <div class="row justify-between"> -->
       <q-select v-model="selectedoffer.val" :options="options" label="Выберите шаблон КП" class="col" style="overflow: auto;"></q-select>
@@ -31,14 +31,14 @@
     const selectedContract = ref(model.selectedContract);
 
     function printOffer(template, format){
-      // google.script.run.withSuccessHandler(hideLoading).printOfferGS(JSON.stringify(model), template.value, format.value, model.city.val);
+      google.script.run.withSuccessHandler(hideLoading).printOfferGS(JSON.stringify(model), template.value, format.value, model.city.val);
       $q.loading.show({
         message: 'Печатаю КП. Нужно немного подождать...'
       });
     }
 
     function printContract(template){
-      // google.script.run.withSuccessHandler(hideLoading).printContractGS(JSON.stringify(model), template.value, model.city.val);
+      google.script.run.withSuccessHandler(hideLoading).printContractGS(JSON.stringify(model), template.value, model.city.val);
       $q.loading.show({
         message: 'Печатаю договор. Нужно немного подождать...'
       });

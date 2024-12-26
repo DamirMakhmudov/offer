@@ -1,9 +1,10 @@
-
 const { createApp, ref, reactive, computed, watch, onMounted, watchEffect, onBeforeUnmount } = Vue;
 const { useQuasar, Loading, QSpinnerGears } = Quasar;
+const draggable = vuedraggable;
 
 var vueObject = {
   name: 'root',
+
   setup() {
     return {
       selectedprofile: ref(model.selectedProfile),
@@ -23,9 +24,10 @@ var vueObject = {
       columnsdocuments: ref(view.columnsDocuments),
       rowsdocuments: ref(model.rowsDocuments),
       selecteddocuments: ref(model.selectedDocuments),
+      draggable: vuedraggable
     }
   },
-  
+
   /*
   mounted: function () {
     console.log(`${this.$options.name} component is mounted`);
