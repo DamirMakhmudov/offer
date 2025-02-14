@@ -6,7 +6,7 @@ app.component("services", {
     `
   <div class="q-pa-md">
     <q-table
-      :rows = "rowsc"
+      :rows = "modelc.rows"
       :columns = "columnsc"
       title = "Услуги"
       :rows-per-page-options = "[100]"
@@ -21,14 +21,20 @@ app.component("services", {
       :selected-rows-label="getSelectedString"
     >
       <template v-slot:top='props'>
-        <div style="width:100%;float:right" :props='props'>
+        <div style="width:100%;" :props='props'>
           <span style='font:14pt arial'>Услуги</span>
+          
+          <q-toggle v-model=modelc.nds.val :label='modelc.nds.val?"Включая НДС":"Не включая НДС"' />
+          
           <q-input v-model=modelc.includedPayments type="number" style="width:200px;float:right" dense label='Включенные платежи'></q-input>
           <q-input v-model=modelc.amountTime type=number style="width:200px;float:right" dense label="Сроки, рабочих дней" :readonly=false>
             <q-tooltip>Рассчитывается автоматически в конструкторе документов</q-tooltip>
           </q-input>
           <q-input v-model.number="discounto.val" type="number" style="width:200px;float:right" dense label='Скидка,%'></q-input>
+          
           <q-input v-model.number="amount.val" type="number" style="width:200px;float:right" dense label='Общая сумма договора'></q-input>
+          <q-input v-model.number="amountNDS.val" type="number" style="width:200px;float:right" dense label='Размер НДС'></q-input>
+
         </div>
       </template>
 
@@ -72,18 +78,22 @@ app.component("services", {
   },
   setup(props) {
     var columnsc = ref(props.columns),
-      rowsc = ref(props.rows),
+      modelc = reactive(model),
+      // rowsc = ref(props.rows), //!!!
       squarec = ref(props.square),
-      selectedc = ref(props.selected),
+      // selectedc = ref(props.selected.val),
+      selectedc = ref(model.selected),
+
       filtercategoryc = ref(props.filter),
       discounto = ref(model.discount),
       amount = ref(model.amountServices),
-      modelc = reactive(model),
+      amountNDS = ref(model.amountServicesNDS),
       // visibleColumns = computed(() => { return setvisiblecolumns(props.square) }),
       selectedprofilec = ref(props.selectedprofile);
 
     function setvisiblecolumns() {
-      rowsc.value.map((row) => {
+      // rowsc.value.map((row) => { //!!!
+      modelc.rows.map((row) => { //!!!
         row["price"] = Math.round(
           row[props.square.val] * (1 - discounto.value.val / 100)
         );
@@ -98,7 +108,9 @@ app.component("services", {
 
     function myfilterMethod() {
       calculateAmount();
-      return rowsc.value.filter(
+      // return rowsc.value.filter(
+      return modelc.rows.filter(
+
         (row) =>
           props.filter.filter((i) => {
             return row.filter.split(", ").indexOf(i) > -1;
@@ -112,7 +124,8 @@ app.component("services", {
         amo += +row.price;
       });
       amo = amo * (1 - discounto.value.val / 100);
-      amount.value.val = amo;
+      amount.value.val = roundTwoDecimal(amo);
+      amountNDS.value.val = roundTwoDecimal(modelc.nds.val == true ? amo / 1.05 * 0.05 : 0);
     }
 
     function calculateTime() {
@@ -120,7 +133,6 @@ app.component("services", {
       selectedc.value.val.forEach((row) => {
         amo += +row.time;
       });
-      // period.value.val = amo;
       modelc.amountTime = amo;
     }
 
@@ -128,12 +140,14 @@ app.component("services", {
       let arr = {};
       columnsc.value.forEach((col) => (arr[col.name] = ""));
       arr["filter"] = props.filter.join(", ");
-      arr["id"] = rowsc.value.length + 1;
-      rowsc.value.push(arr);
+      // arr["id"] = rowsc.value.length + 1; //!!!
+      arr["id"] = modelc.rows.length + 1;
+      // rowsc.value.push(arr); //!!!
+      modelc.rows.value.push(arr);
     }
 
     function getSelectedString() {
-      return `Выбрано строк: ${selectedc.value.val.length}`;
+      return `Выбрано строк: ${selectedc.value.length}`;
     }
 
     function syncselected(rowo) {
@@ -143,6 +157,14 @@ app.component("services", {
       }
     }
 
+    function roundTwoDecimal(value) {
+      return value.toFixed(2);
+    }
+
+    function roundTwoDecimal2(value) {
+      return Math.round(value * 100) / 100
+    }
+
     watch(discounto.value, (val) => {
       calculateAmount();
     });
@@ -150,14 +172,12 @@ app.component("services", {
     watch(selectedc.value, (val) => {
       calculateTime();
       calculateAmount();
-      //selectedc.value.val.sort((a, b) =>
-      //  a.id > b.id ? 1 : b.id > a.id ? -1 : 0
-      //);
     });
 
     watch(selectedprofilec.value, (val) => {
       let key = val.val.value;
-      selectedc.value.val = rowsc.value.filter((row) => {
+      // selectedc.value.val = rowsc.value.filter((row) => {
+      selectedc.value.val = modelc.rows.filter((row) => {
         return row[key] == true;
       });
     });
@@ -167,45 +187,20 @@ app.component("services", {
       calculateAmount();
     });
 
+    // watch(amount.value, (val) => {
+    // calculateAmountNDS();
+    // });
+
+    watch(modelc.nds, (val) => {
+      // console.log('s')
+      // model.rows = [];
+      modelc.rows = modelc.rows.map((row) => { return { ...row, price: modelc.nds.val ? roundTwoDecimal(row.price * 1.05) : roundTwoDecimal(row.price / 1.05) } });
+      selectedc.value.val = selectedc.value.val.map((row) => { return { ...row, price: modelc.nds.val ? roundTwoDecimal(row.price * 1.05) : roundTwoDecimal(row.price / 1.05) } });
+    });
+
     onMounted: {
       calculateTime();
     }
-
-    //#region draft
-    // :visible-columns="visibleColumns"
-
-    // watchEffect(() => {
-    //   console.log('watchEffect', discounto.value.val);
-    //   //  console.log('props', props.filter);
-    //   //  myfilterMethod()
-    //   // selectedc = props.selected
-    //   // console.log('watchEffect', discounto.val);
-    // })
-
-    // var visibleColumns = ref(computed(() => { return setvisiblecolumns(props.square) }));
-    // var visibleColumns = ref(columnsc.value.map(col => col.name));
-
-    // watch(discounto.value, () => {
-    // let priceColumnPosition = columnsc.value.filter((col, idx) =>{return /price/.test(col.name)}).map(col => col.name);
-    // rowsc.value.forEach(row =>{
-    //   priceColumnPosition.forEach(price =>{
-    //     row[price] = Math.round(row[price]*(1-discounto.value.val/100));
-    //   })
-    // })
-
-    // let filteredRows = rowsc.value.map(row => (
-    //   props.filter.filter(function(i) {return (row.filter.split(', ').indexOf(i) > -1);}).length > 0
-    // ));
-    // console.log('filteredRows', filteredRows);
-    // })
-
-    // watch(() => props.square,()=>{
-    // console.log(props.square);
-    //   rowsc.value.map(row =>{
-    //     row['price'] = Math.round(row[props.square]*(1-discounto.value.val/100));
-    //   })
-    // })
-    //#endregion
 
     return {
       modelc,
@@ -213,11 +208,12 @@ app.component("services", {
       // visibleColumns,
       squarec,
       columnsc,
-      rowsc,
+      // rowsc, //!!!
       selectedc,
       discounto,
       filtercategoryc,
       amount,
+      amountNDS,
       // period,
       selectedprofilec,
       myfilterMethod,

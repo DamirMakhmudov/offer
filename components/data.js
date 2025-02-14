@@ -4528,7 +4528,7 @@ var model = {
         "document": "Проект перепланировки и/или переустройства Помещения (в PDF формате с ЭЦП)",
         "count": "1 (один)"
       }
-    ]
+    ],
   },
   "selectedPayment": {
     "val": []
@@ -4687,11 +4687,20 @@ var model = {
   },
   "amountTime": 112,
   "includedPayments": 0,
-  "id": "44793",
+  "id": "99997",
   "city": {
     "val": "m"
+  },
+  "nds": {
+    "val": false
+  },
+  "amountPaymentsNDS": {
+    "val": 0
+  },
+  "amountServicesNDS": {
+    "val": 0
   }
-}
+};
 
 async function sendGET() {
   let url = 'https://crm.pereplan-one.ru/bitrix/tools/act/update_deal.php';

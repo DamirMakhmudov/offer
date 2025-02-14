@@ -16,7 +16,6 @@ app.component('payments', {
       </q-option-group>
     </div>
   </div>
-
   <div class="q-pa-md">
     <q-table 
       :rows="rowsc"
@@ -37,7 +36,10 @@ app.component('payments', {
     <template v-slot:top='props'>
       <div style="width:100%;float:right" :props='props'>
         <span style='font:14pt arial'>Порядок оплаты</span>
+          <q-toggle v-model=modelc.nds.val :label='modelc.nds.val?"Включая НДС":"Не включая НДС"' />
+
         <q-input v-model.number="amount.val" type="number" style="width:200px;float:right" dense label='Итого'></q-input>
+        <q-input v-model.number="amountNDS.val" type="number" style="width:200px;float:right" dense label='Размер НДС'></q-input>
       </div>
     </template>
 
@@ -80,7 +82,8 @@ app.component('payments', {
       rowsc = ref(props.rows),
       selectedc = ref(props.selected),
       paymentsc = ref(props.filter),
-      amount = ref(model.amountPayments);
+      amount = ref(model.amountPayments),
+      amountNDS = ref(model.amountPaymentsNDS);
 
     function getSelectedString() {
       return `Выбрано строк: ${selectedc.value.val.length}`
@@ -93,22 +96,32 @@ app.component('payments', {
       ))
     }
 
+    function calculateAmountNDS() {
+      let value = amount.value.val;
+      amountNDS.value.val = modelc.nds.val == true ? value * 1.05 : value;
+    }
+
     function calculateAmount() {
       let amo = 0;
       selectedc.value.val.forEach(row => {
         amo += +row.price;
       });
       amount.value.val = amo;
+      amountNDS.value.val = modelc.nds.val == true ? amo / 1.05 * 0.05 : 0;
     }
+
+    watch(modelc.nds, (val) => {
+      rowsc.value = rowsc.value.map((row) => { return { ...row, price: modelc.nds.val ? row.price * 1.05 : row.price / 1.05 } });
+      selectedc.value.val = selectedc.value.val.map((row) => { return { ...row, price: modelc.nds.val ? row.price * 1.05 : row.price / 1.05 } });
+    });
 
     watch(selectedc.value, (val) => {
       selectedc.value.val.sort((a, b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0));
       selectedc.value.val.forEach((row, idx) => {
         if (idx < 6) {
-          modelc[`payment${idx+1}`] = row.price
+          modelc[`payment${idx + 1}`] = row.price
         }
       })
-
     })
 
     function syncselected(rowo) {
@@ -124,9 +137,11 @@ app.component('payments', {
       rowsc,
       filterPaymentsc: view.filterPayments,
       paymentsc,
+      calculateAmountNDS,
       selectedc,
       filter: ref({ value: 'none' }),
       amount,
+      amountNDS,
       getSelectedString,
       myfilterMethod,
       syncselected

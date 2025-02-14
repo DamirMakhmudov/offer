@@ -17,6 +17,12 @@
       href="https://cdn.jsdelivr.net/npm/quasar@2.15.2/dist/quasar.prod.css"
       rel="stylesheet"
     />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://cdn4.iconfinder.com/data/icons/application-windows-2/32/Form-Window-Survey-Application-1024.png"
+    />
+
     <title>КП</title>
     <script>
       if (window.trustedTypes && window.trustedTypes.createPolicy) {
@@ -56,7 +62,7 @@
         <categories :filter="categories"></categories>
         <!-- :selected="selected" !?! -->
         <services
-        :selected="selected" 
+          :selected="selected"
           :columns="columns"
           :rows="rows"
           :filter="categories.val"
@@ -151,14 +157,14 @@
     <!-- Import components -->
     <script src="./components/root.js"></script>
     <script src="./components/selectedrows.js"></script>
-    <!-- <script src="./components/fields.js"></script> -->
-    <!-- <script src="./components/offers.js"></script> -->
-    <!-- <script src="./components/square.js"></script> -->
-    <!-- <script src="./components/categories.js"></script> -->
+    <script src="./components/fields.js"></script>
+    <script src="./components/offers.js"></script>
+    <script src="./components/square.js"></script>
+    <script src="./components/categories.js"></script>
     <script src="./components/services.js"></script>
     <script src="./components/payments.js"></script>
-    <script src="./components/additional.js"></script>
-    <script src="./components/documents.js"></script>
+    <!-- <script src="./components/additional.js"></script> -->
+    <!-- <script src="./components/documents.js"></script> -->
     <script src="./components/datepicker.js"></script>
 
     <!-- Mount app -->

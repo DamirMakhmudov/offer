@@ -13,10 +13,18 @@ app.component("selectedrows", {
     <q-select v-model=modelc.manager.val dense :options=viewc.filterUsers label="Менеджер" class="q-mx-xs col" style="overflow: auto;"></q-select>
   </div>
 
-    <!-- 🦄 Выбранные позиции -->
+  <!-- 🦄 Выбранные позиции -->
   <q-expansion-item expand-separator icon="view_list" label="Выбранные позиции" :default-opened=true overflow: auto>
     <div class="q-ma-xs row justify-start">
       <q-list dense bordered separator class="rounded-borders fit" >
+
+        <div class="row justify-between fit text-weight-bold text-center">
+          <div class="col-6">Наименование</div> 
+          <div class="col-1">Срок</div> 
+          <div class="col-1">Сумма</div> 
+          <div class="col-1">Комментарий</div> 
+          <div class="col-1">Документы</div> 
+         </div>
 
         <q-item v-for="(item, index) in selectedc.val" clickable
             :key = "item.id"
@@ -26,52 +34,57 @@ app.component("selectedrows", {
             @dragend="handleDragEnd"
             @dragover="handleDragOver"
             @drop="handleDrop($event, index)"
-            class=" row justify-between fit"
+            class="row justify-between fit"
         > 
-            <div class="row justify-between fit">
-              <q-input v-model="item.name"  class="fit" dense/>
+            
+            <div class="row justify-between fit content-center">
+
+              <!-- <q-input v-model="item.name"  class="col-6" dense/> -->
+              <q-input v-model="item.name" class="col-6" dense>
+                <q-popup-edit v-model="item.name" title="Комментарий" v-slot="scope" buttons label-set="Сохранить" label-cancel="Отменить" @save="syncselected(item)">
+                  <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" type="textarea"></q-input>
+                </q-popup-edit>
+              </q-input>
+
+              <q-input v-model="item.time"   class="col-1" dense/>
+              <q-input v-model="item.price"   class="col-1" dense/>
+
+              <q-input v-model="item.comment" class="col-1" dense>
+                <q-popup-edit v-model="item.comment" title="Комментарий" v-slot="scope" buttons label-set="Сохранить" label-cancel="Отменить" @save="syncselected(item)">
+                  <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" type="textarea"></q-input>
+                </q-popup-edit>
+              </q-input>
+            
+              <q-input v-model="item.document" class="col-1" dense>
+                <q-popup-edit v-model="item.document" title="Документы" v-slot="scope" buttons label-set="Сохранить" label-cancel="Отменить" @save="syncselected(item)">
+                  <q-input v-model="scope.value" dense autofocus counter @keyup.enter="scope.set" type="textarea"></q-input>
+                </q-popup-edit>
+              </q-input>
+
             </div>
+
         </q-item>
         
       </q-list>
     </div>
   </q-expansion-item>
 
-  <!-- Выбранные позиции -->
-  <!--
-  <q-expansion-item expand-separator icon="view_list" label="Выбранные позиции" :default-opened=true overflow: auto>
-    <div class="q-ma-md row justify-start">
-      <q-list dense bordered separator class="rounded-borders">
-
-        <q-item v-for="item in selectedc.val" clickable v-ripple>
-          <q-item-section draggable class="text-caption">
-            {{item.id}} {{item.name}}
-          </q-item-section>
-        </q-item>
-        >
-      </q-list>
-    </div>
-  </q-expansion-item>
-  -->
   `,
   props: {
+    // selected: {
+    //   type: Object,
+    // },
     selected: {
       type: Object,
     },
   },
   setup(props) {
-    const items = ref([
-      { id: 1, name: "Item 1" },
-      { id: 2, name: "Item 2" },
-      { id: 3, name: "Item 3" },
-      { id: 4, name: "Item 4" },
-      { id: 5, name: "Item 5" },
-    ]);
-
-    let modelc = reactive(model),
+    let
+      modelc = reactive(model),
       viewc = reactive(view);
 
-    // let selectedc = ref(model.selected);
+    // let selectedc = ref(model.selected.val);
+    // let selectedc = ref(model.rows);
     let selectedc = ref(props.selected);
 
     const $q = useQuasar();
@@ -86,6 +99,10 @@ app.component("selectedrows", {
         window.open(modelc.urlFolder.val);
       }
     }
+
+    watch(modelc.nds, (val) => {
+      // selectedc.value.val = selectedc.value.val.map((row) => { return { ...row, price: modelc.nds.val ? row.price * 1.05 : row.price / 1.05 } });
+    });
 
     // request = {
     //   "mode": "createFolder",
@@ -176,6 +193,13 @@ app.component("selectedrows", {
       }, 2000);
     }
 
+    function syncselected(rowo) {
+      let idx = modelc.rows.findIndex((row) => row.id === rowo.id);
+      if (idx != -1) {
+        modelc.rows[idx] = rowo;
+      }
+    }
+
     function hideLoading(res) {
       $q.loading.hide();
       if (res != true) {
@@ -207,9 +231,7 @@ app.component("selectedrows", {
     // Обработчик для сброса элементов
     const handleDrop = (event, index) => {
       const draggedIndex = event.dataTransfer.getData("index");
-      console.log(draggedIndex);
       const draggedItem = selectedc.value.val[draggedIndex];
-      console.log(draggedItem);
 
       selectedc.value.val.splice(draggedIndex, 1);
       const rawObject = JSON.parse(JSON.stringify(draggedItem));
@@ -225,17 +247,16 @@ app.component("selectedrows", {
     return {
       modelc,
       viewc,
-      // selectedc: ref(model.selected),
       selectedc,
       openFolder,
       saveIt,
+      syncselected,
       importBx,
       checkFolder,
-      items,
       handleDragStart,
       handleDragEnd,
       handleDragOver,
-      handleDrop,
+      handleDrop
     };
   },
 });
