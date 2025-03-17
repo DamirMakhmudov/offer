@@ -904,14 +904,12 @@ var model = {
       "МНИИТЭП"
     ]
   },
-
   "payments": {
     "val": []
   },
   "dops": {
     "val": []
   },
-
   "rows": [
     {
       "id": 1,
@@ -4064,7 +4062,6 @@ var model = {
       "count": "1 (один)"
     }
   ],
-
   "rowsPayment": [
     {
       "id": 1,
@@ -4229,7 +4226,6 @@ var model = {
     { "id": 3, "name": "Исправление ошибок БТИ, общая стоимость за две подачи", "price": 35000 },
     { "id": 4, "name": "Корректировка плана после перепланировки и повторная подача в МосЖилИнспекцию", "price": 20000 }
   ],
-
   "rowsAdditional": [
     {
       "id": 1,
@@ -4556,14 +4552,12 @@ var model = {
       }
     ],
   },
-
   "selectedPayment": {
     "val": []
   },
   "selectedDops": {
     "val": []
   },
-
   "selectedAdditional": {
     "val": [
       {
@@ -4713,14 +4707,12 @@ var model = {
   "amountServices": {
     "val": 83000
   },
-
   "amountPayments": {
     "val": 0
   },
   "amountDops": {
     "val": 0
   },
-
   "amountTime": 112,
   "includedPayments": 0,
   "id": "99997",
