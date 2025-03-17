@@ -1,41 +1,28 @@
-app.component('payments', {
-  name: 'payments',
+app.component("dops", {
+  name: "dops",
   template:
     /*html*/
     `
-  <div class="q-pa-md bg-grey-10 text-white">
-    <div class="q-gutter-sm">
-      <q-option-group
-        v-model="paymentsc.val"
-        :options="filterPaymentsc"
-        color="primary"
-        type="checkbox"
-        inline
-        dark
-      >
-      </q-option-group>
-    </div>
-  </div>
   <div class="q-pa-md">
     <q-table 
       :rows="rowsc"
       :columns="columnsc"
-      title="Порядок оплаты"
+      title="!Порядок оплаты"
       :rows-per-page-options="[20]"
       row-key="id"
       wrap-cells
       no-data-label="Нет данных"
       no-results-label = "Нет данных"
+      selection="multiple"
       :filter = "filter"
       :filter-method="myfilterMethod"
-      selection="multiple"
       v-model:selected="selectedc.val"
       :selected-rows-label="getSelectedString"
     >
 
     <template v-slot:top='props'>
       <div style="width:100%;float:right" :props='props'>
-        <span style='font:14pt arial'>Порядок оплаты</span>
+        <span style='font:14pt arial'>Допники</span>
         <q-input v-model.number="amount.val" type="number" style="width:200px;float:right" dense label='Итого'></q-input>
         <q-input v-model.number="amountNDS.val" type="number" style="width:200px;float:right" dense label='Размер НДС'></q-input>
       </div>
@@ -57,41 +44,40 @@ app.component('payments', {
 
   </q-table>
 </div>
-  `
-  ,
+  `,
   props: {
     filter: {
-      type: Object
+      type: Object,
     },
     columns: {
-      type: Array
+      type: Array,
     },
     rows: {
-      type: Array
+      type: Array,
     },
     selected: {
-      type: Object
-    }
+      type: Object,
+    },
   },
   setup(props) {
-    var
-      modelc = reactive(model),
+    var modelc = reactive(model),
       columnsc = ref(props.columns),
       rowsc = ref(props.rows),
       selectedc = ref(props.selected),
       paymentsc = ref(props.filter),
-      amount = ref(model.amountPayments),
-      amountNDS = ref(model.amountPaymentsNDS);
+      amount = ref(model.amountDops),
+      amountNDS = ref(model.amountDopsNDS);
 
     function getSelectedString() {
-      return `Выбрано строк: ${selectedc.value.val.length}`
+      return `Выбрано строк: ${selectedc.value.val.length}`;
     }
 
     function myfilterMethod() {
       calculateAmount();
-      return rowsc.value.filter(row => (
-        paymentsc.value.val.includes(row.filter)
-      ))
+      return rowsc.value
+      // return rowsc.value.filter((row) =>
+      // paymentsc.value.val.includes(row.filter)
+      // );
     }
 
     function calculateAmountNDS() {
@@ -101,31 +87,43 @@ app.component('payments', {
 
     function calculateAmount() {
       let amo = 0;
-      selectedc.value.val.forEach(row => {
+      selectedc.value.val.forEach((row) => {
         amo += +row.price;
       });
       amount.value.val = amo;
-      amountNDS.value.val = modelc.nds.val == true ? amo / 1.05 * 0.05 : 0;
+      amountNDS.value.val = modelc.nds.val == true ? (amo / 1.05) * 0.05 : 0;
     }
 
     watch(modelc.nds, (val) => {
-      rowsc.value = rowsc.value.map((row) => { return { ...row, price: modelc.nds.val ? row.price * 1.05 : row.price / 1.05 } });
-      selectedc.value.val = selectedc.value.val.map((row) => { return { ...row, price: modelc.nds.val ? row.price * 1.05 : row.price / 1.05 } });
+      rowsc.value = rowsc.value.map((row) => {
+        return {
+          ...row,
+          price: modelc.nds.val ? row.price * 1.05 : row.price / 1.05,
+        };
+      });
+      selectedc.value.val = selectedc.value.val.map((row) => {
+        return {
+          ...row,
+          price: modelc.nds.val ? row.price * 1.05 : row.price / 1.05,
+        };
+      });
     });
 
     watch(selectedc.value, (val) => {
-      selectedc.value.val.sort((a, b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0));
+      selectedc.value.val.sort((a, b) =>
+        a.id > b.id ? 1 : b.id > a.id ? -1 : 0
+      );
       selectedc.value.val.forEach((row, idx) => {
         if (idx < 6) {
-          modelc[`payment${idx + 1}`] = row.price
+          modelc[`payment${idx + 1}`] = row.price;
         }
-      })
-    })
+      });
+    });
 
     function syncselected(rowo) {
-      let idx = selectedc.value.val.findIndex(row => row.id === rowo.id);
+      let idx = selectedc.value.val.findIndex((row) => row.id === rowo.id);
       if (idx != -1) {
-        selectedc.value.val[idx] = rowo
+        selectedc.value.val[idx] = rowo;
       }
     }
 
@@ -133,16 +131,15 @@ app.component('payments', {
       modelc,
       columnsc,
       rowsc,
-      filterPaymentsc: view.filterPayments,
       paymentsc,
       calculateAmountNDS,
       selectedc,
-      filter: ref({ value: 'none' }),
+      filter: ref({ value: "none" }),
       amount,
       amountNDS,
       getSelectedString,
       myfilterMethod,
-      syncselected
-    }
+      syncselected,
+    };
   },
-})
+});

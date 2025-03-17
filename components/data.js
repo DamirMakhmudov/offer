@@ -645,6 +645,19 @@ var view = {
       "align": "center"
     }
   ],
+  "columnsDops": [
+    {
+      "name": "name",
+      "label": "Наименование",
+      "align": "left",
+      "style": "width: 70%"
+    },
+    {
+      "name": "price",
+      "label": "Стоимость",
+      "align": "center"
+    }
+  ],
   "columnsAdditional": [
     {
       "name": "name",
@@ -891,9 +904,14 @@ var model = {
       "МНИИТЭП"
     ]
   },
+
   "payments": {
     "val": []
   },
+  "dops": {
+    "val": []
+  },
+
   "rows": [
     {
       "id": 1,
@@ -4046,6 +4064,7 @@ var model = {
       "count": "1 (один)"
     }
   ],
+
   "rowsPayment": [
     {
       "id": 1,
@@ -4204,6 +4223,13 @@ var model = {
       "filter": "Узаконивание"
     }
   ],
+  "rowsDops": [
+    { "id": 1, "name": "Исправление ошибок БТИ без выезда техника, первая подача заявления", "price": 10000 },
+    { "id": 2, "name": "Исправление ошибок БТИ с выездом техника, повторная подача заявления", "price": 25000 },
+    { "id": 3, "name": "Исправление ошибок БТИ, общая стоимость за две подачи", "price": 35000 },
+    { "id": 4, "name": "Корректировка плана после перепланировки и повторная подача в МосЖилИнспекцию", "price": 20000 }
+  ],
+
   "rowsAdditional": [
     {
       "id": 1,
@@ -4530,9 +4556,14 @@ var model = {
       }
     ],
   },
+
   "selectedPayment": {
     "val": []
   },
+  "selectedDops": {
+    "val": []
+  },
+
   "selectedAdditional": {
     "val": [
       {
@@ -4682,9 +4713,14 @@ var model = {
   "amountServices": {
     "val": 83000
   },
+
   "amountPayments": {
     "val": 0
   },
+  "amountDops": {
+    "val": 0
+  },
+
   "amountTime": 112,
   "includedPayments": 0,
   "id": "99997",
@@ -4698,6 +4734,9 @@ var model = {
     "val": 0
   },
   "amountServicesNDS": {
+    "val": 0
+  },
+  "amountDopsNDS": {
     "val": 0
   }
 };
