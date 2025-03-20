@@ -1,4 +1,4 @@
-app.component("dops", {
+  app.component("dops", {
   name: "dops",
   template:
     /*html*/
